@@ -1,0 +1,1299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<title>Rotary Club of Thane Hills</title>
+<meta name="description" content="Rotary Club of Thane Hills, District 3142. Theme 8 design sample F: Horizontal Journey.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&family=Unbounded:wght@400..900&display=swap">
+<link rel="stylesheet" href="../vendor/lenis.css">
+<style>
+/*
+  THEME 8 / OPTION F: HORIZONTAL JOURNEY
+  A day's walk across the hills. The hero is dawn over layered ridges; scrolling climbs the front
+  hill into one pinned horizontal track whose sky runs through the Rotary palette, one colour per
+  chapter (cranberry, gold, azure, turquoise, violet, royal), while a low sun crosses it and sets
+  before the last chapter's night. Display: Unbounded (wide geometric). Text: Figtree.
+
+  Contrast (WCAG 2.x, flat colours):
+    white #FFFFFF on cranberry #D41367 .............. 5.1 : 1  (story)
+    ink #141A33 on gold #F7A81B ..................... 8.6 : 1  (numbers)
+    white on azure #0067C8 .......................... 5.6 : 1  (projects heading/labels)
+    ink on turquoise #00ADBB ........................ 6.3 : 1  (leaders)
+    ink on turquoise under the far ridge (13% ink) .. 5.1 : 1  (lowest leader line; ink text never reaches the mid ridge)
+    white on violet #901F93 ......................... 7.5 : 1  (newsletters)
+    white on royal #17458F 9.2 : 1 / gold on royal .. 4.6 : 1  (meet; gold only for the large day)
+    ink on white 17.1 : 1 / ink-2 #3A4260 on white .. 9.9 : 1  (cards)
+    white on chips: cranberry 5.1, royal 9.2, violet 7.5
+    cream #FFF6EA on hero sky, lowest small-text spot (#A11C80) ... 6.6 : 1
+    white 82% on timeline pill (ink 80% over gold, worst case) .... 9.4 : 1 ; gold on it 4.9 : 1
+    white on night #0B1D4D 16.2 : 1 / #C9D3EE on night 10.6 : 1 / gold on night 8.2 : 1
+    light gold #FFC04D on cranberry (large milestone years) .......... 3.2 : 1
+    cream on the banner-control backing over #FF7A3D (phones) ....... 4.8 : 1
+  Ridges are translucent ink, so over white-text chapters they only raise contrast.
+*/
+:root{
+  --ink:#141A33; --ink-2:#3A4260; --cream:#FFF6EA;
+  --cran:#D41367; --gold:#F7A81B; --azure:#0067C8; --turq:#00ADBB; --violet:#901F93; --royal:#17458F; --night:#0B1D4D;
+  --hh:72px; --gut:clamp(16px,4vw,56px);
+  --disp:"Unbounded","Arial Black",system-ui,sans-serif;
+  --sans:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.07'/%3E%3C/svg%3E");
+  --stars:
+    radial-gradient(1.6px 1.6px at 6% 12%,#fff 50%,transparent 62%),
+    radial-gradient(1.2px 1.2px at 14% 36%,#fff 50%,transparent 62%),
+    radial-gradient(2px 2px at 21% 8%,#fff 50%,transparent 62%),
+    radial-gradient(1.2px 1.2px at 28% 52%,#fff 50%,transparent 62%),
+    radial-gradient(1.6px 1.6px at 34% 22%,#fff 50%,transparent 62%),
+    radial-gradient(1.2px 1.2px at 41% 44%,#fff 50%,transparent 62%),
+    radial-gradient(2px 2px at 47% 10%,#fff 50%,transparent 62%),
+    radial-gradient(1.2px 1.2px at 53% 30%,#fff 50%,transparent 62%),
+    radial-gradient(1.6px 1.6px at 59% 58%,#fff 50%,transparent 62%),
+    radial-gradient(1.2px 1.2px at 64% 16%,#fff 50%,transparent 62%),
+    radial-gradient(2px 2px at 70% 40%,#fff 50%,transparent 62%),
+    radial-gradient(1.2px 1.2px at 76% 6%,#fff 50%,transparent 62%),
+    radial-gradient(1.6px 1.6px at 81% 28%,#fff 50%,transparent 62%),
+    radial-gradient(1.2px 1.2px at 87% 50%,#fff 50%,transparent 62%),
+    radial-gradient(2px 2px at 92% 14%,#fff 50%,transparent 62%),
+    radial-gradient(1.2px 1.2px at 97% 38%,#fff 50%,transparent 62%),
+    radial-gradient(1.2px 1.2px at 3% 48%,#fff 50%,transparent 62%),
+    radial-gradient(1.6px 1.6px at 38% 64%,#fff 50%,transparent 62%),
+    radial-gradient(1.2px 1.2px at 73% 66%,#fff 50%,transparent 62%),
+    radial-gradient(1.2px 1.2px at 17% 70%,#fff 50%,transparent 62%);
+}
+@media (max-width:599px){ :root{ --hh:64px } }
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--night);scroll-padding-top:var(--hh)}
+html.menu-open{overflow:hidden}
+body{margin:0;background:#fff;color:var(--ink);font:400 17px/1.6 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+p,h1,h2,h3{margin:0}
+button,select{font:inherit;color:inherit}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+:focus-visible{outline:3px solid var(--focus,currentColor);outline-offset:3px;border-radius:6px}
+main:focus{outline:none}
+section[id]{scroll-margin-top:var(--hh)}
+
+.skip{position:absolute;left:16px;top:-140px;z-index:400;background:var(--ink);color:#fff;font-weight:700;padding:12px 18px;border-radius:12px;text-decoration:none;--focus:var(--gold)}
+.skip:focus{top:12px}
+
+/* ---------- sample note ---------- */
+.note{font-size:13px;line-height:1.45;text-align:center;padding:8px var(--gut);background:var(--cream);color:var(--ink)}
+
+/* ---------- header: white bar, one stripe per chapter colour ---------- */
+.hdr{
+  position:sticky;top:0;z-index:100;height:var(--hh);display:flex;align-items:center;gap:12px;
+  padding:0 var(--gut) 4px;background:#fff;color:var(--ink);--focus:var(--ink);
+}
+.hdr::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
+  background:linear-gradient(90deg,var(--cran) 0 16.67%,var(--gold) 0 33.33%,var(--azure) 0 50%,var(--turq) 0 66.67%,var(--violet) 0 83.33%,var(--royal) 0);
+}
+.brand{flex:none;display:flex;align-items:center;min-height:44px}
+.brand img{height:46px;width:auto}
+@media (max-width:599px){ .brand img{height:38px} }
+.nav{display:none;margin-left:auto}
+.nav ul{display:flex;list-style:none;margin:0;padding:0}
+.nav a{position:relative;display:flex;align-items:center;min-height:44px;padding:0 10px;font-size:14.5px;font-weight:650;text-decoration:none;white-space:nowrap;transition:color .2s}
+.nav a:hover{color:var(--cran)}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:10px;right:10px;bottom:6px;height:3px;border-radius:3px;background:var(--cran)}
+.hdr__end{display:flex;align-items:center;gap:10px;margin-left:auto}
+.year{display:none}
+.year select,.menu__year select{
+  -webkit-appearance:none;appearance:none;cursor:pointer;height:44px;padding:0 38px 0 16px;border-radius:999px;
+  border:1.5px solid rgba(20,26,51,.22);font-size:14.5px;font-weight:700;color:var(--ink);
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%23D41367' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 15px center;
+}
+.burger{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(20,26,51,.22);background:#fff;cursor:pointer}
+.burger__bars{position:relative;width:20px;height:14px}
+.burger__bars i{position:absolute;left:0;right:0;height:2px;border-radius:2px;background:var(--ink);transition:transform .3s,opacity .3s}
+.burger__bars i:nth-child(1){top:0}.burger__bars i:nth-child(2){top:6px}.burger__bars i:nth-child(3){top:12px}
+.burger[aria-expanded="true"] .burger__bars i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] .burger__bars i:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] .burger__bars i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+@media (min-width:600px){ .year{display:block} }
+@media (min-width:1180px){ .nav{display:block} .hdr__end{margin-left:12px} .burger{display:none} }
+
+/* ---------- mobile menu ---------- */
+.menu{
+  position:fixed;inset:0;z-index:90;overflow-y:auto;overscroll-behavior:contain;
+  padding:calc(var(--hh) + 36px) var(--gut) 48px;display:flex;flex-direction:column;gap:30px;
+  background:var(--noise),radial-gradient(80% 50% at 100% 0%,rgba(144,31,147,.55),transparent 70%),var(--ink);
+  color:#fff;--focus:var(--gold);
+}
+.menu[hidden]{display:none}
+.menu ul{list-style:none;margin:0;padding:0}
+.menu li a{display:flex;align-items:center;min-height:52px;text-decoration:none;font:700 clamp(22px,6.4vw,36px)/1.1 var(--disp);letter-spacing:-.02em}
+.menu li a[aria-current="page"]{color:var(--gold)}
+.menu li a:hover{color:#FFC04D}
+.menu__year{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;max-width:220px}
+
+/* ---------- shared ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;
+  border:2px solid transparent;font:750 15.5px/1 var(--sans);text-decoration:none;white-space:nowrap;cursor:pointer;
+  transition:background-color .25s,color .25s,border-color .25s;
+}
+.btn svg{width:16px;height:16px;flex:none}
+.btn--gold{background:var(--gold);color:var(--ink)}
+.btn--gold:hover{background:#FFC04D}
+.btn--line{border-color:currentColor}
+.btn--line:hover{background:rgba(255,255,255,.16)}
+.chap__k{display:flex;align-items:center;gap:12px;margin:0 0 14px;font:750 13px/1 var(--sans);letter-spacing:.22em}
+.chap__k::after{content:"";width:46px;height:2px;background:currentColor}
+.h2{font-family:var(--disp);font-weight:800;font-size:clamp(30px,8vw,64px);line-height:.98;letter-spacing:-.03em;text-wrap:balance}
+.chap__sub{margin-top:14px;font-weight:650;font-size:16px}
+
+/* ---------- hero: dawn over the hills ---------- */
+.hero{
+  position:relative;isolation:isolate;overflow:clip;color:var(--cream);--focus:#fff;
+  min-height:calc(100vh - var(--hh));min-height:calc(100svh - var(--hh));display:flex;flex-direction:column;
+  --fr:clamp(56px,16vw,120px);
+}
+@media (min-width:900px){
+  .hero{height:calc(100vh - var(--hh));height:calc(100svh - var(--hh));min-height:540px;--fr:clamp(70px,19vh,190px)}
+}
+.hero__sky{
+  position:absolute;inset:0;z-index:-4;
+  background-image:var(--noise),linear-gradient(180deg,#0D1F5C 0%,#28307F 22%,#5E2690 42%,#A11C80 58%,#D6336F 70%,#FF7A3D 82%,#FFB54D 92%,#FFD27A 100%);
+}
+.hero__stars{position:absolute;inset:0 0 50% 0;background-image:var(--stars);opacity:.8}
+/* the warmer light the sunrise scrubs in; an effect layer only, content never depends on it */
+.hero__dawn{position:absolute;inset:0;opacity:0;background:linear-gradient(180deg,rgba(40,48,127,0) 0%,rgba(255,122,61,.28) 55%,rgba(255,196,110,.5) 100%)}
+.hero__sunwrap{position:absolute;inset:0;z-index:-3;pointer-events:none}
+.hero__sun{
+  position:absolute;left:44%;top:62%;width:clamp(110px,22vh,210px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 50% 44%,#FFFBEA 0%,#FFE7A6 38%,#FFC857 68%,#FF9F3A 100%);
+  box-shadow:0 0 46px 12px rgba(255,196,110,.55),0 0 130px 36px rgba(255,140,70,.3);
+}
+@media (max-width:899px){ .hero__sun{left:auto;right:7%;top:auto;bottom:calc(var(--fr) + 4vw);width:clamp(84px,24vw,150px)} }
+.hero__hills{position:absolute;left:0;right:0;bottom:0;height:46%;z-index:-2;pointer-events:none}
+.rg{display:block;overflow:visible}
+.hero__hills .rg{position:absolute;left:0;bottom:0;width:100%;height:100%}
+.hero__hills .rg--mid{height:72%}
+.hero__in{
+  position:relative;z-index:1;flex:1;display:grid;align-content:center;gap:clamp(22px,4vw,36px);
+  padding:clamp(28px,5vh,56px) var(--gut) calc(var(--fr) + clamp(24px,5vh,56px));
+}
+@media (min-width:900px){ .hero__in{grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:center;column-gap:clamp(28px,4vw,72px)} }
+.hero__pre{display:block;margin-bottom:14px;font:750 clamp(12px,1.1vw,15px)/1.2 var(--sans);letter-spacing:.26em;text-transform:uppercase}
+.hero__big{display:block;font-family:var(--disp);font-weight:800;font-size:clamp(48px,14vw,150px);line-height:.9;letter-spacing:-.035em;text-transform:uppercase}
+/* the vh cap keeps the two-line name inside the fixed-height hero on wide-but-short windows */
+@media (min-width:900px){ .hero__big{font-size:clamp(60px,min(9vw,17vh),150px)} }
+.hero__line{display:block}
+.hero__line + .hero__line{padding-left:.5em}
+.hero__meta{margin-top:clamp(18px,3.4vh,32px);display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.hero__facts{display:flex;flex-wrap:wrap;gap:4px 20px;font-size:16px;font-weight:600}
+.hero__facts b{font-weight:800}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero__banner{margin:0;perspective:1600px}
+.bn-card{
+  position:relative;aspect-ratio:16/7;border-radius:22px;overflow:hidden;background:#2A1846;
+  box-shadow:0 40px 90px -24px rgba(18,6,48,.75),0 0 0 1px rgba(255,255,255,.3);
+}
+@media (min-width:900px){ .bn-card{aspect-ratio:16/5} }
+.bn__s{position:absolute;inset:0;visibility:hidden}
+.bn__s.is-on{visibility:visible}
+.bn__fill{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(22px) saturate(1.3);transform:scale(1.2)}
+.bn__img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.bn__ctrl{display:flex;align-items:center;gap:2px;margin-top:8px}
+.bn__dots{display:flex}
+.dot{display:grid;place-items:center;width:44px;height:44px;border:0;background:none;cursor:pointer;border-radius:50%}
+.dot span{display:block;width:10px;height:10px;border-radius:5px;background:rgba(255,246,234,.55);transition:width .3s,background-color .3s}
+.dot[aria-current="true"] span{width:28px;background:var(--cream)}
+.bn__pause{display:grid;place-items:center;width:44px;height:44px;border:1.5px solid rgba(255,246,234,.55);border-radius:50%;background:none;cursor:pointer;margin-left:6px}
+.bn__pause svg{width:14px;height:14px;fill:var(--cream)}
+.bn__pause[hidden]{display:none}
+/* phones: the controls sit low on the orange end of the sky (cream on #FF7A3D is 2.4:1), so give them a dusk backing (4.8:1) */
+@media (max-width:899px){ .bn__ctrl{width:max-content;padding:0 4px;border-radius:999px;background:rgba(13,31,92,.38)} }
+.hero__fw{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hero__front{position:absolute;left:0;right:0;top:calc(100% - var(--fr));height:150%;display:flex;flex-direction:column}
+.hero__front .rg{flex:none;width:100%;height:clamp(50px,13vh,130px)}
+.hero__front i{flex:1;margin-top:-1px;background:var(--cran)}
+
+/* ---------- chapters: vertical flow (phones, tablets, reduced motion) ---------- */
+.jr{position:relative}
+.sky,.sun,.hills,.tl{display:none}
+.pn{
+  position:relative;isolation:isolate;overflow:clip;color:var(--fg);--focus:var(--fg);
+  background-color:var(--c);background-image:var(--noise);
+  --rh:clamp(64px,12vw,160px);
+  padding:clamp(56px,9vw,120px) var(--gut) calc(var(--rh) + clamp(32px,5vw,64px));
+  min-height:calc(100vh - var(--hh));min-height:calc(100svh - var(--hh));
+  --numc:rgba(255,255,255,.26);
+}
+.pn--story{--c:#D41367;--fg:#fff;--next:#F7A81B}
+.pn--num{--c:#F7A81B;--fg:#141A33;--next:#0067C8;--numc:rgba(20,26,51,.2)}
+.pn--proj{--c:#0067C8;--fg:#fff;--next:#00ADBB}
+.pn--lead{--c:#00ADBB;--fg:#141A33;--next:#901F93;--numc:rgba(20,26,51,.2)}
+.pn--news{--c:#901F93;--fg:#fff;--next:#17458F}
+.pn--meet{--c:#17458F;--fg:#fff;--next:#0B1D4D}
+.pn__ridge{position:absolute;left:0;right:0;bottom:-1px;height:var(--rh);z-index:1;pointer-events:none}
+.pn__ridge .rg{position:absolute;left:0;bottom:0;width:100%;height:100%}
+.pn__ridge .rg--front{height:68%}
+.pn__num{
+  position:absolute;right:var(--gut);bottom:calc(var(--rh) * .45);z-index:0;pointer-events:none;user-select:none;
+  font:800 clamp(120px,36vw,300px)/.8 var(--disp);letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px var(--numc);
+}
+.pn__in{position:relative;z-index:2;max-width:1320px;margin:0 auto}
+.chap{margin-bottom:clamp(28px,5vw,48px)}
+
+/* story */
+.story__lead{margin:22px 0 26px;font:500 clamp(19px,2.6vw,30px)/1.32 var(--disp);letter-spacing:-.01em;max-width:30ch}
+.ms-list{list-style:none;margin:0 0 clamp(40px,7vw,64px);padding:0;display:grid;gap:34px}
+@media (min-width:760px){ .ms-list{grid-template-columns:repeat(3,minmax(0,1fr))} }
+.ms__yr{position:relative;display:inline-block;font:800 clamp(56px,15vw,104px)/1 var(--disp);letter-spacing:-.04em}
+.ms__o{color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.9)}
+.ms__f{position:absolute;inset:0;color:#FFC04D} /* light gold: 3.2:1 on cranberry for the large year (#F7A81B is only 2.6:1) */
+.ms p{margin-top:12px;font-size:16px;line-height:1.55;max-width:46ch}
+.lm h3{margin:0 0 18px;font:750 14px/1.2 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.lm ul{list-style:none;margin:0;padding:0;display:grid;gap:12px 28px}
+@media (min-width:600px){ .lm ul{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (min-width:1100px){ .lm ul{grid-template-columns:repeat(3,minmax(0,1fr))} }
+.lm li{position:relative;padding-left:26px;font-size:15px;line-height:1.45}
+.lm li::before{content:"";position:absolute;left:0;top:.42em;width:15px;height:9px;background:var(--gold);clip-path:polygon(0 100%,32% 22%,52% 58%,74% 0,100% 100%)}
+
+/* numbers: a Bauhaus skyline, one shape per figure */
+.figs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:16px;--s:clamp(138px,40vw,240px)}
+.fg{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;color:#fff;flex:none}
+.fg__n{font:700 clamp(21px,6vw,40px)/1 var(--disp);letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fg__l{margin-top:9px;font:750 12.5px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.fg--circle{width:var(--s);height:var(--s);border-radius:50%;background:var(--royal)}
+.fg--arch{width:calc(var(--s) * .78);height:var(--s);border-radius:50% 50% 6px 6px / 39% 39% 6px 6px;background:var(--cran)}
+.fg--square{width:calc(var(--s) * .8);height:calc(var(--s) * .8);border-radius:6px;background:var(--ink)}
+.fg--pill{width:calc(var(--s) * 1.5);height:calc(var(--s) * .62);border-radius:999px;background:#fff;color:var(--ink)}
+.fg--dome{width:calc(var(--s) * .96);height:calc(var(--s) * .62);border-radius:50% 50% 6px 6px / 78% 78% 6px 6px;background:var(--azure);justify-content:flex-end;padding-bottom:16px}
+
+/* projects */
+.pj-list{list-style:none;margin:0;padding:0}
+.pj{position:relative;display:flex;flex-direction:column;background:#fff;color:var(--ink);border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -26px rgba(6,18,60,.6)}
+.pj:has(a:focus-visible){outline:3px solid #fff;outline-offset:4px}
+.pj__t a:focus-visible{outline:none}
+.pj__m{position:relative;height:clamp(190px,54vw,260px);overflow:hidden;background:#CFE0F5}
+.pj__m img{position:absolute;top:0;left:-8%;width:116%;max-width:none;height:100%;object-fit:cover;transition:scale .6s cubic-bezier(.2,.7,.2,1)}
+/* !important: the journey pans this img with GSAP, which writes an inline scale:none that would beat a plain rule */
+.pj:hover .pj__m img{scale:1.05 !important}
+.pj__b{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.pj__meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:13px;font-weight:650;color:var(--ink-2)}
+.chip{display:inline-flex;align-items:center;min-height:24px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:750;color:#fff;background:var(--chip,var(--cran))}
+.pj__t{font:600 16px/1.32 var(--disp);letter-spacing:-.01em}
+.pj__t a{text-decoration:none}
+.pj__t a::after{content:"";position:absolute;inset:0;z-index:1}
+.pj:hover .pj__t a{text-decoration:underline}
+.pj__d{font-size:14.5px;line-height:1.5;color:var(--ink-2)}
+@media (max-width:899px){
+  .pj-list{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin:0 calc(-1 * var(--gut));padding:8px var(--gut) 18px;scroll-padding-inline:var(--gut);scrollbar-width:thin}
+  .pj{flex:none;width:min(80vw,340px);scroll-snap-align:start}
+}
+@media (min-width:900px){ .pj-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px} }
+
+/* leaders */
+.ld-list{list-style:none;margin:0;padding:0;display:grid;gap:30px}
+@media (max-width:599px){
+  .ld-list{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin:0 calc(-1 * var(--gut));padding:8px var(--gut) 18px;scroll-padding-inline:var(--gut);scrollbar-width:thin}
+  .ld{flex:none;width:72vw;scroll-snap-align:start}
+}
+@media (min-width:600px){ .ld-list{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))} }
+.ld__a{position:relative;width:100%;max-width:250px;aspect-ratio:4/5;border-radius:50% 50% 16px 16px / 40% 40% 16px 16px;overflow:hidden;background:rgba(20,26,51,.2);box-shadow:0 0 0 4px #fff,0 28px 50px -22px rgba(8,30,50,.55)}
+.ld__a img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.ld__r{margin:20px 0 6px;font:750 12.5px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.ld h3{font:700 clamp(17px,1.5vw,21px)/1.25 var(--disp);letter-spacing:-.015em}
+.ld__bio{margin-top:10px;font-size:15px;line-height:1.5}
+
+/* newsletters: two printed covers */
+.cv-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,3vw,32px);max-width:760px}
+.cv a{
+  position:relative;display:flex;flex-direction:column;aspect-ratio:1/1.414;padding:clamp(14px,2.4vw,26px);border-radius:14px;
+  text-decoration:none;overflow:hidden;box-shadow:0 34px 60px -24px rgba(30,6,40,.7);transition:translate .35s cubic-bezier(.2,.7,.2,1);
+}
+.cv a:hover{translate:0 -10px}
+.cv--0 a{background:var(--gold);color:var(--ink);--sunc:var(--cran);--hillc:var(--royal);--focus:#fff}
+.cv--1 a{background:#fff;color:var(--violet);--sunc:var(--gold);--hillc:var(--violet);--focus:#fff}
+.cv__tag{align-self:flex-start;padding:6px 9px;border:1.5px solid currentColor;border-radius:6px;font:800 11px/1 var(--sans);letter-spacing:.16em}
+.cv__name{margin-top:clamp(12px,2vw,22px);font:800 clamp(19px,3.6vw,40px)/.98 var(--disp);letter-spacing:-.035em}
+.cv__ed{margin-top:8px;font-weight:750;font-size:clamp(12px,1.3vw,15px);letter-spacing:.04em}
+.cv__art{position:absolute;left:0;right:0;bottom:0;height:44%;pointer-events:none}
+.cv__art::before{content:"";position:absolute;left:54%;bottom:44%;width:34%;aspect-ratio:1;border-radius:50%;background:var(--sunc)}
+.cv__art::after{content:"";position:absolute;left:0;right:0;bottom:0;height:64%;background:var(--hillc);clip-path:polygon(0 36%,16% 12%,32% 30%,50% 0,68% 26%,84% 8%,100% 26%,100% 100%,0 100%)}
+.cv__date{position:relative;z-index:1;margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:8px;color:#fff;font-weight:750;font-size:clamp(12px,1.2vw,14.5px)}
+.cv__date svg{width:18px;height:18px;flex:none}
+
+/* where we meet */
+.night{position:absolute;inset:0;z-index:0;pointer-events:none}
+.night__stars{position:absolute;inset:0 0 40% 0;background-image:var(--stars)}
+.moon{
+  position:absolute;top:clamp(20px,6vw,64px);right:6%;width:clamp(58px,15vw,170px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 36% 34%,#FFFFFF 0%,#EEF2FF 46%,#C8D2F0 100%);
+  box-shadow:inset -10px -8px 0 rgba(160,176,220,.35),0 0 60px 10px rgba(200,215,255,.3);
+}
+.moon::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 62% 38%,rgba(150,166,210,.45) 0 9%,transparent 10%),radial-gradient(circle at 40% 66%,rgba(150,166,210,.35) 0 7%,transparent 8%),radial-gradient(circle at 70% 70%,rgba(150,166,210,.3) 0 5%,transparent 6%)}
+.meet__dl{margin:0 0 30px;display:grid;gap:22px}
+.meet__dl dt{margin-bottom:6px;font:750 12.5px/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+.meet__dl dd{margin:0;font-size:18px;line-height:1.5;max-width:40ch}
+.meet__day dd{font:800 clamp(46px,12.5vw,150px)/.95 var(--disp);letter-spacing:-.04em;color:var(--gold)}
+.meet__dayt{display:block;white-space:nowrap}
+.meet__time dd{font:600 clamp(24px,4vw,42px)/1.1 var(--disp);letter-spacing:-.02em}
+@media (prefers-reduced-motion:no-preference){
+  .night__stars{animation:twinkle 3.6s ease-in-out infinite alternate}
+  @keyframes twinkle{from{opacity:.5}to{opacity:1}}
+}
+
+/* phones: each chapter a screen that settles into place */
+@media (max-width:899px) and (prefers-reduced-motion:no-preference){
+  html{scroll-snap-type:y proximity}
+  html.lenis{scroll-snap-type:none}
+  .pn{scroll-snap-align:start}
+}
+
+/* ---------- the horizontal journey (desktop, motion on; JS adds .is-h) ---------- */
+.jr.is-h{
+  height:calc(100vh - var(--hh));height:calc(100svh - var(--hh));min-height:520px;overflow:clip;
+  container-type:inline-size;background:var(--cran);
+  --blend:10cqw;--pt:clamp(28px,8vh,84px);--pl:calc(var(--blend) + 40px);--pr:calc(var(--blend) + 40px);
+  --sun:clamp(70px,11vh,112px);
+}
+.jr.is-h .track{position:relative;display:flex;width:max-content;height:100%}
+.jr.is-h .sky{display:block;position:absolute;inset:0;z-index:0;background-image:var(--noise),var(--sky,linear-gradient(90deg,var(--cran),var(--royal)))}
+.jr.is-h .sun{
+  display:block;position:absolute;left:0;top:0;z-index:1;width:var(--sun);height:var(--sun);border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at 50% 44%,#FFFDF2 0%,#FFEFC2 45%,#FFD98A 100%);
+  box-shadow:0 0 36px 10px rgba(255,220,150,.45),0 0 90px 30px rgba(255,196,120,.14);
+}
+.sun b{position:absolute;inset:0;border-radius:50%;opacity:0;background:radial-gradient(circle at 50% 44%,#FFD08A 0%,#FF7600 62%,#E02927 100%)}
+.jr.is-h .hills{display:block;position:absolute;left:0;bottom:0;width:100%;height:40%;z-index:2;pointer-events:none}
+.jr.is-h .hills--front{height:15%;z-index:4}
+.hl{position:absolute;left:0;bottom:0;height:100%;display:block}
+.hl--mid{height:78%}
+.jr.is-h .pn{flex:none;height:100%;min-height:0;padding:0;background:none;overflow:visible;isolation:auto}
+.jr.is-h .pn__ridge{display:none}
+.jr.is-h .pn__in{height:100%;max-width:none;margin:0;z-index:3;display:flex;align-items:flex-start;gap:4cqw;padding:var(--pt) var(--pr) 0 var(--pl)}
+.jr.is-h .pn__num{z-index:1;right:auto;left:calc(var(--pl) + 12cqw);bottom:15%;font-size:min(46vh,420px)}
+.jr.is-h .night{z-index:1}
+.jr.is-h .chap{flex:none;width:34cqw;margin:0}
+.jr.is-h .h2{font-size:clamp(40px,4.8cqw,84px)}
+
+.jr.is-h .pn--story .pn__in{--pl:clamp(24px,5cqw,80px);padding-left:var(--pl)}
+.jr.is-h .pn--story .chap{width:36cqw}
+.jr.is-h .story__lead{font-size:clamp(18px,1.9cqw,30px)}
+.jr.is-h .ms-list{flex:none;display:flex;gap:3.5cqw;margin:0}
+.jr.is-h .ms{width:24cqw}
+.jr.is-h .ms:nth-child(2){margin-top:7vh}
+.jr.is-h .ms:nth-child(3){margin-top:14vh}
+.jr.is-h .ms__yr{font-size:6.6cqw}
+.jr.is-h .ms p{font-size:clamp(14px,1.08cqw,16px)}
+.jr.is-h .lm{flex:none;margin-top:3vh}
+.jr.is-h .lm ul{grid-template-columns:none;grid-auto-flow:column;grid-template-rows:repeat(4,auto);grid-auto-columns:15em}
+.jr.is-h .lm li{font-size:14.5px}
+
+.jr.is-h .figs{flex:none;flex-wrap:nowrap;align-self:flex-end;margin-bottom:17vh;gap:2.2cqw;--s:min(30vh,270px)}
+.jr.is-h .fg__n{font-size:clamp(26px,2.8cqw,48px)}
+
+.jr.is-h .pj-list{flex:none;display:flex;align-items:flex-start;gap:4.5cqw}
+/* photo height is what is left after the card body (~208px with the 3-line clamp), the 6vh stagger, the 30px drift and the
+   timeline pill (72px + 12px gap): at 1024x768 a fixed 38vh pushed the even cards ~10px under the pill */
+.jr.is-h .pj{--mh:clamp(140px,min(38vh,100vh - var(--hh) - var(--pt) - 6vh - 322px),350px);flex:none;width:clamp(280px,calc(var(--mh) * var(--ar)),34cqw)}
+.jr.is-h .pj__m{height:var(--mh)}
+.jr.is-h .pj__d{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.jr.is-h .pj:nth-child(even){margin-top:6vh}
+
+.jr.is-h .ld-list{flex:none;display:flex;gap:3.5cqw}
+/* portrait width capped so the tallest text block (2-line role, 2-line name, 4-line bio, 20px drift) ends above the mid ridge
+   line (76.3% of the pinned height): ink on turquoise is 5.1:1 over the far ridge but only 3.4:1 once the mid ridge adds its ink */
+.jr.is-h .ld{--aw:clamp(100px,min(24vh,(0.763 * (100vh - var(--hh)) - var(--pt) - 250px) / 1.25),230px);width:max(var(--aw),250px)}
+.jr.is-h .ld__a{width:var(--aw)}
+
+.jr.is-h .cv-list{flex:none;display:flex;gap:4cqw;align-self:center;max-width:none;margin-top:-4vh}
+.jr.is-h .cv a{height:min(56vh,470px)}
+.jr.is-h .cv__name{font-size:clamp(22px,2.4cqw,40px)}
+
+.jr.is-h .pn--meet{width:100cqw}
+.jr.is-h .pn--meet .pn__in{--pr:clamp(24px,5cqw,80px);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:auto auto auto 1fr;row-gap:0;column-gap:5cqw;align-content:start}
+.jr.is-h .meet{display:contents}
+.jr.is-h .meet .chap{grid-column:1;grid-row:1;width:auto}
+.jr.is-h .meet__dl{display:contents}
+.jr.is-h .meet__day{grid-column:1;grid-row:2 / span 2;margin-top:4vh}
+.jr.is-h .meet__day dd{font-size:clamp(52px,6.2cqw,120px)}
+.jr.is-h .meet__time{grid-column:2;grid-row:2;margin-top:4vh}
+.jr.is-h .meet__venue{grid-column:2;grid-row:3;margin-top:20px}
+.jr.is-h .meet__go{grid-column:2;grid-row:4;align-self:start;justify-self:start;margin-top:26px}
+.jr.is-h .moon{top:6%;right:6cqw;width:min(17vh,160px)}
+
+/* the chapter timeline, pinned along the bottom of the journey */
+.jr.is-h .tl{
+  display:block;position:absolute;left:var(--gut);right:var(--gut);bottom:14px;z-index:6;padding:0 12px;border-radius:18px;
+  background:rgba(12,16,36,.8);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#fff;--focus:var(--gold);
+  box-shadow:0 14px 30px -14px rgba(0,0,0,.55);
+}
+.tl__rail{position:absolute;left:18px;right:18px;top:9px;height:2px;border-radius:2px;background:rgba(255,255,255,.22)}
+.tl__fill{position:absolute;inset:0;border-radius:2px;background:var(--gold);transform-origin:0 50%;transform:scaleX(0)}
+.tl__dot{position:absolute;left:-6px;top:-5px;width:12px;height:12px;border-radius:6px;background:var(--gold);box-shadow:0 0 14px 3px rgba(247,168,27,.7)}
+.tl ol{list-style:none;margin:0;padding:12px 0 2px;display:flex}
+.tl li{flex:1;min-width:0}
+.tl button{
+  width:100%;min-height:44px;display:flex;align-items:center;gap:8px;padding:0 6px;border:0;background:none;cursor:pointer;text-align:left;
+  color:rgba(255,255,255,.82);font:750 12px/1.1 var(--sans);letter-spacing:.08em;text-transform:uppercase;transition:color .25s;
+}
+.tl button:hover{color:#fff}
+.tl button[aria-current="true"]{color:var(--gold)}
+.tl__n{opacity:.7}
+@media (max-width:1099px){ .tl__n{display:none} }
+
+/* ---------- footer ---------- */
+.ft{position:relative;z-index:5;background:var(--night);color:#fff;--focus:var(--gold);padding:clamp(40px,6vw,80px) var(--gut) 34px}
+.ft__ridge{position:absolute;left:0;bottom:calc(100% - 1px);width:100%;height:clamp(40px,6vw,90px);pointer-events:none}
+.ft__in{max-width:1320px;margin:0 auto;display:grid;gap:28px;align-items:center}
+@media (min-width:800px){ .ft__in{grid-template-columns:1fr auto auto;gap:36px} }
+.ft__club{display:flex;align-items:center;gap:18px}
+.ft__logo{flex:none;width:84px;height:84px;border-radius:50%;background:#fff;padding:6px;object-fit:contain}
+.ft__name{font:700 clamp(17px,1.6vw,21px)/1.25 var(--disp);letter-spacing:-.01em}
+.ft__dist{margin-top:4px;color:#C9D3EE}
+.soc{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
+.soc a{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);transition:background-color .25s,color .25s,border-color .25s}
+.soc a:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.soc svg{width:20px;height:20px}
+.ft__bottom{max-width:1320px;margin:30px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.16);font-size:14px;color:#C9D3EE}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<p class="note" role="note">Design sample - Theme 8 option F: Horizontal Journey. Built from Thane Hills' own data. Page links are inactive.</p>
+
+<header class="hdr">
+  <a class="brand" href="#"><img data-src="rotaryLogo" alt="Rotary Club of Thane Hills" width="900" height="240"></a>
+  <nav class="nav" aria-label="Main"><ul data-menu></ul></nav>
+  <div class="hdr__end">
+    <label class="year"><span class="sr-only">Rotary year</span><select data-years></select></label>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu"><span class="sr-only">Open menu</span><span class="burger__bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden data-lenis-prevent>
+  <nav aria-label="Menu"><ul data-menu></ul></nav>
+  <label class="menu__year">Rotary year<select data-years></select></label>
+</div>
+
+<main id="main" tabindex="-1">
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="hero__sky" aria-hidden="true"><span class="hero__stars"></span><span class="hero__dawn"></span></div>
+    <div class="hero__sunwrap" aria-hidden="true"><span class="hero__sun"></span></div>
+    <div class="hero__hills" aria-hidden="true"><svg class="rg rg--far" data-ridge="heroFar"></svg><svg class="rg rg--mid" data-ridge="heroMid"></svg></div>
+    <div class="hero__in">
+      <div class="hero__copy">
+        <h1 id="hero-h"><span class="sr-only" data-text="club"></span><span aria-hidden="true"><span class="hero__pre" data-pre></span><span class="hero__big" data-lines></span></span></h1>
+        <div class="hero__meta">
+          <p class="hero__facts"><span>District <b data-text="district"></b></span><span>Rotary year <b data-text="year"></b></span></p>
+          <div class="hero__cta"><a class="btn btn--gold" href="#projects">Our projects</a><a class="btn btn--line" href="#meet">Where we meet</a></div>
+        </div>
+      </div>
+      <div class="hero__banner">
+        <div class="bn-card" data-slides></div>
+        <div class="bn__ctrl" role="group" aria-label="Banner slideshow">
+          <span class="bn__dots" data-dots></span>
+          <button class="bn__pause" type="button" hidden><span class="sr-only">Pause slideshow</span><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="hero__fw" aria-hidden="true"><div class="hero__front"><svg class="rg" data-ridge="heroFront"></svg><i></i></div></div>
+  </section>
+
+  <div class="jr">
+    <div class="track">
+      <div class="sky" aria-hidden="true"></div>
+      <div class="sun" aria-hidden="true"><b></b></div>
+      <div class="hills" aria-hidden="true"><svg class="hl hl--far"></svg><svg class="hl hl--mid"></svg></div>
+
+      <section class="pn pn--story" id="story" aria-labelledby="story-h" data-chapter="Our story">
+        <span class="pn__num" aria-hidden="true">01</span>
+        <div class="pn__ridge" aria-hidden="true"><svg class="rg rg--far"></svg><svg class="rg rg--front"></svg></div>
+        <div class="pn__in">
+          <div class="chap">
+            <p class="chap__k" aria-hidden="true">01</p>
+            <h2 class="h2" id="story-h">Our story</h2>
+            <p class="story__lead" data-lead></p>
+            <a class="btn btn--line" href="#">More about the club</a>
+          </div>
+          <ol class="ms-list" data-ms></ol>
+          <div class="lm"><h3>Landmark projects</h3><ul data-landmarks></ul></div>
+        </div>
+      </section>
+
+      <section class="pn pn--num" id="numbers" aria-labelledby="numbers-h" data-chapter="By the numbers">
+        <span class="pn__num" aria-hidden="true">02</span>
+        <div class="pn__ridge" aria-hidden="true"><svg class="rg rg--far"></svg><svg class="rg rg--front"></svg></div>
+        <div class="pn__in">
+          <div class="chap">
+            <p class="chap__k" aria-hidden="true">02</p>
+            <h2 class="h2" id="numbers-h">By the numbers</h2>
+            <p class="chap__sub">Rotary year <span data-text="year"></span></p>
+          </div>
+          <ul class="figs" data-figs></ul>
+        </div>
+      </section>
+
+      <section class="pn pn--proj" id="projects" aria-labelledby="projects-h" data-chapter="Our projects">
+        <span class="pn__num" aria-hidden="true">03</span>
+        <div class="pn__ridge" aria-hidden="true"><svg class="rg rg--far"></svg><svg class="rg rg--front"></svg></div>
+        <div class="pn__in">
+          <div class="chap">
+            <p class="chap__k" aria-hidden="true">03</p>
+            <h2 class="h2" id="projects-h">Our projects</h2>
+            <p class="chap__sub">Rotary year <span data-text="year"></span></p>
+            <p style="margin-top:22px"><a class="btn btn--gold" href="#">All projects</a></p>
+          </div>
+          <ul class="pj-list" data-projects></ul>
+        </div>
+      </section>
+
+      <section class="pn pn--lead" id="leaders" aria-labelledby="leaders-h" data-chapter="Our leaders">
+        <span class="pn__num" aria-hidden="true">04</span>
+        <div class="pn__ridge" aria-hidden="true"><svg class="rg rg--far"></svg><svg class="rg rg--front"></svg></div>
+        <div class="pn__in">
+          <div class="chap">
+            <p class="chap__k" aria-hidden="true">04</p>
+            <h2 class="h2" id="leaders-h">Our leaders</h2>
+            <p class="chap__sub">Rotary year <span data-text="year"></span></p>
+          </div>
+          <ul class="ld-list" data-people></ul>
+        </div>
+      </section>
+
+      <section class="pn pn--news" id="newsletters" aria-labelledby="news-h" data-chapter="Newsletters">
+        <span class="pn__num" aria-hidden="true">05</span>
+        <div class="pn__ridge" aria-hidden="true"><svg class="rg rg--far"></svg><svg class="rg rg--front"></svg></div>
+        <div class="pn__in">
+          <div class="chap">
+            <p class="chap__k" aria-hidden="true">05</p>
+            <h2 class="h2" id="news-h">Newsletters</h2>
+          </div>
+          <ul class="cv-list" data-news></ul>
+        </div>
+      </section>
+
+      <section class="pn pn--meet" id="meet" aria-labelledby="meet-h" data-chapter="Where we meet">
+        <div class="night" aria-hidden="true"><span class="night__stars"></span><span class="moon"></span></div>
+        <div class="pn__ridge" aria-hidden="true"><svg class="rg rg--far"></svg><svg class="rg rg--front"></svg></div>
+        <div class="pn__in">
+          <div class="meet">
+            <div class="chap">
+              <p class="chap__k" aria-hidden="true">06</p>
+              <h2 class="h2" id="meet-h">Where we meet</h2>
+            </div>
+            <dl class="meet__dl">
+              <div class="meet__day"><dt>Day</dt><dd><span class="meet__dayt" aria-hidden="true" data-text="meetDay"></span><span class="sr-only" data-text="meetDay"></span></dd></div>
+              <div class="meet__time"><dt>Time</dt><dd data-text="meetTime"></dd></div>
+              <div class="meet__venue"><dt>Venue</dt><dd data-text="meetVenue"></dd></div>
+            </dl>
+            <a class="btn btn--gold meet__go" href="#" data-maps target="_blank" rel="noopener">Get directions<span class="sr-only"> (opens in a new tab)</span><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+          </div>
+        </div>
+      </section>
+
+      <div class="hills hills--front" aria-hidden="true"><svg class="hl hl--near"></svg></div>
+    </div>
+    <nav class="tl" aria-label="Chapters">
+      <div class="tl__rail" aria-hidden="true"><i class="tl__fill"></i><i class="tl__dot"></i></div>
+      <ol data-tl></ol>
+    </nav>
+  </div>
+</main>
+
+<footer class="ft">
+  <svg class="ft__ridge rg" aria-hidden="true" data-ridge="foot"></svg>
+  <div class="ft__in">
+    <div class="ft__club">
+      <img class="ft__logo" data-src="clubLogo" alt="Rotary Club of Thane Hills logo" width="191" height="191" loading="lazy">
+      <div><p class="ft__name" data-text="club"></p><p class="ft__dist">District <span data-text="district"></span></p></div>
+    </div>
+    <ul class="soc" data-socials aria-label="Social media"></ul>
+    <a class="btn btn--line" href="#">Admin login</a>
+  </div>
+  <p class="ft__bottom">Rotary year <span data-text="year"></span></p>
+</footer>
+
+<script src="../vendor/gsap.min.js"></script>
+<script src="../vendor/ScrollTrigger.min.js"></script>
+<script src="../vendor/SplitText.min.js"></script>
+<script src="../vendor/lenis.min.js"></script>
+
+<!-- 1. Content. Everything visible is built here from the club's data, with no animation. -->
+<script>
+(function () {
+  "use strict";
+  var D = {
+    club: "Rotary Club of Thane Hills",
+    short: "Thane Hills",
+    district: "3142",
+    year: "2026–27",
+    rotaryLogo: "https://rizones45678.org/API/Documents/WebsiteData/Group1/LOGO/UpperLogo_a8029d9327634b199550d6b2050e100d.png",
+    clubLogo: "https://rizones45678.org/API/Documents/group/club_logo_3686e0c78f04411893de23ec6bf36c6d.png",
+    about: "Rotary Club of Thane Hills – An overview Rotary Club of Thane Hills (RCTH) was chartered on May 20, 1991. The idea of this club was sown sometime around October 1990 when a group of like-minded professionals and businessmen came together to form a new Rotary club. The idea of this new club was mooted by Rotary Club of Thane North, with strong support from the then President Nana Khambete and PP Suresh Dhawan. The initial meetings of this group were held at Mr. Bhoomreddi’s residence and after the initial work of 7 months; the club got its charter. RCTH started its journey under the able leadership of PP Late Vasant Zalani as the Club President and PP (Dr.) Suhas Kulkarni as the Club Secretary. There were about thirty charter members and it is a matter of pride for us that a good number of those charter members continue to be the members of this prestigious club. In the last 30 years of its existence, RCTH has grown by leaps and bounds and has turned into a strong tree from a sapling sown 30 years back. Today, the club’s strength has risen to 105 members and growing steadily with every passing year. In all these years, RCTH has been led by very able leaders and teams, who have made this club as one of the leading clubs in the District and the Rotary world. Every year, RCTH has undertaken numerous projects for the community welfare. In 2000, RCTH founded a charitable Trust called Triumph Foundation and executes various social initiatives and community-based projects through this foundation. Besides the annual projects like the Triumph Run (sports events for special children), Blood Donation Camps, Senior Citizen Health check-ups, Vocational Guidance Seminars, RCTH has undertaken some huge projects in the past. Listed below are a few of our Landmark projects: Earthen Dam Project at Shirol Tribal Employment Scheme Self-employment Centre for Destitute women at Premdhaan at Airoli, New Mumbai Triumph Garden at Jidd School Infrastructure for Vocational Training in Special School Upgradation for Crematorium at Thane Career Training Centre at Holy Cross Convent Special school at Thane Infrastructual Assistance to Tribal school, Utavali Village, Wada. Triumph Blood Bank and Thalassemia Day-care centre ‘Right to Go’ – building Toilet blocks for villagers in Sogav. Check dams at Shahpur and Murbad ‘Virtual eye’ – a learning tool for visually-impaired Pediatric Heart surgeries ‘Mission for Vision’ – Eye sight corrective surgeries Hamari Pari – Installation of sanitary pad machines in schools Rotarian Rakesh Wadhawan Memorial Education Complex at Shenve village, Taluka shahpur Check dams at ambadi and umroli in shahpur Joint venture between Triump Foundation and Seetabai Gadgil Trust Eye care center at Thane",
+    banners: [
+      "https://rizones45678.org/API/uploads/banner/e2e31bc4-b8d5-4f1a-be78-4cc109962da0.jpg",
+      "https://rizones45678.org/API/uploads/banner/449dddc4-53c4-4ce3-935f-f3496647eb5b.jpg",
+      "https://rizones45678.org/API/uploads/banner/d22b9e0f-665a-42bc-9d75-bf91181067f1.jpg"
+    ],
+    figures: { beneficiaries: 6752, projects: 32, manHours: 686, totalCost: 1021500, members: 121 },
+    featured: [
+      { id: 31327, title: "Project 23- Drug Deaddiction Awareness @ RS Deokar", desc: "Today, under the Rotary Club of Thane Hills’ Drug Deaddiction Awareness Initiative, I had the privilege of conducting an interactive session on Drug Awareness for 120 students of standard 9th & 10th of R.S. Deokar School. The session focused on understanding a", avenue: "Community Service", date: "2026-08-25", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album31327/2d84e808-bb52-4c0a-a214-2c9b007b19f5.png", w: 1387, h: 780 },
+      { id: 28602, title: "Project 22: Blood Donation Camp at Fortress", desc: "We are pleased to share the success of our Blood Donation Drive today at Fortress Office An impressive 35 units of blood were collected during the camp. Kudos to Hillers Kumar and Anuradha for donating blood. Attended by President Dr Anagha Karkhanis, CS Vasan", avenue: "Community Service", date: "2026-08-21", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28602/b450feb3-9d35-4e2a-a5a4-5e7ed88d938b.png", w: 720, h: 960 },
+      { id: 28658, title: "Press Coverage: Ganapati Idol making workshop", desc: "Ganapati Idol making workshop was covered in Indian Express", avenue: "Public Image", date: "2026-08-12", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28658/16c61874-f0ca-4087-b001-7d83a84ba24b.png", w: 746, h: 995 },
+      { id: 28603, title: "Project 21: Annapoorna Drive at Yogi Hills", desc: "August 12, 2026, our Rotary Club of Thane Hills team successfully completed another Annapurna distribution at Yogi Hills, reaching out to 1,000 visually challenged beneficiaries! We distributed essential household kits containing food grains, pulses, tea, toot", avenue: "Community Service", date: "2026-08-12", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28603/f17131c6-236f-4102-b304-e86593b06298.png", w: 1600, h: 900 },
+      { id: 34259, title: "Press Coverage: Orchestra for specially abled", desc: "News of RCTH organized orchestra for specially abled covered in Indian Express", avenue: "Public Image", date: "2026-08-11", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album34259/f517b14b-76bf-4b6a-8774-ba66ccb5de67.png", w: 734, h: 979 },
+      { id: 28634, title: "Rotaract Club of Thane Hills Installation", desc: "The Installation Ceremony of the Rotaract Club of Thane Hills marked the beginning of a new year filled with leadership, service, and fellowship. The new President, Rtr. Prajakta Bhadadare, along with her team, was formally inducted and entrusted with the resp", avenue: "New Generation Service", date: "2026-08-09", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28634/29e9cb35-2a10-4ff5-8dbb-0c56ac307e02.png", w: 1200, h: 1600 },
+      { id: 28605, title: "Project 20: Musical event for Specially abled", desc: "🌟 Project 20 Musical event for Specially abled children by visually challenged students 🌟 Rotary Club of Thane Hills hosted a beautiful musical morning where visually challenged students from Pragati Andh Vidyalay, Badlapur presented a soulful orchestra for sp", avenue: "Community Service", date: "2026-08-09", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28605/b343681b-3aaa-463f-87e6-541530889d14.png", w: 1280, h: 720 }
+    ],
+    people: [
+      { role: "Club President", name: "Anagha Amit Karkhanis", img: "https://rizones45678.org/API/Documents/directory/anagha28022023120212PM.jpg", w: 159, h: 196, bio: "Dr Anagha Karkhanis is a Consultant Gynaecologist with expertise in IVF, Cosmetic Gynaecology, Urogynaecology and Facial Aesthetics. Her academic achievements include MRCPI(Ireland), FRM(Germany), MRM(UK), DOWH(Ireland)," },
+      { role: "Club Secretary", name: "Vasant Bhat", img: "https://rizones45678.org/API/Documents/directory/20082023092950PM.png", w: 1024, h: 1024, bio: "" },
+      { role: "District Governor, 3142", name: "Nilesh Vinayak Jaywant", img: "https://rizones45678.org/API/Documents/directory/DA2C741D-0B64-4185-B35C-10A258BA409219122024113304AM.jpeg", w: 398, h: 513, bio: "Dr Nilesh Vinayak Jaywant was born on 27th March 1970, at Chembur Mumbai. He did his schooling from the St John Baptist High School, Thane, Maharashtra. Being a very bright student, he won many awards" },
+      { role: "President, Rotary International 2026-27", name: "Olayinka Hakeem Babalola", img: "https://rizones45678.org/API/Documents/WebsiteData/International_President/PRESIDENT020720261207057300549PM.jpg", w: 288, h: 288, bio: "Olayinka Hakeem Babalola, a member of the Rotary Club of Trans Amadi, Nigeria, has been selected by the Board of Directors to become Rotary International’s president for 2026-27. His term will begin o" }
+    ],
+    newsletters: [
+      { title: "August 2026- Hill Echoes", date: "2026-08-04", url: "https://rizones45678.org/API/Documents/ebulletin/Group1/AUGUST_-_2026_8663f9e604082026091523PM.pdf" },
+      { title: "July 2026- Hill Echoes", date: "2026-07-10", url: "https://rizones45678.org/API/Documents/ebulletin/Group1/July_2026-_Hill_Echoes_bb63aea210072026103527PM.pdf" }
+    ],
+    meeting: { day: "Thursday", time: "19:30–21:30", venue: "Smt. Savitridevi Thirani Highschools, Road No. 1, Vartak Nagar, Thane West, Maharashtra 400606" },
+    socials: [
+      { platform: "facebook", linkUrl: "https://www.facebook.com/rcthanehills/" },
+      { platform: "instagram", linkUrl: "https://www.instagram.com/rotaryclubofthanehills/?hl=en" },
+      { platform: "linkedin", linkUrl: "https://www.linkedin.com/company/rotary-club-of-thane-hills/" },
+      { platform: "twitter", linkUrl: "https://twitter.com/RCThaneHills" }
+    ]
+  };
+  // Landmark projects: verbatim pieces of the about text whose edges are unambiguous there
+  // (the run-on items around "Jidd School" and "Holy Cross Convent" are left out rather than guessed).
+  var LANDMARKS = [
+    "Self-employment Centre for Destitute women at Premdhaan at Airoli, New Mumbai",
+    "Upgradation for Crematorium at Thane",
+    "Infrastructual Assistance to Tribal school, Utavali Village, Wada",
+    "Triumph Blood Bank and Thalassemia Day-care centre",
+    "‘Right to Go’ – building Toilet blocks for villagers in Sogav",
+    "Check dams at Shahpur and Murbad",
+    "‘Virtual eye’ – a learning tool for visually-impaired",
+    "Pediatric Heart surgeries",
+    "‘Mission for Vision’ – Eye sight corrective surgeries",
+    "Hamari Pari – Installation of sanitary pad machines in schools",
+    "Rotarian Rakesh Wadhawan Memorial Education Complex at Shenve village, Taluka shahpur",
+    "Check dams at ambadi and umroli in shahpur"
+  ];
+  var MENU = ["Home", "About", "Directory", "Directors", "Calendar", "Projects", "Past Presidents", "Events"];
+  var YEARS = [D.year];
+  var CHIP = { "Community Service": "#D41367", "Public Image": "#17458F", "New Generation Service": "#901F93" };
+
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function fix(s) { return String(s == null ? "" : s).replace(/[�]/g, "’"); }
+  function esc(s) { return fix(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function cut(s, n) {
+    s = fix(s).trim();
+    if (s.length <= n) return s;
+    var t = s.slice(0, n), sp = t.lastIndexOf(" ");
+    return (sp > n * 0.6 ? t.slice(0, sp) : t).replace(/[\s,;:.\-–]+$/, "") + "…";
+  }
+  function fmtDate(iso) {
+    var d = new Date(iso + "T00:00:00");
+    return isNaN(d) ? esc(iso) : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  }
+  var nf = new Intl.NumberFormat("en-IN");
+  function fmtFig(v, money) { return (money ? "₹" : "") + nf.format(v); }
+
+  // ---- ridges: one deterministic hill line, reused for every silhouette on the page
+  var RIDGE = {
+    heroFar:   { base: 40, amp: 26, seed: 1.7, fill: "rgba(212,19,103,.42)", rim: "rgba(255,214,160,.55)" },
+    heroMid:   { base: 46, amp: 24, seed: 4.1, fill: "rgba(212,19,103,.74)", rim: "rgba(255,214,160,.42)" },
+    heroFront: { base: 52, amp: 30, seed: 6.3, fill: "#D41367", rim: "rgba(255,214,160,.5)" },
+    far:       { base: 36, amp: 24, seed: 2.2, fill: "rgba(20,26,51,.13)", rim: "rgba(255,240,215,.32)" },
+    mid:       { base: 48, amp: 24, seed: 5.3, fill: "rgba(20,26,51,.24)", rim: "rgba(255,240,215,.22)" },
+    near:      { base: 46, amp: 30, seed: 8.1, fill: "rgba(20,26,51,.4)", rim: "rgba(255,240,215,.16)" },
+    pnFar:     { base: 34, amp: 26, seed: 3.3, fill: "rgba(20,26,51,.16)" },
+    pnFront:   { base: 58, amp: 24, seed: 7.4, fill: "var(--next)", rim: "rgba(255,255,255,.28)" },
+    foot:      { base: 55, amp: 30, seed: 9.2, fill: "#0B1D4D" }
+  };
+  function ridgeD(w, o) {
+    var step = Math.max(10, Math.round(w / 600)), pts = [], x = 0, last = 0;
+    for (; x <= w + step; x += step) {
+      var y = o.base + o.amp * (0.55 * Math.sin(x / 380 + o.seed) + 0.3 * Math.sin(x / 157 + o.seed * 2.1) + 0.15 * Math.sin(x / 67 + o.seed * 4.7));
+      pts.push(x + " " + y.toFixed(1));
+      last = x;
+    }
+    return { area: "M0 100 L" + pts.join(" L") + " L" + last + " 100Z", line: "M" + pts.join(" L") };
+  }
+  function drawRidge(svg, w, o, px) {
+    if (!svg || !(w > 0)) return;
+    var d = ridgeD(w, o);
+    svg.setAttribute("viewBox", "0 0 " + w + " 100");
+    svg.setAttribute("preserveAspectRatio", "none");
+    svg.setAttribute("focusable", "false");
+    if (px) svg.style.width = w + "px";
+    svg.innerHTML = '<path d="' + d.area + '" style="fill:' + o.fill + '"/>' +
+      (o.rim ? '<path d="' + d.line + '" fill="none" style="stroke:' + o.rim + '" stroke-width="1.5" vector-effect="non-scaling-stroke"/>' : "");
+  }
+  var lastW = 0;
+  function drawStatic() {
+    var w = document.documentElement.clientWidth;
+    if (w === lastW) return;
+    lastW = w;
+    $$("[data-ridge]").forEach(function (s) { drawRidge(s, Math.round(s.getBoundingClientRect().width) || w, RIDGE[s.getAttribute("data-ridge")]); });
+    $$(".pn").forEach(function (p, i) {
+      var pw = p.clientWidth || w;
+      drawRidge($(".pn__ridge .rg--far", p), pw, { base: RIDGE.pnFar.base, amp: RIDGE.pnFar.amp, seed: RIDGE.pnFar.seed + i * 1.3, fill: RIDGE.pnFar.fill });
+      drawRidge($(".pn__ridge .rg--front", p), pw, { base: RIDGE.pnFront.base, amp: RIDGE.pnFront.amp, seed: RIDGE.pnFront.seed + i * 1.7, fill: RIDGE.pnFront.fill, rim: RIDGE.pnFront.rim });
+    });
+  }
+
+  // ---- simple bindings
+  var bind = { club: D.club, short: D.short, district: D.district, year: D.year, meetDay: D.meeting.day, meetTime: D.meeting.time, meetVenue: D.meeting.venue };
+  $$("[data-text]").forEach(function (el) { el.textContent = fix(bind[el.getAttribute("data-text")]); });
+  $$("[data-src]").forEach(function (el) { el.src = D[el.getAttribute("data-src")]; });
+  $("[data-maps]").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(fix(D.meeting.venue));
+  $("[data-pre]").textContent = fix(D.club).replace(fix(D.short), "").trim();
+  $("[data-lines]").innerHTML = fix(D.short).split(/\s+/).map(function (w) { return '<span class="hero__line">' + esc(w) + "</span>"; }).join("");
+
+  var menuHtml = MENU.map(function (m, i) { return '<li><a href="#"' + (i === 0 ? ' aria-current="page"' : "") + ">" + esc(m) + "</a></li>"; }).join("");
+  $$("[data-menu]").forEach(function (ul) { ul.innerHTML = menuHtml; });
+  var yearHtml = YEARS.map(function (y) { return "<option" + (y === D.year ? " selected" : "") + ">" + esc(y) + "</option>"; }).join("");
+  $$("[data-years]").forEach(function (s) { s.innerHTML = yearHtml; });
+
+  // ---- banners (16:5 image shown whole, over a blurred fill of itself)
+  var NB = D.banners.length;
+  $("[data-slides]").innerHTML = D.banners.map(function (u, i) {
+    return '<div class="bn__s' + (i === 0 ? " is-on" : "") + '"><img class="bn__fill" src="' + esc(u) + '" alt="" loading="' + (i ? "lazy" : "eager") + '">' +
+      '<img class="bn__img" src="' + esc(u) + '" alt="' + esc(D.club) + " banner " + (i + 1) + " of " + NB + '" width="1700" height="531"' + (i === 0 ? ' fetchpriority="high"' : ' loading="lazy"') + "></div>";
+  }).join("");
+  $("[data-dots]").innerHTML = NB > 1 ? D.banners.map(function (u, i) {
+    return '<button class="dot" type="button" aria-current="' + (i === 0) + '"><span class="sr-only">Show banner ' + (i + 1) + '</span><span aria-hidden="true"></span></button>';
+  }).join("") : "";
+
+  // ---- story: the history starts at the charter sentence
+  var about = fix(D.about);
+  var at = about.indexOf(D.club + " (RCTH)");
+  if (at > 0) about = about.slice(at);
+  // No lookbehind (a lookbehind literal is a parse error on older Safari and would blank the page).
+  var S = about.replace(/([.!?])\s+(?=[A-Z‘'"])/g, function (m, p, i, s) {
+    return /\b(?:Mr|Mrs|Ms|Dr|St|No|Smt)\.$/.test(s.slice(0, i + 1)) ? m : p + "\n";
+  }).split("\n");
+  function find(re) { for (var i = 0; i < S.length; i++) if (re.test(S[i])) return S[i]; return ""; }
+  function yearOf(s) { var m = s.match(/\b(19|20)\d{2}\b/); return m ? m[0] : ""; }
+  var charter = find(/chartered on/);
+  $("[data-lead]").textContent = charter;
+  var MS = [
+    { y: yearOf(find(/October \d{4}/)), t: [find(/October \d{4}/), find(/mooted/)] },
+    { y: yearOf(charter), t: [find(/initial meetings/), find(/started its journey/)] },
+    { y: yearOf(find(/^In \d{4}/)), t: [find(/^In \d{4}/)] }
+  ].filter(function (m) { return m.y && m.t[0]; });
+  $("[data-ms]").innerHTML = MS.map(function (m) {
+    return '<li class="ms"><div class="ms__yr" aria-hidden="true"><span class="ms__o">' + m.y + '</span><span class="ms__f">' + m.y + "</span></div><p>" +
+      esc(m.t.filter(Boolean).join(" ")) + "</p></li>";
+  }).join("");
+  $("[data-landmarks]").innerHTML = LANDMARKS.filter(function (s) { return about.indexOf(s) > -1; }).map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("");
+
+  // ---- figures
+  var FG = D.figures;
+  var FIGS = [
+    { v: FG.beneficiaries, label: "Beneficiaries", cls: "circle" },
+    { v: FG.projects, label: "Projects", cls: "arch" },
+    { v: FG.manHours, label: "Man-hours", cls: "square" },
+    { v: FG.totalCost, label: "Total cost", cls: "pill", money: true },
+    { v: FG.members, label: "Members", cls: "dome" }
+  ];
+  $("[data-figs]").innerHTML = FIGS.map(function (f) {
+    var txt = fmtFig(f.v, f.money);
+    return '<li class="fg fg--' + f.cls + '"><span class="fg__n"><span aria-hidden="true" data-count="' + f.v + '"' + (f.money ? " data-money" : "") + ">" + txt + '</span><span class="sr-only">' + txt + '</span></span><span class="fg__l">' + esc(f.label) + "</span></li>";
+  }).join("");
+
+  // ---- projects
+  $("[data-projects]").innerHTML = D.featured.map(function (p) {
+    var ar = (p.w && p.h ? p.w / p.h : 4 / 3).toFixed(3);
+    return '<li class="pj" style="--ar:' + ar + '"><div class="pj__m"><img src="' + esc(p.img) + '" alt="' + esc(p.title) + '" width="' + p.w + '" height="' + p.h + '" loading="lazy" decoding="async"></div>' +
+      '<div class="pj__b"><p class="pj__meta"><span class="chip" style="--chip:' + (CHIP[p.avenue] || "#141A33") + '">' + esc(p.avenue) + '</span><time datetime="' + esc(p.date) + '">' + fmtDate(p.date) + "</time></p>" +
+      '<h3 class="pj__t"><a href="#">' + esc(p.title) + '</a></h3><p class="pj__d">' + esc(cut(p.desc, 100)) + "</p></div></li>";
+  }).join("");
+
+  // ---- leaders
+  $("[data-people]").innerHTML = D.people.map(function (m) {
+    var bio = cut(m.bio, 120);
+    return '<li class="ld"><div class="ld__a"><img src="' + esc(m.img) + '" alt="' + esc(m.name) + '" width="' + m.w + '" height="' + m.h + '" loading="lazy" decoding="async"></div>' +
+      '<div class="ld__t"><p class="ld__r">' + esc(m.role) + "</p><h3>" + esc(m.name) + "</h3>" + (bio ? '<p class="ld__bio">' + esc(bio) + "</p>" : "") + "</div></li>";
+  }).join("");
+
+  // ---- newsletters: "August 2026- Hill Echoes" -> cover title "Hill Echoes", edition "August 2026"
+  var ARROW = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 11 11 5M6 5h5v5"/></svg>';
+  $("[data-news]").innerHTML = D.newsletters.map(function (n, i) {
+    var parts = fix(n.title).split(/\s*-\s+/), name = parts[1] || parts[0], ed = parts[1] ? parts[0] : "";
+    return '<li class="cv cv--' + (i % 2) + '"><a href="' + esc(n.url) + '" target="_blank" rel="noopener">' +
+      '<span class="cv__tag" aria-hidden="true">PDF</span><span class="cv__name">' + esc(name) + "</span>" + (ed ? '<span class="cv__ed">' + esc(ed) + "</span>" : "") +
+      '<span class="cv__art" aria-hidden="true"></span><span class="cv__date"><time datetime="' + esc(n.date) + '">' + fmtDate(n.date) + "</time>" + ARROW + "</span>" +
+      '<span class="sr-only"> (PDF, opens in a new tab)</span></a></li>';
+  }).join("");
+
+  // ---- socials
+  var ICON = {
+    facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.5 1.6-1.5h1.7V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.3H7.6V14h2.7v8h3.2z"/></svg>',
+    instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>',
+    linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="9" width="4" height="12" rx=".5"/><circle cx="5" cy="4.9" r="2.2"/><path d="M10 9h3.8v1.8c.6-1.1 2-2.1 4-2.1 3.5 0 4.2 2.2 4.2 5.2V21h-4v-6.2c0-1.5-.1-3.3-2.1-3.3s-2.3 1.5-2.3 3.2V21H10V9z"/></svg>',
+    twitter: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg>'
+  };
+  var NAME = { facebook: "Facebook", instagram: "Instagram", linkedin: "LinkedIn", twitter: "Twitter" };
+  $("[data-socials]").innerHTML = D.socials.filter(function (s) { return s.linkUrl; }).map(function (s) {
+    var k = String(s.platform).toLowerCase();
+    return '<li><a href="' + esc(s.linkUrl) + '" target="_blank" rel="noopener"><span class="sr-only">' + esc(NAME[k] || k) + ' (opens in a new tab)</span><span aria-hidden="true">' + (ICON[k] || esc(k.charAt(0).toUpperCase())) + "</span></a></li>";
+  }).join("");
+
+  // ---- chapter timeline buttons (only shown by the horizontal journey)
+  $("[data-tl]").innerHTML = $$(".pn").map(function (p, i) {
+    return '<li><button type="button"><span class="tl__n" aria-hidden="true">0' + (i + 1) + "</span>" + esc(p.getAttribute("data-chapter")) + "</button></li>";
+  }).join("");
+
+  var F = window.__F = { motionOn: false, lenis: null, fmtFig: fmtFig, drawRidge: drawRidge, RIDGE: RIDGE, slider: null };
+
+  // ---- inert page links
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a");
+    if (a && a.getAttribute("href") === "#") {
+      e.preventDefault();
+      if (menu.contains(a)) setMenu(false);
+    }
+  });
+
+  // ---- banner slider (auto-advances only when the motion script switches it on)
+  F.slider = (function () {
+    var slides = $$(".bn__s"), dots = $$(".dot"), pauseBtn = $(".bn__pause");
+    var cur = 0, timer = null, auto = false, paused = false, visible = true;
+    function go(n) {
+      n = (n + slides.length) % slides.length;
+      if (n === cur || !slides.length) return;
+      var prev = slides[cur], inc = slides[n];
+      cur = n;
+      dots.forEach(function (d, k) { d.setAttribute("aria-current", String(k === cur)); });
+      if (!(F.motionOn && window.gsap)) { prev.classList.remove("is-on"); inc.classList.add("is-on"); return; }
+      gsap.killTweensOf(slides);
+      slides.forEach(function (s) { s.style.zIndex = s === inc ? 2 : s === prev ? 1 : 0; });
+      inc.classList.add("is-on");
+      gsap.fromTo(inc, { clipPath: "inset(0% 0% 0% 100%)" }, {
+        clipPath: "inset(0% 0% 0% 0%)", duration: 1.2, ease: "expo.inOut", clearProps: "clipPath",
+        onComplete: function () { slides.forEach(function (s) { if (s !== inc) s.classList.remove("is-on"); s.style.zIndex = ""; }); }
+      });
+      gsap.fromTo($(".bn__img", inc), { xPercent: 10 }, { xPercent: 0, duration: 1.5, ease: "expo.out", clearProps: "transform" });
+    }
+    function restart() { clearInterval(timer); timer = auto ? setInterval(function () { if (!paused && visible && !document.hidden) go(cur + 1); }, 6000) : null; }
+    dots.forEach(function (d, k) { d.addEventListener("click", function () { go(k); restart(); }); });
+    pauseBtn.addEventListener("click", function () {
+      paused = !paused;
+      $(".sr-only", pauseBtn).textContent = paused ? "Play slideshow" : "Pause slideshow";
+      $("svg", pauseBtn).innerHTML = paused ? '<path d="M3 1.5v11l9-5.5z"/>' : '<rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/>';
+    });
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe($(".hero"));
+    return { setAuto: function (v) { auto = v && slides.length > 1; pauseBtn.hidden = !auto; restart(); } };
+  })();
+
+  // ---- mobile menu
+  var burger = $(".burger"), menu = $("#menu"), outside = [$("main"), $("footer"), $(".note")], open = false;
+  function setMenu(v) {
+    if (v === open) return;
+    open = v;
+    burger.setAttribute("aria-expanded", String(v));
+    $(".sr-only", burger).textContent = v ? "Close menu" : "Open menu";
+    outside.forEach(function (el) { el.inert = v; });
+    document.documentElement.classList.toggle("menu-open", v);
+    if (F.lenis) { if (v) F.lenis.stop(); else F.lenis.start(); }
+    var g = F.motionOn && window.gsap;
+    if (v) {
+      // start below the header's real bottom: at the top of the page the sample note (2-3 lines on phones) pushes it down,
+      // and a fixed --hh offset left "Home" underneath the header
+      menu.style.paddingTop = Math.ceil($(".hdr").getBoundingClientRect().bottom + 36) + "px";
+      menu.hidden = false;
+      if (g) {
+        gsap.killTweensOf(menu);
+        gsap.fromTo(menu, { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.7, ease: "expo.inOut", clearProps: "clipPath" });
+        gsap.fromTo($$("li, .menu__year", menu), { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out", stagger: 0.04, delay: 0.2, clearProps: "transform,opacity" });
+      }
+      $("a", menu).focus();
+    } else {
+      if (g) {
+        gsap.killTweensOf(menu);
+        gsap.to(menu, { clipPath: "inset(0% 0% 100% 0%)", duration: 0.5, ease: "expo.inOut", onComplete: function () { menu.hidden = true; gsap.set(menu, { clearProps: "clipPath" }); } });
+      } else {
+        menu.hidden = true;
+      }
+      burger.focus();
+    }
+  }
+  burger.addEventListener("click", function () { setMenu(!open); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && open) setMenu(false); });
+  var wideMq = matchMedia("(min-width: 1180px)"), onWide = function (e) { if (e.matches) setMenu(false); };
+  if (wideMq.addEventListener) wideMq.addEventListener("change", onWide); else wideMq.addListener(onWide); // Safari < 14
+
+  // ---- static ridges (hero, per-chapter bottoms, footer); redrawn when the width changes
+  drawStatic();
+  var rz;
+  window.addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(drawStatic, 150); });
+})();
+</script>
+
+<!-- 2. Motion. Every hidden start state is set here, inside gsap.matchMedia, so reduced motion or a
+        failed script leaves the page complete and static. -->
+<script>
+(function () {
+  if (!window.gsap || !window.ScrollTrigger || !window.__F) return;
+  var hasSplit = !!window.SplitText;
+  gsap.registerPlugin.apply(gsap, hasSplit ? [ScrollTrigger, SplitText] : [ScrollTrigger]);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+  var F = window.__F;
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function hh() { return $(".hdr").offsetHeight; }
+  function toY(y, instant) {
+    if (F.lenis) F.lenis.scrollTo(y, instant ? { immediate: true } : { duration: 1.6 });
+    else window.scrollTo({ top: y, behavior: instant ? "auto" : "smooth" });
+  }
+  var introDone = false;
+
+  var mm = gsap.matchMedia();
+  // SplitText measures glyphs, so nothing is split (or hidden) until the webfonts are in; until then the page is static.
+  function boot() {
+  mm.add({
+    motion: "(prefers-reduced-motion: no-preference)",
+    // the pinned journey needs >= 548px of pinned height for cards/bios to clear the timeline pill and the mid ridge;
+    // shorter windows get the vertical chapters
+    wide: "(min-width: 900px) and (min-height: 620px)",
+    fine: "(hover: hover) and (pointer: fine)"
+  }, function (ctx) {
+    var c = ctx.conditions;
+    if (!c.motion) return;
+    var off = [], splits = [];
+    var S = c.fine ? true : 0.8; // Lenis already smooths the wheel; touch gets a short catch-up
+    F.motionOn = true;
+    off.push(function () { F.motionOn = false; });
+
+    function split(el, type, aria) {
+      if (!hasSplit || !el || (el.length === 0)) return null;
+      var s = SplitText.create(el, { type: type || "words,chars", charsClass: "ch", wordsClass: "wd", aria: aria || "auto" });
+      splits.push(s);
+      return s;
+    }
+    function counter(el, st, ease) {
+      var v = +el.getAttribute("data-count"), money = el.hasAttribute("data-money"), o = { n: 0 };
+      el.textContent = F.fmtFig(0, money);
+      off.push(function () { el.textContent = F.fmtFig(v, money); });
+      return gsap.to(o, { n: v, duration: 1.6, ease: ease || "power2.out", scrollTrigger: st, onUpdate: function () { el.textContent = F.fmtFig(Math.round(o.n), money); } });
+    }
+
+    // ---------- smooth scroll: desktop mouse/trackpad only
+    if (c.fine && window.Lenis) {
+      var lenis = new Lenis({ autoRaf: false, lerp: 0.1 });
+      var raf = function (t) { lenis.raf(t * 1000); };
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add(raf);
+      gsap.ticker.lagSmoothing(0);
+      F.lenis = lenis;
+      off.push(function () { gsap.ticker.remove(raf); gsap.ticker.lagSmoothing(500, 33); lenis.destroy(); F.lenis = null; });
+    }
+
+    F.slider.setAuto(true);
+    off.push(function () { F.slider.setAuto(false); });
+
+    // ---------- HERO intro: the hills lift, the sun climbs, the name rises letter by letter
+    var hero = $(".hero"), lines = $$(".hero__line");
+    var hsplit = split(lines, "chars", "none");
+    if (!introDone) {
+      introDone = true;
+      gsap.timeline({ delay: 0.1 })
+        .from(".hero__hills", { yPercent: 30, duration: 1.8, ease: "expo.out", clearProps: "transform" }, 0)
+        .from(".hero__fw", { yPercent: 12, duration: 1.8, ease: "expo.out", clearProps: "transform" }, 0.05)
+        .from(".hero__sunwrap", { yPercent: 26, duration: 2.2, ease: "power3.out", clearProps: "transform" }, 0)
+        .from(".hero__pre", { y: 20, opacity: 0, duration: 0.9, ease: "power3.out", clearProps: "transform,opacity" }, 0.2)
+        .from(hsplit ? hsplit.chars : lines, { yPercent: 80, rotation: 8, opacity: 0, duration: 1.2, ease: "expo.out", stagger: 0.045, clearProps: "transform,opacity" }, 0.25)
+        .from(".hero__meta > *", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", stagger: 0.1, clearProps: "transform,opacity" }, 0.55)
+        .from(".hero__banner", { x: 90, opacity: 0, duration: 1.4, ease: "expo.out", clearProps: "transform,opacity" }, 0.4);
+    }
+    var Hh = function () { return hero.offsetHeight; };
+
+    var HZ = null;
+    if (c.wide) {
+      // ---------- HERO pinned: sunrise, then the cranberry front hill climbs until it becomes chapter one's ground
+      gsap.set(".bn-card", { rotationY: -18, rotationX: 7 });
+      gsap.timeline({
+        defaults: { ease: "none", duration: 1 },
+        scrollTrigger: { trigger: hero, pin: true, scrub: S, anticipatePin: 1, invalidateOnRefresh: true,
+          start: function () { return "top " + hh(); }, end: function () { return "+=" + Math.round(Hh() * 0.9); } }
+      })
+        .to(".hero__sun", { yPercent: -170, scale: 0.74 }, 0)
+        .to(".hero__stars", { opacity: 0, duration: 0.45 }, 0)
+        .to(".hero__dawn", { opacity: 1, duration: 0.8 }, 0)
+        .to(".hero__hills .rg--far", { yPercent: -12 }, 0)
+        .to(".hero__hills .rg--mid", { yPercent: -26 }, 0)
+        .to(".hero__front", { y: function () { return -Hh() * 0.66; }, duration: 0.78, ease: "power1.in" }, 0.22)
+        .to(lines[0] || {}, { xPercent: -14, y: function () { return -Hh() * 0.3; }, duration: 0.85 }, 0)
+        .to(lines[1] || {}, { xPercent: 14, y: function () { return -Hh() * 0.18; }, duration: 0.85 }, 0)
+        .to(".hero__copy", { opacity: 0, duration: 0.35 }, 0.45)
+        .to(".bn-card", { rotationY: 0, rotationX: 0, y: function () { return -Hh() * 0.06; }, duration: 0.6 }, 0)
+        .to(".bn__ctrl", { opacity: 0, duration: 0.3 }, 0.3);
+      HZ = horizontal();
+    } else {
+      // ---------- phones/tablets: the hero parts as it leaves
+      gsap.timeline({
+        defaults: { ease: "none", duration: 1 },
+        scrollTrigger: { trigger: hero, scrub: true, invalidateOnRefresh: true, start: function () { return "top " + hh(); }, end: "bottom top" }
+      })
+        .to(".hero__sun", { yPercent: -90 }, 0)
+        .to(".hero__hills .rg--far", { yPercent: -8 }, 0)
+        .to(".hero__hills .rg--mid", { yPercent: -18 }, 0)
+        .to(".hero__front", { y: function () { return -Hh() * 0.28; } }, 0)
+        .to(lines, { y: function (i) { return -50 - i * 30; }, xPercent: function (i) { return i ? 8 : -8; } }, 0);
+      vertical();
+    }
+
+    // ---------- in-page anchors: chapters inside the journey are reached by scrolling the track
+    var onAnchor = function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a || a.classList.contains("skip")) return;
+      var id = a.getAttribute("href");
+      if (id.length < 2) return;
+      var t = document.getElementById(id.slice(1));
+      if (!t) return;
+      var k = HZ ? HZ.panels.indexOf(t) : -1;
+      if (k > -1) { e.preventDefault(); HZ.go(k); }
+      else if (F.lenis) { e.preventDefault(); F.lenis.scrollTo(t, { offset: -hh(), duration: 1.4 }); }
+    };
+    document.addEventListener("click", onAnchor);
+    off.push(function () { document.removeEventListener("click", onAnchor); });
+
+    // =====================================================================
+    // DESKTOP: one pinned horizontal track, driven by vertical scroll
+    // =====================================================================
+    function horizontal() {
+      var jr = $(".jr"), track = $(".track"), panels = $$(".pn", track), n = panels.length;
+      var sky = $(".sky"), sun = $(".sun"), sunset = $(".sun b");
+      var L = [
+        { el: $(".hl--far"), f: 0.5, o: F.RIDGE.far },
+        { el: $(".hl--mid"), f: 0.28, o: F.RIDGE.mid },
+        { el: $(".hl--near"), f: -0.16, o: F.RIDGE.near }
+      ];
+      var tlBar = $(".tl"), btns = $$(".tl button"), fill = $(".tl__fill"), dot = $(".tl__dot"), rail = $(".tl__rail");
+      var vw = 0, H = 0, tw = 0, dist = 1, starts = [], widths = [], railW = 0, sunS = 0, cur = -1;
+      jr.classList.add("is-h");
+      off.push(function () { jr.classList.remove("is-h"); sky.style.removeProperty("--sky"); L.forEach(function (l) { l.el.innerHTML = ""; l.el.style.width = ""; }); });
+
+      // measure the track, paint the sky (one colour per chapter, blended across each border), draw the ridges
+      function layout() {
+        vw = jr.clientWidth; H = jr.clientHeight; tw = track.offsetWidth; dist = Math.max(1, tw - vw);
+        starts = panels.map(function (p) { return p.offsetLeft; });
+        widths = panels.map(function (p) { return p.offsetWidth; });
+        var b = Math.round(vw * 0.1), stops = [];
+        panels.forEach(function (p, i) {
+          var col = getComputedStyle(p).getPropertyValue("--c").trim();
+          stops.push(col + " " + (i ? starts[i] + b : 0) + "px", col + " " + (i < n - 1 ? starts[i] + widths[i] - b : tw) + "px");
+        });
+        sky.style.setProperty("--sky", "linear-gradient(90deg," + stops.join(",") + ")");
+        L.forEach(function (l) { F.drawRidge(l.el, Math.ceil((1 - l.f) * dist + vw + 60), l.o, true); });
+        railW = rail.clientWidth; sunS = sun.offsetWidth;
+      }
+      layout();
+
+      var setDot = gsap.quickSetter(dot, "x", "px");
+      function sync() {
+        if (!tl) return; // a refresh can fire before the timeline variable is assigned
+        var p = tl.progress(), r = p * dist + vw * p, i = 0;
+        while (i < n - 1 && r >= starts[i + 1]) i++;
+        var m = (i + gsap.utils.clamp(0, 1, (r - starts[i]) / (widths[i] || 1))) / n;
+        fill.style.transform = "scaleX(" + m.toFixed(4) + ")";
+        setDot(m * railW);
+        if (i !== cur) {
+          if (cur > -1) btns[cur].removeAttribute("aria-current");
+          btns[i].setAttribute("aria-current", "true");
+          cur = i;
+        }
+      }
+
+      // velocity: cards lean into the travel, the timeline marker stretches
+      var leaners = $$(".pj, .cv", track);
+      var leanTo = gsap.quickTo(leaners, "skewX", { duration: 0.6, ease: "power3" });
+      var stretch = gsap.quickTo(dot, "scaleX", { duration: 0.4, ease: "power3" });
+      var settle = gsap.delayedCall(0.14, function () { leanTo(0); stretch(1); }).pause();
+      function react(self) {
+        var v = self.getVelocity();
+        leanTo(gsap.utils.clamp(-7, 7, v / 380));
+        stretch(1 + Math.min(Math.abs(v) / 900, 2.2));
+        settle.restart(true);
+      }
+
+      var tl = gsap.timeline({
+        defaults: { ease: "none", duration: 1 },
+        onUpdate: sync,
+        scrollTrigger: {
+          trigger: jr, pin: true, scrub: S, anticipatePin: 1, invalidateOnRefresh: true,
+          start: function () { return "top " + hh(); },
+          end: function () { layout(); return "+=" + dist; },
+          onUpdate: react,
+          onRefresh: function () { sync(); }
+        }
+      });
+      tl.to(track, { x: function () { return -dist; } }, 0);
+      // the timeline belongs to the journey: it steps aside as soon as the footer's ridge rises into view, so it never sits under it
+      ScrollTrigger.create({
+        trigger: ".ft", start: function () { return "top-=" + Math.round($(".ft__ridge").getBoundingClientRect().height) + " bottom"; },
+        onEnter: function () { gsap.to(tlBar, { autoAlpha: 0, duration: 0.25, overwrite: true }); },
+        onLeaveBack: function () { gsap.to(tlBar, { autoAlpha: 1, duration: 0.25, overwrite: true }); }
+      });
+      // ridges at three depths: far drifts slowest, the foreground ridge outruns the content
+      L.forEach(function (l) { tl.to(l.el, { x: function () { return l.f * dist; } }, 0); });
+      // the sun crosses the whole journey low over the hills: rises, peaks mid-way, turns orange and sets before night
+      tl.fromTo(sun, { x: function () { return vw * 0.1 - sunS / 2; } }, { x: function () { return dist + vw * 0.88 - sunS / 2; } }, 0)
+        .fromTo(sun, { y: function () { return H * 0.9 - sunS / 2; } }, { y: function () { return H * 0.66 - sunS / 2; }, duration: 0.42, ease: "sine.out" }, 0)
+        .fromTo(sun, { y: function () { return H * 0.66 - sunS / 2; } }, { y: function () { return H * 1.02; }, duration: 0.46, ease: "sine.in", immediateRender: false }, 0.42)
+        .fromTo(sunset, { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0.56);
+
+      function ca(trigger, start, end) { return { trigger: trigger, containerAnimation: tl, start: start, end: end, scrub: S, invalidateOnRefresh: true }; }
+      function pAt(i) { return Math.min(1, starts[i] / dist); }
+      function go(i, instant) { var st = tl.scrollTrigger; toY(st.start + pAt(i) * (st.end - st.start), instant); }
+
+      btns.forEach(function (b, i) {
+        var h = function () { go(i); };
+        b.addEventListener("click", h);
+        off.push(function () { b.removeEventListener("click", h); b.removeAttribute("aria-current"); });
+      });
+      // keyboard: a focused link inside an off-screen chapter brings its chapter into view
+      var onFocus = function (e) {
+        var t = e.target;
+        // keyboard only: a mouse click on a card link also focuses it, and must not jump the page
+        if (!track.contains(t) || !t.matches(":focus-visible")) return;
+        var left = t.getBoundingClientRect().left - track.getBoundingClientRect().left, st = tl.scrollTrigger;
+        var p = gsap.utils.clamp(0, 1, (left - vw * 0.3) / dist);
+        toY(st.start + p * (st.end - st.start), true);
+      };
+      track.addEventListener("focusin", onFocus);
+      off.push(function () { track.removeEventListener("focusin", onFocus); });
+
+      // images inside the clipped track never reach lazy-load range until they slide in, so fetch them after load
+      var eager = function () { $$("img[loading='lazy']", track).forEach(function (im) { im.loading = "eager"; }); };
+      if (document.readyState === "complete") eager(); else window.addEventListener("load", eager, { once: true });
+
+      // ---- chapter titles skew and scale in against the travel; giant chapter numerals drift behind the hills
+      panels.forEach(function (p, i) {
+        var num = $(".pn__num", p);
+        if (num) gsap.fromTo(num, { x: function () { return vw * 0.22; } }, { x: function () { return -vw * 0.22; }, scrollTrigger: ca(p, "left right", "right left") });
+        if (i === 0) return;
+        var h = $(".h2", p), s = split(h);
+        gsap.fromTo(s ? s.chars : h, { xPercent: 150, skewX: -30, scale: 1.3, opacity: 0 }, { xPercent: 0, skewX: 0, scale: 1, opacity: 1, ease: "power3.out", stagger: 0.04, scrollTrigger: ca(h, "left 100%", "left 45%") });
+        gsap.fromTo($$(".chap__k, .chap__sub, .chap .btn", p), { x: 120, opacity: 0 }, { x: 0, opacity: 1, ease: "power2.out", stagger: 0.05, scrollTrigger: ca(h, "left 100%", "left 55%") });
+      });
+
+      // ---- 01 story: the title arrives with the climb, before the track starts moving
+      var p0 = panels[0], h0 = $(".h2", p0), s0 = split(h0);
+      function approach() { return { trigger: jr, start: "top 88%", end: function () { return "top " + (hh() + 30); }, scrub: S }; }
+      gsap.fromTo(s0 ? s0.chars : h0, { yPercent: 110, skewY: 10, opacity: 0 }, { yPercent: 0, skewY: 0, opacity: 1, stagger: 0.05, ease: "power3.out", scrollTrigger: approach() });
+      gsap.fromTo($$(".chap__k, .story__lead, .chap .btn", p0), { y: 50, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.08, ease: "power2.out", scrollTrigger: approach() });
+      // milestone years slide faster than their captions and fill with gold as they pass
+      $$(".ms", p0).forEach(function (m) {
+        gsap.fromTo($(".ms__yr", m), { x: 170 }, { x: -70, scrollTrigger: ca(m, "left right", "right 15%") });
+        gsap.fromTo($(".ms__f", m), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", scrollTrigger: ca(m, "left 80%", "left 30%") });
+        gsap.fromTo($("p", m), { x: 60, opacity: 0 }, { x: 0, opacity: 1, scrollTrigger: ca(m, "left 95%", "left 60%") });
+      });
+      var lm = $(".lm", p0);
+      gsap.fromTo($$("h3, li", lm), { x: 140, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.05, ease: "power2.out", scrollTrigger: ca(lm, "left 100%", "left 40%") });
+
+      // ---- 02 numbers: shapes tumble in, figures count as each shape reaches the centre
+      $$(".fg", track).forEach(function (f, i) {
+        gsap.fromTo(f, { yPercent: 50, rotation: i % 2 ? 24 : -24, scale: 0.5, opacity: 0 }, { yPercent: 0, rotation: 0, scale: 1, opacity: 1, ease: "back.out(1.5)", scrollTrigger: ca(f, "left 100%", "left 62%") });
+        counter($("[data-count]", f), ca(f, "left 100%", "center 50%"), "none");
+      });
+
+      // ---- 03 projects: photos wipe open, float at different speeds, and pan inside their frames
+      var DRIFT = [1, -0.6, 0.8, -1, 0.5, -0.8, 0.9];
+      $$(".pj", track).forEach(function (card, i) {
+        var d = DRIFT[i % DRIFT.length] * 30;
+        gsap.fromTo(card, { y: d }, { y: -d, scrollTrigger: ca(card, "left right", "right left") });
+        gsap.fromTo($(".pj__m img", card), { xPercent: 6 }, { xPercent: -6, scrollTrigger: ca(card, "left right", "right left") });
+        gsap.fromTo($(".pj__m", card), { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", ease: "power2.out", scrollTrigger: ca(card, "left 105%", "left 55%") });
+        gsap.fromTo($(".pj__b", card), { x: 80, opacity: 0 }, { x: 0, opacity: 1, ease: "power2.out", scrollTrigger: ca(card, "left 95%", "left 50%") });
+      });
+
+      // ---- 04 leaders: arches rise open from the ground, portraits settle, names follow
+      $$(".ld", track).forEach(function (l, i) {
+        var a = $(".ld__a", l);
+        gsap.fromTo(a, { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", ease: "power2.out", scrollTrigger: ca(l, "left 100%", "left 58%") });
+        gsap.fromTo($("img", a), { scale: 1.4 }, { scale: 1, scrollTrigger: ca(l, "left 100%", "left 40%") });
+        gsap.fromTo($(".ld__t", l), { x: 90, opacity: 0 }, { x: 0, opacity: 1, ease: "power2.out", scrollTrigger: ca(l, "left 90%", "left 50%") });
+        gsap.fromTo(l, { y: i % 2 ? -20 : 20 }, { y: i % 2 ? 20 : -20, scrollTrigger: ca(l, "left right", "right left") });
+      });
+
+      // ---- 05 newsletters: the two covers fan in
+      $$(".cv", track).forEach(function (cv, i) {
+        gsap.fromTo(cv, { rotation: i ? 16 : -16, xPercent: 40, yPercent: 16, opacity: 0 }, { rotation: i ? 3 : -3, xPercent: 0, yPercent: 0, opacity: 1, ease: "power2.out", scrollTrigger: ca(cv, "left 105%", "left 50%") });
+      });
+
+      // ---- 06 night: the moon rises, the stars come out, the day arrives in big type
+      var meet = panels[n - 1];
+      gsap.fromTo($(".moon", meet), { yPercent: 160, scale: 0.7 }, { yPercent: 0, scale: 1, scrollTrigger: ca(meet, "left 100%", "left 15%") });
+      gsap.fromTo($(".night__stars", meet), { xPercent: 12 }, { xPercent: -4, scrollTrigger: ca(meet, "left 100%", "left 0%") });
+      // split the aria-hidden visual copy; the dd keeps a plain sr-only "Thursday" (an aria-label on a dd is skipped by NVDA/JAWS)
+      var dd = $(".meet__dayt", meet), sd = split(dd, "chars", "none");
+      gsap.fromTo(sd ? sd.chars : dd, { yPercent: 70, rotation: -12, opacity: 0 }, { yPercent: 0, rotation: 0, opacity: 1, stagger: 0.05, ease: "back.out(1.6)", scrollTrigger: ca(meet, "left 85%", "left 25%") });
+      gsap.fromTo($$(".meet__time, .meet__venue, .meet__go", meet), { x: 100, opacity: 0 }, { x: 0, opacity: 1, stagger: 0.08, ease: "power2.out", scrollTrigger: ca(meet, "left 70%", "left 10%") });
+
+      return { panels: panels, go: go };
+    }
+
+    // =====================================================================
+    // PHONES / TABLETS: vertical chapters with lighter scroll effects
+    // =====================================================================
+    function vertical() {
+      function reveal(targets, from, trigger, stagger) {
+        return gsap.from(targets, Object.assign({
+          duration: 0.95, ease: "expo.out", stagger: stagger || 0, clearProps: "transform,opacity,clipPath",
+          scrollTrigger: { trigger: trigger, start: "top 86%", once: true }
+        }, from));
+      }
+      $$(".pn").forEach(function (p) {
+        var h = $(".h2", p), s = split(h);
+        gsap.fromTo(s ? s.chars : h, { yPercent: 110, skewY: 12, opacity: 0 }, { yPercent: 0, skewY: 0, opacity: 1, ease: "power3.out", stagger: 0.03, scrollTrigger: { trigger: h, start: "top 94%", end: "top 64%", scrub: S } });
+        reveal($$(".chap__k, .chap__sub, .story__lead, .chap .btn", p), { y: 28, opacity: 0 }, p, 0.06);
+        var far = $(".pn__ridge .rg--far", p);
+        if (far) gsap.fromTo(far, { yPercent: 35 }, { yPercent: -8, ease: "none", scrollTrigger: { trigger: p, start: "bottom bottom", end: "bottom 30%", scrub: true } });
+        var num = $(".pn__num", p);
+        if (num) gsap.fromTo(num, { yPercent: 30 }, { yPercent: -20, ease: "none", scrollTrigger: { trigger: p, start: "top bottom", end: "bottom top", scrub: true } });
+      });
+      $$(".ms").forEach(function (m) {
+        gsap.fromTo($(".ms__f", m), { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", ease: "none", scrollTrigger: { trigger: m, start: "top 85%", end: "top 45%", scrub: S } });
+        reveal($("p", m), { y: 30, opacity: 0 }, m);
+      });
+      reveal($$(".lm li"), { y: 24, opacity: 0 }, ".lm", 0.05);
+      $$(".fg").forEach(function (f, i) {
+        reveal(f, { scale: 0.5, rotation: i % 2 ? 20 : -20, opacity: 0, ease: "back.out(1.6)", duration: 1.1 }, f);
+        counter($("[data-count]", f), { trigger: f, start: "top 86%", once: true });
+      });
+      reveal($$(".pj"), { x: 70, opacity: 0 }, ".pj-list", 0.08);
+      $$(".ld").forEach(function (l) {
+        // clip-path needs an explicit end value (GSAP cannot tween from an inset() to "none")
+        gsap.fromTo($(".ld__a", l), { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.2, ease: "expo.out", clearProps: "clipPath", scrollTrigger: { trigger: l, start: "top 86%", once: true } });
+        reveal($(".ld__t", l), { y: 26, opacity: 0 }, l);
+      });
+      $$(".cv").forEach(function (cv, i) { reveal(cv, { rotation: i ? 10 : -10, y: 60, opacity: 0, duration: 1.1 }, ".cv-list"); });
+      var meet = $(".pn--meet");
+      gsap.fromTo($(".moon", meet), { yPercent: 90, opacity: 0 }, { yPercent: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: meet, start: "top 85%", end: "top 25%", scrub: true } });
+      reveal($$(".meet__dl > div, .meet__go", meet), { y: 36, opacity: 0 }, ".meet__dl", 0.08);
+    }
+
+    return function () {
+      off.forEach(function (f) { f(); });
+      splits.forEach(function (s) { s.revert(); });
+    };
+  });
+  ScrollTrigger.refresh();
+  }
+
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(boot); else boot();
+  window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rotary Club of Thane Hills</title>
+<meta name="description" content="Rotary Club of Thane Hills, District 3142. Rotary year 2026–27.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Manrope:wght@400..800&display=swap">
+<link rel="stylesheet" href="../vendor/lenis.css">
+<style>
+/* Theme 8 option C: Split Story.
+   Palette: royal #17458F (field) · night #0B2350 (text, footer) · gold #F7A81B (accent, closing band)
+            sky #3CC4FF (azure highlight on royal) · azure #0067C8 (azure text on white) · mist #EAF3FC · white #FFFFFF
+   Fonts: Archivo (variable width, set condensed 62-80% for display) + Manrope (body).
+   WCAG contrast of the pairs used for text:
+     white on royal 9.2:1   gold on royal 4.6:1   white 82% on royal 6.8:1   white 72% on royal 5.6:1
+     night on white 15.3:1  muted #4A5B7A on white 6.8:1   azure on white 5.6:1   royal on white 9.2:1
+     night on gold 7.7:1    royal on gold 4.6:1 (large display only)   royal on mist 8.2:1
+     white on azure 5.6:1   gold on night 7.7:1   white 80% on night 10.2:1
+   Non-text: inactive slide dot (white 55% on royal) 4.0:1, focus rings azure on white 5.6:1 / gold on dark 4.6:1+.
+   Hidden start states are set only from JS (gsap.from / fromTo); without JS or with reduced motion everything is static and visible. */
+:root{
+  --royal:#17458F; --night:#0B2350; --gold:#F7A81B; --sky:#3CC4FF; --azure:#0067C8; --mist:#EAF3FC; --white:#FFFFFF;
+  --muted:#4A5B7A; --line:#CFDDEE;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --gutter:clamp(16px,4vw,56px);
+  --strip:0px;
+  --ease:cubic-bezier(.7,0,.2,1);
+}
+@media (max-width:999.98px){ :root{ --strip:60px } }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html.menu-open{overflow:hidden}
+body{margin:0;background:var(--white);color:var(--night);font-family:var(--body);font-size:1rem;line-height:1.65;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--azure);outline-offset:3px}
+.on-dark :focus-visible{outline-color:var(--gold)}
+.meet :focus-visible{outline-color:var(--night)}
+main:focus{outline:none}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:16px;top:-80px;z-index:200;padding:12px 18px;border-radius:999px;background:var(--gold);color:var(--night);font-weight:800;text-decoration:none}
+.skip:focus{top:12px}
+/* SplitText word masks: display type is set at line-height ~.9, so give the clip box room for descenders (layout unchanged) */
+.sw-mask{padding-bottom:.18em;margin-bottom:-.18em}
+
+/* sample note */
+.note{margin:0;padding:7px var(--gutter);background:var(--night);color:#fff;font-size:.8125rem;line-height:1.45;text-align:center}
+
+/* header */
+.site-header{position:relative;z-index:40;display:flex;align-items:center;gap:8px clamp(8px,1.4vw,22px);padding:12px var(--gutter);background:#fff}
+.brand{display:flex;align-items:center;flex:none;min-height:44px;margin-right:auto}
+.brand img{width:auto;height:clamp(30px,3.6vw,46px)}
+.nav{position:relative;display:none}
+.nav ul{position:relative;z-index:1;display:flex;margin:0;padding:0;list-style:none}
+.nav a{display:flex;align-items:center;min-height:44px;padding:0 13px;border-radius:999px;color:var(--royal);font-size:.9375rem;font-weight:700;text-decoration:none;white-space:nowrap}
+.nav a[aria-current="page"]{text-decoration:underline 3px var(--gold);text-underline-offset:8px}
+.nav.has-pill a[aria-current="page"]{text-decoration:none}
+.nav-pill{position:absolute;inset:0;z-index:0;border-radius:999px;background:var(--gold);clip-path:inset(0 100% 0 0 round 999px);pointer-events:none}
+.year{display:block;flex:none}
+.year select{appearance:none;-webkit-appearance:none;min-height:44px;padding:0 32px 0 13px;border:2px solid var(--royal);border-radius:999px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2317458F' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 11px center/12px 8px;color:var(--royal);font-size:.875rem;font-weight:800;cursor:pointer}
+.burger{display:inline-flex;align-items:center;justify-content:center;gap:10px;flex:none;min-width:44px;min-height:44px;padding:0 13px;border:0;border-radius:999px;background:var(--royal);color:#fff;font-size:.875rem;font-weight:800;cursor:pointer}
+.burger-bars{display:grid;gap:4px}
+.burger-bars i{display:block;width:18px;height:2px;border-radius:2px;background:currentColor}
+.burger-text{display:none}
+@media (min-width:480px){ .burger-text{display:inline} }
+@media (min-width:1200px){ .nav{display:block;margin-left:auto} .brand{margin-right:0} .burger{display:none} }
+@media (max-width:359.98px){ .brand img{height:26px} }
+
+/* mobile menu */
+.menu{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;padding:12px var(--gutter) 40px;background:var(--royal);color:#fff;overflow-y:auto;overscroll-behavior:contain}
+.menu[hidden]{display:none}
+.menu-top{display:flex;justify-content:flex-end}
+.menu-close{display:inline-flex;align-items:center;gap:8px;min-width:44px;min-height:44px;padding:0 18px;border:2px solid rgba(255,255,255,.6);border-radius:999px;background:transparent;color:#fff;font-weight:800;cursor:pointer}
+.menu-list{margin:clamp(16px,5vh,48px) 0 0;padding:0;list-style:none}
+.menu-list li{overflow:hidden}
+.menu-list a{display:block;padding:6px 0;color:#fff;font-family:var(--display);font-stretch:70%;font-weight:800;font-size:clamp(34px,8.5vw,72px);line-height:1.02;text-decoration:none}
+.menu-list a:hover,.menu-list a[aria-current="page"]{color:var(--gold)}
+
+/* hero */
+.hero{padding:clamp(28px,6vh,72px) var(--gutter) clamp(28px,5vh,56px);background:var(--royal);color:#fff}
+.hero h1{margin:0;font-family:var(--display);font-stretch:68%;font-weight:800;font-size:clamp(42px,11vw,158px);line-height:.9;letter-spacing:-.012em}
+.hero-meta{display:flex;flex-wrap:wrap;gap:6px 28px;margin:clamp(16px,3vh,28px) 0 clamp(24px,5vh,48px);color:var(--gold);font-size:clamp(1rem,1.5vw,1.3rem);font-weight:800}
+.hero-meta p{margin:0}
+.banner-frame{position:relative;aspect-ratio:16/5;border-radius:clamp(14px,2vw,28px);overflow:hidden;background:var(--night)}
+.slide{position:absolute;inset:0;margin:0;visibility:hidden}
+.slide.is-on{z-index:2;visibility:visible}
+.slide.is-off{z-index:1;visibility:visible}
+.slide img{width:100%;height:100%;object-fit:cover}
+.banner-ctrl{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px}
+.banner-ctrl[hidden]{display:none}
+.dots{display:flex}
+.dot{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;background:none;cursor:pointer}
+.dot i{display:block;width:28px;height:4px;border-radius:4px;background:rgba(255,255,255,.55)}
+.dot[aria-current="true"] i{background:var(--gold)}
+.pause{min-width:44px;min-height:44px;padding:0 18px;border:2px solid rgba(255,255,255,.6);border-radius:999px;background:none;color:#fff;font-size:.875rem;font-weight:800;cursor:pointer}
+
+/* split: sticky panel + story column */
+.split{display:grid;grid-template-columns:minmax(0,1fr)}
+.panel{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;height:var(--strip);padding:0 var(--gutter);overflow:clip;background:var(--royal);color:#fff;container-type:inline-size}
+.p-title{flex:1;min-width:0;margin:0;font-family:var(--display);font-stretch:68%;font-weight:800;font-size:clamp(22px,6.6vw,30px);line-height:.95;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.p-mid{display:flex;align-items:center}
+.p-fig{margin:0;color:var(--gold);font-family:var(--display);font-stretch:68%;font-weight:800;font-size:clamp(24px,7vw,32px);line-height:.9;white-space:nowrap;font-variant-numeric:tabular-nums}
+.p-probe{position:absolute;left:0;top:0;visibility:hidden;font-size:100px!important;pointer-events:none}
+.p-cap,.p-sub,.p-rail,.p-orbit{display:none}
+.p-progress{position:absolute;left:0;right:0;bottom:0;display:none;height:3px;background:rgba(255,255,255,.18)}
+.is-motion .p-progress{display:block}
+.p-progress i{display:block;height:100%;background:var(--gold);transform-origin:0 50%}
+.story{min-width:0}
+.chapter{position:relative;padding:clamp(56px,12vh,128px) var(--gutter)}
+.wrap{max-width:720px}
+
+@media (min-width:1000px){
+  .split{grid-template-columns:minmax(0,42fr) minmax(0,58fr);align-items:start}
+  .panel{display:flex;flex-direction:column;align-items:stretch;gap:0;height:100vh;height:100svh;padding:clamp(28px,6vh,64px) clamp(28px,3.6vw,56px)}
+  .p-title{position:relative;flex:none;min-height:1.8em;font-size:min(19cqi,13vh);line-height:.9;white-space:normal;overflow:visible}
+  .p-mid{position:relative;display:block;margin-top:auto;padding-top:20px}
+  .p-fig{margin-bottom:.1em;font-size:var(--fs,min(24cqi,22vh))}
+  .p-cap{display:block;margin:0;font-size:clamp(1.05rem,1.4vw,1.35rem);font-weight:800;line-height:1.35}
+  .p-sub{display:block;min-height:1.45em;margin:2px 0 0;color:rgba(255,255,255,.82);font-size:.9375rem;line-height:1.45}
+  .p-rail{position:relative;display:grid;gap:4px;margin:clamp(20px,5vh,56px) 0 0;padding:0;list-style:none}
+  .p-rail li{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.72);font-size:.875rem;font-weight:700}
+  .p-rail li::before{content:"";width:22px;height:3px;border-radius:3px;background:currentColor;transform:scaleX(.4);transform-origin:0 50%;transition:transform .5s var(--ease)}
+  .p-rail li.is-on{color:var(--gold)}
+  .p-rail li.is-on::before{transform:scaleX(1)}
+  .p-orbit{position:absolute;right:-24cqi;top:-24cqi;display:block;width:70cqi;aspect-ratio:1;border:1.5px solid rgba(60,196,255,.5);border-radius:50%;pointer-events:none}
+  .p-orbit i{position:absolute;left:50%;bottom:-8px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--gold)}
+  .chapter{padding-inline:clamp(40px,5.5vw,96px)}
+}
+
+/* chapter 1: story */
+.lead{margin:0 0 .9em;color:var(--royal);font-family:var(--display);font-stretch:100%;font-weight:700;font-size:clamp(28px,3.3vw,50px);line-height:1.08;letter-spacing:-.02em;text-wrap:balance}
+.prose p{max-width:62ch;margin:0 0 1.1em;font-size:1.0625rem;line-height:1.75;text-wrap:pretty}
+.textlink{display:inline-flex;align-items:center;min-height:44px;color:var(--azure);font-weight:800;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+.textlink:hover{color:var(--royal)}
+
+/* chapter 2: stacked figure cards */
+.stack{position:relative}
+.sentinel{height:0}
+.stat{position:sticky;top:calc(var(--strip) + clamp(14px,5vh,48px) + var(--i) * 16px);display:flex;flex-direction:column;justify-content:space-between;height:min(56vh,440px);min-height:250px;margin-bottom:14vh;padding:clamp(20px,3vw,40px);border-radius:clamp(20px,2.4vw,32px);overflow:hidden;container-type:inline-size;transform-origin:50% 0}
+.stat:last-child{margin-bottom:0}
+.stat-ring{position:absolute;right:-18cqi;top:-18cqi;width:62cqi;aspect-ratio:1;border:2px solid currentColor;border-radius:50%;opacity:.22}
+.stat-num{position:relative;margin:0;font-family:var(--display);font-stretch:68%;font-weight:800;font-size:min(20cqi,150px);line-height:.85;white-space:nowrap;font-variant-numeric:tabular-nums}
+.stat-label{position:relative;margin:0;font-size:clamp(1.25rem,2.4vw,2rem);font-weight:800;line-height:1.1}
+.c-gold{background:var(--gold);color:var(--night)}
+.c-azure{background:var(--azure);color:#fff}
+.c-night{background:var(--night);color:#fff}
+.c-night .stat-num,.c-royal .stat-num{color:var(--gold)}
+.c-mist{background:var(--mist);color:var(--royal)}
+.c-royal{background:var(--royal);color:#fff}
+
+/* chapter 3: timeline */
+.tl{position:relative}
+.tl-line{position:absolute;left:11px;top:10px;bottom:0;width:3px;border-radius:3px;background:var(--line)}
+.tl-line i{display:block;height:100%;border-radius:3px;background:linear-gradient(var(--gold),var(--azure));transform-origin:50% 0}
+.tl-list{margin:0;padding:0;list-style:none}
+.tl-item{position:relative;padding:0 0 clamp(48px,9vh,96px) clamp(44px,5vw,64px)}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:0;top:6px;width:25px;height:25px;border:3px solid var(--royal);border-radius:50%;background:#fff}
+.tl-dot::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--gold)}
+.tl.is-live .tl-dot::after{transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.tl.is-live .tl-item.is-lit .tl-dot::after{transform:scale(1)}
+.tl-date{margin:0;color:var(--royal);font-family:var(--display);font-stretch:72%;font-weight:800;font-size:clamp(28px,3.2vw,44px);line-height:1}
+.tl-avenue{display:inline-block;margin-top:10px;padding:4px 12px;border-radius:999px;background:var(--mist);color:var(--royal);font-size:.8125rem;font-weight:800}
+.tl-photo{margin:18px 0;border-radius:clamp(16px,2vw,24px);overflow:hidden;background:var(--mist)}
+.tl-photo.is-portrait{max-width:min(64%,380px)}
+.tl-photo img{width:100%}
+.tl-item h3{margin:0 0 8px;font-size:clamp(1.2rem,1.6vw,1.45rem);font-weight:800;line-height:1.25}
+.tl-desc{max-width:60ch;margin:0 0 4px;color:var(--muted)}
+@media (max-width:599.98px){ .tl-photo.is-portrait{max-width:82%} }
+
+/* chapter 4: leaders */
+.people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:0;padding:0;list-style:none}
+.person{overflow:hidden;border:1px solid var(--line);border-radius:24px;background:#fff}
+.person-photo{aspect-ratio:4/5;background:var(--mist)}
+.person-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.person-body{padding:16px 18px 20px}
+.person-role{margin:0 0 4px;color:var(--azure);font-size:.8125rem;font-weight:800;line-height:1.35}
+.person h3{margin:0;font-family:var(--display);font-stretch:78%;font-weight:800;font-size:clamp(1.35rem,2vw,1.7rem);line-height:1.05;overflow-wrap:anywhere}
+.person-bio{display:-webkit-box;margin:8px 0 0;overflow:hidden;color:var(--muted);font-size:.9rem;line-height:1.55;-webkit-line-clamp:4;-webkit-box-orient:vertical}
+.stage-ctrl,.stage-hint{display:none}
+.ctrl{display:grid;place-items:center;width:52px;height:52px;border:2px solid var(--royal);border-radius:50%;background:#fff;color:var(--royal);cursor:pointer}
+.ctrl:hover{background:var(--royal);color:#fff}
+.ctrl svg{width:20px;height:20px}
+@media (max-width:999.98px){
+  .people{display:flex;gap:14px;margin-inline:calc(var(--gutter) * -1);padding:4px var(--gutter) 12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);overscroll-behavior-x:contain}
+  .person{flex:0 0 min(78%,320px);scroll-snap-align:start}
+}
+.leaders.is-3d{padding:0}
+.leaders.is-3d .track{height:300vh;height:calc(100svh + 200vh)}
+.leaders.is-3d .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:clip;perspective:1400px;cursor:grab;user-select:none;touch-action:pan-y}
+.leaders.is-3d .stage.is-drag{cursor:grabbing}
+.leaders.is-3d .people{position:absolute;inset:0;display:block;transform-style:preserve-3d}
+.leaders.is-3d .person{position:absolute;left:50%;top:48%;width:clamp(200px,min(40%,40vh),300px);box-shadow:0 30px 60px -30px rgba(11,35,80,.45)}
+.leaders.is-3d .person img{pointer-events:none;-webkit-user-drag:none}
+.leaders.is-3d .stage-hint{position:absolute;left:0;right:0;top:clamp(16px,4vh,40px);display:block;margin:0;color:var(--muted);font-size:.875rem;font-weight:700;text-align:center}
+.leaders.is-3d .stage-ctrl{position:absolute;left:0;right:0;bottom:clamp(14px,3.5vh,36px);z-index:200;display:flex;justify-content:center;gap:12px}
+
+/* chapter 5: newsletters */
+.news{margin:0;padding:0;border-top:3px solid var(--night);list-style:none}
+.news li{border-bottom:3px solid var(--night)}
+.news a{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 24px;padding:clamp(22px,3.4vw,40px) clamp(8px,1.2vw,16px);color:var(--night);text-decoration:none}
+.news a::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--gold);clip-path:inset(0 100% 0 0);transition:clip-path .55s var(--ease)}
+.news a:hover::before,.news a:focus-visible::before{clip-path:inset(0 0 0 0)}
+.news-title{grid-column:1;font-family:var(--display);font-stretch:72%;font-weight:800;font-size:clamp(28px,3.6vw,52px);line-height:1}
+.news-date{grid-column:1;color:var(--muted);font-weight:700}
+.news a:hover .news-date,.news a:focus-visible .news-date{color:var(--night)}
+.news-cta{grid-column:2;grid-row:1/span 2;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 24px;border-radius:999px;background:var(--royal);color:#fff;font-weight:800;white-space:nowrap}
+@media (max-width:599.98px){
+  .news a{grid-template-columns:minmax(0,1fr)}
+  .news-cta{grid-column:1;grid-row:auto;justify-self:start;min-height:48px;margin-top:12px}
+}
+
+/* closing band */
+.meet{position:relative;overflow:clip;padding:clamp(64px,13vh,150px) var(--gutter) clamp(56px,10vh,120px);background:var(--gold);color:var(--night)}
+.meet h2{margin:0;font-family:var(--display);font-stretch:68%;font-weight:800;font-size:clamp(52px,9vw,150px);line-height:.88;letter-spacing:-.01em}
+.meet-giant{margin:clamp(20px,4vh,40px) 0 0;color:var(--royal);font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(56px,17vw,300px);line-height:.84}
+.meet-giant > span{display:inline-block}
+.meet-giant .ghost{color:transparent;-webkit-text-stroke:2px var(--royal)}
+.is-motion .meet-giant{white-space:nowrap}
+.meet-facts{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;max-width:1200px;margin:clamp(28px,6vh,64px) 0 0}
+.meet-facts div{padding-top:12px;border-top:3px solid var(--night)}
+.meet-facts dt{font-size:.9375rem;font-weight:800}
+.meet-facts dd{margin:4px 0 0;font-family:var(--display);font-stretch:80%;font-weight:800;font-size:clamp(24px,2.6vw,36px);line-height:1.1}
+.meet-facts .venue dd{font-family:var(--body);font-stretch:100%;font-weight:700;font-size:clamp(1.05rem,1.4vw,1.3rem);line-height:1.45}
+@media (min-width:760px){ .meet-facts{grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,2fr);gap:32px} }
+
+/* footer */
+.foot{padding:clamp(40px,8vh,80px) var(--gutter) 28px;background:var(--night);color:#fff}
+.foot-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px 40px}
+.foot-club{display:flex;align-items:center;gap:16px;min-width:0}
+.foot-logo{flex:none;width:76px;height:76px;padding:6px;border-radius:16px;background:#fff}
+.foot-logo img{width:100%;height:100%;object-fit:contain}
+.foot-name{margin:0;font-family:var(--display);font-stretch:78%;font-weight:800;font-size:clamp(24px,2.8vw,36px);line-height:1.02}
+.foot-dist{margin:4px 0 0;color:rgba(255,255,255,.8);font-weight:600}
+.socials{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.socials a{display:grid;place-items:center;width:48px;height:48px;border:2px solid rgba(255,255,255,.45);border-radius:50%;color:#fff;transition:background-color .25s,color .25s,border-color .25s}
+.socials a:hover{border-color:var(--gold);background:var(--gold);color:var(--night)}
+.socials svg{width:20px;height:20px}
+.foot-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-top:clamp(28px,5vh,48px);padding-top:20px;border-top:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);font-size:.9rem}
+.foot-bottom p{margin:0}
+.admin{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border:2px solid var(--gold);border-radius:999px;color:var(--gold);font-weight:800;text-decoration:none}
+.admin:hover{background:var(--gold);color:var(--night)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<p class="note">Design sample - Theme 8 option C: Split Story. Built from Thane Hills' own data. Page links are inactive.</p>
+
+<header class="site-header">
+  <a class="brand" href="#"><img id="rotaryLogo" alt="Rotary" width="900" height="240"></a>
+  <nav class="nav" aria-label="Main"><span class="nav-pill" aria-hidden="true"></span><ul id="navList"></ul></nav>
+  <label class="year"><span class="sr-only">Rotary year</span><select id="yearSel"></select></label>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span class="burger-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="burger-text" aria-hidden="true">Menu</span></button>
+</header>
+
+<div class="menu on-dark" id="menu" role="dialog" aria-modal="true" aria-label="Menu" data-lenis-prevent hidden>
+  <div class="menu-top"><button class="menu-close" type="button">Close <span aria-hidden="true">&#x2715;</span></button></div>
+  <nav aria-label="Site"><ul class="menu-list" id="menuList"></ul></nav>
+</div>
+
+<main id="main" tabindex="-1">
+  <section class="hero on-dark" aria-labelledby="clubName">
+    <h1 id="clubName"></h1>
+    <div class="hero-meta" id="heroMeta"></div>
+    <div class="banner" role="region" aria-roledescription="carousel" aria-label="Club banners">
+      <div class="banner-frame" id="slides"></div>
+      <div class="banner-ctrl" id="bannerCtrl"><div class="dots" id="dots"></div><button class="pause" type="button" id="pauseBtn">Pause</button></div>
+    </div>
+  </section>
+
+  <div class="split">
+    <aside class="panel on-dark" id="panel" aria-hidden="true"></aside>
+    <div class="story" id="story"></div>
+  </div>
+
+  <section class="meet" id="meet" aria-labelledby="meetTitle"></section>
+</main>
+
+<footer class="foot on-dark" id="foot"></footer>
+
+<script src="../vendor/gsap.min.js"></script>
+<script src="../vendor/ScrollTrigger.min.js"></script>
+<script src="../vendor/SplitText.min.js"></script>
+<script src="../vendor/lenis.min.js"></script>
+
+<script>
+/* 1. Content + UI (works without GSAP) */
+window.CLUB = {"club":"Rotary Club of Thane Hills","short":"Thane Hills","district":"3142","year":"2026–27","rotaryLogo":"https://rizones45678.org/API/Documents/WebsiteData/Group1/LOGO/UpperLogo_a8029d9327634b199550d6b2050e100d.png","clubLogo":"https://rizones45678.org/API/Documents/group/club_logo_3686e0c78f04411893de23ec6bf36c6d.png","about":"Rotary Club of Thane Hills – An overview Rotary Club of Thane Hills (RCTH) was chartered on May 20, 1991. The idea of this club was sown sometime around October 1990 when a group of like-minded professionals and businessmen came together to form a new Rotary club. The idea of this new club was mooted by Rotary Club of Thane North, with strong support from the then President Nana Khambete and PP Suresh Dhawan. The initial meetings of this group were held at Mr. Bhoomreddi’s residence and after the initial work of 7 months; the club got its charter. RCTH started its journey under the able leadership of PP Late Vasant Zalani as the Club President and PP (Dr.) Suhas Kulkarni as the Club Secretary. There were about thirty charter members and it is a matter of pride for us that a good number of those charter members continue to be the members of this prestigious club. In the last 30 years of its existence, RCTH has grown by leaps and bounds and has turned into a strong tree from a sapling sown 30 years back. Today, the club’s strength has risen to 105 members and growing steadily with every passing year. In all these years, RCTH has been led by very able leaders and teams, who have made this club as one of the leading clubs in the District and the Rotary world. Every year, RCTH has undertaken numerous projects for the community welfare. In 2000, RCTH founded a charitable Trust called Triumph Foundation and executes various social initiatives and community-based projects through this foundation. Besides the annual projects like the Triumph Run (sports events for special children), Blood Donation Camps, Senior Citizen Health check-ups, Vocational Guidance Seminars, RCTH has undertaken some huge projects in the past. Listed below are a few of our Landmark projects: Earthen Dam Project at Shirol Tribal Employment Scheme Self-employment Centre for Destitute women at Premdhaan at Airoli, New Mumbai Triumph Garden at Jidd School Infrastructure for Vocational Training in Special School Upgradation for Crematorium at Thane Career Training Centre at Holy Cross Convent Special school at Thane Infrastructual Assistance to Tribal school, Utavali Village, Wada. Triumph Blood Bank and Thalassemia Day-care centre ‘Right to Go’ – building Toilet blocks for villagers in Sogav. Check dams at Shahpur and Murbad ‘Virtual eye’ – a learning tool for visually-impaired Pediatric Heart surgeries ‘Mission for Vision’ – Eye sight corrective surgeries Hamari Pari – Installation of sanitary pad machines in schools Rotarian Rakesh Wadhawan Memorial Education Complex at Shenve village, Taluka shahpur Check dams at ambadi and umroli in shahpur Joint venture between Triump Foundation and Seetabai Gadgil Trust Eye care center at Thane","banners":["https://rizones45678.org/API/uploads/banner/e2e31bc4-b8d5-4f1a-be78-4cc109962da0.jpg","https://rizones45678.org/API/uploads/banner/449dddc4-53c4-4ce3-935f-f3496647eb5b.jpg","https://rizones45678.org/API/uploads/banner/d22b9e0f-665a-42bc-9d75-bf91181067f1.jpg"],"figures":{"beneficiaries":6752,"projects":32,"manHours":686,"totalCost":1021500,"members":121},"featured":[{"id":31327,"title":"Project 23- Drug Deaddiction Awareness @ RS Deokar","desc":"Today, under the Rotary Club of Thane Hills’ Drug Deaddiction Awareness Initiative, I had the privilege of conducting an interactive session on Drug Awareness for 120 students of standard 9th & 10th of R.S. Deokar School. The session focused on understanding a","avenue":"Community Service","date":"2026-08-25","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album31327/2d84e808-bb52-4c0a-a214-2c9b007b19f5.png"},{"id":28602,"title":"Project 22: Blood Donation Camp at Fortress","desc":"We are pleased to share the success of our Blood Donation Drive today at Fortress Office An impressive 35 units of blood were collected during the camp. Kudos to Hillers Kumar and Anuradha for donating blood. Attended by President Dr Anagha Karkhanis, CS Vasan","avenue":"Community Service","date":"2026-08-21","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28602/b450feb3-9d35-4e2a-a5a4-5e7ed88d938b.png"},{"id":28658,"title":"Press Coverage: Ganapati Idol making workshop","desc":"Ganapati Idol making workshop was covered in Indian Express","avenue":"Public Image","date":"2026-08-12","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28658/16c61874-f0ca-4087-b001-7d83a84ba24b.png"},{"id":28603,"title":"Project 21: Annapoorna Drive at Yogi Hills","desc":"August 12, 2026, our Rotary Club of Thane Hills team successfully completed another Annapurna distribution at Yogi Hills, reaching out to 1,000 visually challenged beneficiaries! We distributed essential household kits containing food grains, pulses, tea, toot","avenue":"Community Service","date":"2026-08-12","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28603/f17131c6-236f-4102-b304-e86593b06298.png"},{"id":34259,"title":"Press Coverage: Orchestra for specially abled","desc":"News of RCTH organized orchestra for specially abled covered in Indian Express","avenue":"Public Image","date":"2026-08-11","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album34259/f517b14b-76bf-4b6a-8774-ba66ccb5de67.png"},{"id":28634,"title":"Rotaract Club of Thane Hills Installation","desc":"The Installation Ceremony of the Rotaract Club of Thane Hills marked the beginning of a new year filled with leadership, service, and fellowship. The new President, Rtr. Prajakta Bhadadare, along with her team, was formally inducted and entrusted with the resp","avenue":"New Generation Service","date":"2026-08-09","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28634/29e9cb35-2a10-4ff5-8dbb-0c56ac307e02.png"},{"id":28605,"title":"Project 20: Musical event for Specially abled","desc":"🌟 Project 20 Musical event for Specially abled children by visually challenged students 🌟 Rotary Club of Thane Hills hosted a beautiful musical morning where visually challenged students from Pragati Andh Vidyalay, Badlapur presented a soulful orchestra for sp","avenue":"Community Service","date":"2026-08-09","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28605/b343681b-3aaa-463f-87e6-541530889d14.png"}],"people":[{"role":"Club President","name":"Anagha Amit Karkhanis","img":"https://rizones45678.org/API/Documents/directory/anagha28022023120212PM.jpg","bio":"Dr Anagha Karkhanis is a Consultant Gynaecologist with expertise in IVF, Cosmetic Gynaecology, Urogynaecology and Facial Aesthetics. Her academic achievements include MRCPI(Ireland), FRM(Germany), MRM(UK), DOWH(Ireland),"},{"role":"Club Secretary","name":"Vasant Bhat","img":"https://rizones45678.org/API/Documents/directory/20082023092950PM.png","bio":""},{"role":"District Governor, 3142","name":"Nilesh Vinayak Jaywant","img":"https://rizones45678.org/API/Documents/directory/DA2C741D-0B64-4185-B35C-10A258BA409219122024113304AM.jpeg","bio":"Dr Nilesh Vinayak Jaywant was born on 27th March 1970, at Chembur Mumbai. He did his schooling from the St John Baptist High School, Thane, Maharashtra. Being a very bright student, he won many awards"},{"role":"President, Rotary International 2026-27","name":"Olayinka Hakeem Babalola","img":"https://rizones45678.org/API/Documents/WebsiteData/International_President/PRESIDENT020720261207057300549PM.jpg","bio":"Olayinka Hakeem Babalola, a member of the Rotary Club of Trans Amadi, Nigeria, has been selected by the Board of Directors to become Rotary International’s president for 2026-27. His term will begin o"}],"newsletters":[{"title":"August 2026- Hill Echoes","date":"2026-08-04","url":"https://rizones45678.org/API/Documents/ebulletin/Group1/AUGUST_-_2026_8663f9e604082026091523PM.pdf"},{"title":"July 2026- Hill Echoes","date":"2026-07-10","url":"https://rizones45678.org/API/Documents/ebulletin/Group1/July_2026-_Hill_Echoes_bb63aea210072026103527PM.pdf"}],"meeting":{"day":"Thursday","time":"19:30–21:30","venue":"Smt. Savitridevi Thirani Highschools, Road No. 1, Vartak Nagar, Thane West, Maharashtra 400606"},"contact":[],"socials":[{"platform":"facebook","linkUrl":"https://www.facebook.com/rcthanehills/"},{"platform":"instagram","linkUrl":"https://www.instagram.com/rotaryclubofthanehills/?hl=en"},{"platform":"linkedin","linkUrl":"https://www.linkedin.com/company/rotary-club-of-thane-hills/"},{"platform":"twitter","linkUrl":"https://twitter.com/RCThaneHills"}]};
+(function () {
+  'use strict';
+  var D = window.CLUB;
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var fix = function (s) { return String(s == null ? '' : s).replace(/�/g, '’'); };
+  var esc = function (s) { return fix(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var ymd = function (iso) { return String(iso).split('-').map(Number); };
+  var longDate = function (iso) { var p = ymd(iso); return p[2] + ' ' + MONTHS[p[1] - 1] + ' ' + p[0]; };
+  var clean = function (s) { return fix(s).replace(/\p{Extended_Pictographic}️?/gu, '').replace(/\s{2,}/g, ' ').trim(); };
+  var excerpt = function (s) { s = clean(s); return !s || /[.!?…]$/.test(s) ? s : s + '…'; };
+  /* panel figure formatter, shared with the motion script */
+  window.fmtFig = function (st, v) {
+    v = v == null ? st.value : v;
+    var n = st.fmt === 'plain' ? String(v) : Number(v).toLocaleString('en-IN');
+    return (st.fmt === 'money' ? '₹' : '') + n + (st.suffix || '');
+  };
+  var fig = function (st) { return esc(JSON.stringify(st)); };
+
+  var club = fix(D.club), short = fix(D.short), Y = fix(D.year);
+  var yStart = parseInt(Y, 10), ySuffix = Y.slice(String(yStart).length);
+
+  /* header + menu */
+  var MENU = ['Home', 'About', 'Directory', 'Directors', 'Calendar', 'Projects', 'Past Presidents', 'Events'];
+  var items = MENU.map(function (t, i) { return '<li><a href="#"' + (i === 0 ? ' aria-current="page"' : '') + '>' + t + '</a></li>'; }).join('');
+  $('#navList').innerHTML = items;
+  $('#menuList').innerHTML = items;
+  $('#rotaryLogo').src = D.rotaryLogo;
+  $('#yearSel').innerHTML = [0, 1, 2].map(function (k) {
+    var a = yStart - k, label = a + '–' + String(a + 1).slice(2);
+    return '<option' + (k === 0 ? ' selected' : '') + '>' + label + '</option>';
+  }).join('');
+
+  /* hero */
+  var cut = club.lastIndexOf(short);
+  $('#clubName').innerHTML = cut > 0 ? esc(club.slice(0, cut).trim()) + '<br>' + esc(short) : esc(club);
+  $('#heroMeta').innerHTML = '<p>District ' + esc(D.district) + '</p><p>Rotary year ' + esc(Y) + '</p>';
+  var B = D.banners || [];
+  $('#slides').innerHTML = B.map(function (u, i) {
+    return '<figure class="slide' + (i === 0 ? ' is-on' : '') + '"><img src="' + esc(u) + '" alt="' + esc(club) + ' banner ' + (i + 1) + ' of ' + B.length + '" width="1700" height="531" decoding="async"></figure>';
+  }).join('');
+  $('#dots').innerHTML = B.map(function (u, i) {
+    return '<button class="dot" type="button" aria-label="Show banner ' + (i + 1) + '" aria-current="' + (i === 0) + '"><i></i></button>';
+  }).join('');
+  if (B.length < 2) $('#bannerCtrl').hidden = true;
+
+  /* chapter states: what the sticky panel shows */
+  var about = fix(D.about);
+  var charter = /chartered on ([A-Z][a-z]+ \d{1,2}, (\d{4}))/.exec(about);
+  var CH = [
+    { id: 'story', title: 'Our story' }, { id: 'numbers', title: 'By the numbers' }, { id: 'projects', title: 'Our projects' },
+    { id: 'leaders', title: 'Our leaders' }, { id: 'news', title: 'Newsletters' }
+  ];
+  var sStory = charter
+    ? { title: CH[0].title, value: +charter[2], from: +charter[2] - 25, fmt: 'plain', caption: 'Chartered on ' + charter[1], sub: '' }
+    : { title: CH[0].title, value: yStart, fmt: 'plain', caption: 'Rotary year ' + Y, sub: '' };
+
+  /* chapter 1: story (history part of the about text) */
+  var iC = about.indexOf('was chartered');
+  var hist = iC > 0 ? about.slice(Math.max(0, about.lastIndexOf('Rotary Club of', iC))) : about;
+  var stop = hist.indexOf('Listed below');
+  if (stop > 0) hist = hist.slice(0, stop);
+  var S = hist.trim().split(/(?<!\b(?:Mr|Mrs|Ms|Dr|PP))\.\s+(?=[A-Z])/).map(function (s) { return s.trim().replace(/\.?$/, '.'); });
+  var paras = [[1, 4], [4, 6], [9, 12]].map(function (r) { return S.slice(r[0], r[1]).join(' '); }).filter(Boolean);
+  var storyHTML = '<div class="wrap"><p class="lead">' + esc(S[0]) + '</p><div class="prose">' +
+    paras.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') +
+    '</div><a class="textlink" href="#">Read our full story</a></div>';
+
+  /* chapter 2: figures */
+  var F = D.figures || {};
+  var STATS = [['beneficiaries', 'Beneficiaries', 'c-gold'], ['projects', 'Projects', 'c-azure'], ['manHours', 'Man hours', 'c-night'],
+    ['totalCost', 'Total project cost', 'c-mist', 1], ['members', 'Members', 'c-royal']].filter(function (s) { return F[s[0]] != null; });
+  var statStates = STATS.map(function (s) {
+    return { title: CH[1].title, value: F[s[0]], fmt: s[3] ? 'money' : 'group', caption: s[1], sub: 'Rotary year ' + Y };
+  });
+  var statsHTML = '<div class="wrap stack">' + STATS.map(function (s, i) {
+    return '<div class="sentinel" data-fig="' + fig(statStates[i]) + '"></div>' +
+      '<article class="stat ' + s[2] + '" style="--i:' + i + '"><span class="stat-ring" aria-hidden="true"></span>' +
+      '<p class="stat-num" data-to="' + F[s[0]] + '" data-money="' + (s[3] ? 1 : 0) + '">' + window.fmtFig(statStates[i]) + '</p>' +
+      '<p class="stat-label">' + s[1] + '</p></article>';
+  }).join('') + '</div>';
+
+  /* chapter 3: timeline, oldest first */
+  var DIMS = { '2d84e808': [1387, 780], b450feb3: [720, 960], '16c61874': [746, 995], f17131c6: [1600, 900], f517b14b: [734, 979], '29e9cb35': [1200, 1600], b343681b: [1280, 720] };
+  var projs = (D.featured || []).slice().sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+  var projStates = projs.map(function (p) {
+    var d = ymd(p.date);
+    return { title: CH[2].title, value: d[2], from: 1, fmt: 'plain', caption: MONTHS[d[1] - 1] + ' ' + d[0], sub: fix(p.avenue) };
+  });
+  var tlHTML = '<div class="wrap tl"><div class="tl-line" aria-hidden="true"><i></i></div><ol class="tl-list">' + projs.map(function (p, i) {
+    var dm = DIMS[(String(p.img).split('/').pop() || '').slice(0, 8)] || [4, 3], title = clean(p.title);
+    return '<li class="tl-item" data-fig="' + fig(projStates[i]) + '"><span class="tl-dot" aria-hidden="true"></span>' +
+      '<p class="tl-date"><time datetime="' + esc(p.date) + '">' + longDate(p.date) + '</time></p>' +
+      (p.avenue ? '<span class="tl-avenue">' + esc(p.avenue) + '</span>' : '') +
+      '<div class="tl-photo' + (dm[1] > dm[0] ? ' is-portrait' : '') + '"><img src="' + esc(p.img) + '" alt="' + esc(title) + '" width="' + dm[0] + '" height="' + dm[1] + '" loading="lazy" decoding="async"></div>' +
+      '<h3>' + esc(title) + '</h3><p class="tl-desc">' + esc(excerpt(p.desc)) + '</p>' +
+      '<a class="textlink" href="#">View project<span class="sr-only">: ' + esc(title) + '</span></a></li>';
+  }).join('') + '</ol></div>';
+
+  /* chapter 4: leaders */
+  var sLeaders = { title: CH[3].title, value: yStart, from: yStart, suffix: ySuffix, fmt: 'plain', caption: 'Rotary year', sub: '' };
+  var arrow = function (d) { return '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="' + (d < 0 ? 'M12.5 4 6.5 10l6 6' : 'M7.5 4l6 6-6 6') + '" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'; };
+  var leadersHTML = '<div class="track"><div class="stage"><p class="stage-hint">Scroll or drag to turn the cards</p><ul class="people">' +
+    (D.people || []).map(function (p) {
+      return '<li class="person"><div class="person-photo"><img src="' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" draggable="false"></div>' +
+        '<div class="person-body"><p class="person-role">' + esc(p.role) + '</p><h3>' + esc(p.name) + '</h3>' +
+        (clean(p.bio) ? '<p class="person-bio">' + esc(excerpt(p.bio)) + '</p>' : '') + '</div></li>';
+    }).join('') +
+    '</ul><div class="stage-ctrl"><button class="ctrl" type="button" data-dir="-1" aria-label="Previous leader">' + arrow(-1) + '</button>' +
+    '<button class="ctrl" type="button" data-dir="1" aria-label="Next leader">' + arrow(1) + '</button></div></div></div>';
+
+  /* chapter 5: newsletters */
+  var N = D.newsletters || [];
+  var sNews = { title: CH[4].title, value: N.length, fmt: 'plain', caption: 'Issues in ' + Y, sub: '' };
+  var newsHTML = '<div class="wrap"><ul class="news">' + N.map(function (n) {
+    return '<li><a href="' + esc(n.url) + '" target="_blank" rel="noopener"><span class="news-title">' + esc(n.title) + '</span>' +
+      '<span class="news-date"><time datetime="' + esc(n.date) + '">' + longDate(n.date) + '</time></span>' +
+      '<span class="news-cta">Read newsletter<span class="sr-only"> (PDF, opens in a new tab)</span></span></a></li>';
+  }).join('') + '</ul></div>';
+
+  var chapter = function (c, st, inner, cls) {
+    return '<section class="chapter' + (cls ? ' ' + cls : '') + '" id="ch-' + c.id + '" aria-labelledby="t-' + c.id + '" data-fig="' + fig(st) + '">' +
+      '<h2 class="sr-only" id="t-' + c.id + '">' + c.title + '</h2>' + inner + '</section>';
+  };
+  var html = chapter(CH[0], sStory, storyHTML);
+  if (STATS.length) html += chapter(CH[1], statStates[0], statsHTML);
+  if (projs.length) html += chapter(CH[2], projStates[0], tlHTML);
+  if ((D.people || []).length) html += chapter(CH[3], sLeaders, leadersHTML, 'leaders');
+  if (N.length) html += chapter(CH[4], sNews, newsHTML);
+  $('#story').innerHTML = html;
+
+  /* sticky panel, starts on chapter 1 */
+  $('#panel').innerHTML = '<div class="p-orbit"><i></i></div><p class="p-title">' + sStory.title + '</p>' +
+    '<div class="p-mid"><p class="p-fig">' + window.fmtFig(sStory) + '</p><p class="p-cap">' + esc(sStory.caption) + '</p><p class="p-sub"></p></div>' +
+    '<ol class="p-rail">' + CH.filter(function (c) { return document.getElementById('ch-' + c.id); }).map(function (c, i) {
+      return '<li data-t="' + c.title + '"' + (i === 0 ? ' class="is-on"' : '') + '>' + c.title + '</li>';
+    }).join('') + '</ol><span class="p-fig p-probe"></span><div class="p-progress"><i></i></div>';
+
+  /* closing band */
+  var M = D.meeting || {};
+  $('#meet').innerHTML = '<h2 id="meetTitle">Where we meet</h2>' +
+    '<p class="meet-giant" aria-hidden="true"><span>' + esc(M.day) + ' <span class="ghost">' + esc(M.time) + '</span></span></p>' +
+    '<dl class="meet-facts"><div><dt>Day</dt><dd>' + esc(M.day) + '</dd></div><div><dt>Time</dt><dd>' + esc(M.time) + '</dd></div>' +
+    '<div class="venue"><dt>Venue</dt><dd>' + esc(M.venue) + '</dd></div></dl>';
+
+  /* footer */
+  var ICON = {
+    facebook: '<path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.6V21z" fill="currentColor"/>',
+    instagram: '<rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/>',
+    linkedin: '<rect x="4" y="9.5" width="3.2" height="10" fill="currentColor"/><circle cx="5.6" cy="5.8" r="1.9" fill="currentColor"/><path d="M10 9.5h3.1v1.4c.5-.9 1.7-1.7 3.4-1.7 3 0 3.5 2 3.5 4.5v5.8h-3.2v-5.1c0-1.2 0-2.7-1.7-2.7s-1.9 1.3-1.9 2.6v5.2H10z" fill="currentColor"/>',
+    twitter: '<path d="M4 4h4.6l3.9 5.3L17 4h2.6l-5.9 6.8L20.5 20h-4.6l-4.2-5.7L6.8 20H4.2l6.3-7.2z" fill="currentColor"/>'
+  };
+  var NAMES = { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', twitter: 'Twitter' };
+  $('#foot').innerHTML = '<div class="foot-top"><div class="foot-club"><div class="foot-logo"><img src="' + esc(D.clubLogo) + '" alt="' + esc(club) + ' logo" width="191" height="191" loading="lazy"></div>' +
+    '<div><p class="foot-name">' + esc(club) + '</p><p class="foot-dist">District ' + esc(D.district) + '</p></div></div>' +
+    '<ul class="socials">' + (D.socials || []).filter(function (s) { return ICON[s.platform]; }).map(function (s) {
+      return '<li><a href="' + esc(s.linkUrl) + '" target="_blank" rel="noopener" aria-label="' + NAMES[s.platform] + ' (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true">' + ICON[s.platform] + '</svg></a></li>';
+    }).join('') + '</ul></div>' +
+    '<div class="foot-bottom"><p>Rotary year ' + esc(Y) + '</p><a class="admin" href="#">Admin login</a></div>';
+
+  /* ---------- UI ---------- */
+  var G = window.gsap;
+  var canAnim = function () { return !!G && matchMedia('(prefers-reduced-motion: no-preference)').matches; };
+
+  /* page links are inert in the sample */
+  document.addEventListener('click', function (e) { var a = e.target.closest('a[href="#"]'); if (a) e.preventDefault(); });
+
+  /* mobile menu */
+  var burger = $('.burger'), menu = $('#menu'), closeBtn = $('.menu-close', menu), lastFocus = null, closing = false;
+  var burgerAt = function () { var r = burger.getBoundingClientRect(); return (r.left + r.width / 2) + 'px ' + (r.top + r.height / 2) + 'px'; };
+  function openMenu() {
+    lastFocus = document.activeElement;
+    menu.hidden = false;
+    burger.setAttribute('aria-expanded', 'true');
+    document.documentElement.classList.add('menu-open');
+    if (window.__lenis) window.__lenis.stop();
+    closeBtn.focus();
+    if (canAnim()) {
+      var at = burgerAt(), R = Math.hypot(innerWidth, innerHeight);
+      G.fromTo(menu, { clipPath: 'circle(0px at ' + at + ')' }, { clipPath: 'circle(' + R + 'px at ' + at + ')', duration: .7, ease: 'power3.inOut', clearProps: 'clipPath' });
+      G.from(menu.querySelectorAll('.menu-list a'), { yPercent: 110, duration: .6, ease: 'power3.out', stagger: .04, delay: .2, clearProps: 'transform' });
+    }
+  }
+  function closeMenu() {
+    if (menu.hidden || closing) return;
+    var done = function () {
+      closing = false;
+      menu.hidden = true;
+      burger.setAttribute('aria-expanded', 'false');
+      document.documentElement.classList.remove('menu-open');
+      if (window.__lenis) window.__lenis.start();
+      (lastFocus && document.contains(lastFocus) && lastFocus.offsetParent ? lastFocus : burger).focus();
+    };
+    if (!canAnim()) return done();
+    closing = true;
+    G.to(menu, { clipPath: 'circle(0px at ' + burgerAt() + ')', duration: .45, ease: 'power3.in', onComplete: function () { G.set(menu, { clearProps: 'clipPath' }); done(); } });
+  }
+  burger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  menu.addEventListener('click', function (e) { if (e.target.closest('.menu-list a')) closeMenu(); });
+  document.addEventListener('keydown', function (e) {
+    if (menu.hidden) return;
+    if (e.key === 'Escape') { e.preventDefault(); closeMenu(); return; }
+    if (e.key !== 'Tab') return;
+    var f = menu.querySelectorAll('a[href], button'), first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  matchMedia('(min-width: 1200px)').addEventListener('change', function (e) { if (e.matches) closeMenu(); });
+
+  /* banner slider: diagonal wipe between slides */
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('.dot'));
+  var pauseBtn = $('#pauseBtn'), bannerEl = $('.banner');
+  var cur = 0, timer = 0, paused = !canAnim(), hover = false;
+  function go(n) {
+    if (n === cur || !slides[n]) return;
+    var prev = slides[cur], next = slides[n];
+    slides.forEach(function (s) { if (s !== prev) s.classList.remove('is-off'); });
+    prev.classList.remove('is-on'); prev.classList.add('is-off');
+    next.classList.add('is-on');
+    dots.forEach(function (d, i) { d.setAttribute('aria-current', String(i === n)); });
+    cur = n;
+    var finish = function () { if (slides[cur] !== prev) prev.classList.remove('is-off'); };
+    if (!canAnim()) return finish();
+    G.killTweensOf([next, next.firstElementChild]);
+    G.fromTo(next, { clipPath: 'polygon(130% 0%, 130% 0%, 130% 100%, 100% 100%)' },
+      { clipPath: 'polygon(0% 0%, 130% 0%, 130% 100%, -30% 100%)', duration: 1.15, ease: 'power3.inOut', clearProps: 'clipPath', onComplete: finish });
+    G.fromTo(next.firstElementChild, { scale: 1.18 }, { scale: 1, duration: 1.6, ease: 'power3.out', clearProps: 'transform' });
+  }
+  function schedule() {
+    clearTimeout(timer);
+    if (!paused && !hover && slides.length > 1) timer = setTimeout(function () { go((cur + 1) % slides.length); schedule(); }, 6000);
+  }
+  function syncPause() {
+    pauseBtn.textContent = paused ? 'Play' : 'Pause';
+    pauseBtn.setAttribute('aria-label', (paused ? 'Play' : 'Pause') + ' banner slideshow');
+  }
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); schedule(); }); });
+  pauseBtn.addEventListener('click', function () { paused = !paused; syncPause(); schedule(); });
+  bannerEl.addEventListener('pointerenter', function () { hover = true; schedule(); });
+  bannerEl.addEventListener('pointerleave', function () { hover = false; schedule(); });
+  bannerEl.addEventListener('focusin', function () { hover = true; schedule(); });
+  bannerEl.addEventListener('focusout', function () { hover = false; schedule(); });
+  syncPause();
+  schedule();
+
+  /* nav: gold pill that slides to the hovered item */
+  var nav = $('.nav'), pill = $('.nav-pill'), navUl = $('#navList');
+  if (canAnim() && matchMedia('(hover: hover)').matches) {
+    nav.classList.add('has-pill');
+    var home = navUl.querySelector('[aria-current]');
+    var pillTo = function (a, instant) {
+      if (!a || !navUl.offsetWidth) return;
+      var L = a.offsetLeft, R = navUl.offsetWidth - L - a.offsetWidth;
+      G.to(pill, { clipPath: 'inset(0px ' + R + 'px 0px ' + L + 'px round 999px)', duration: instant ? 0 : .6, ease: 'expo.out', overwrite: true });
+    };
+    G.set(pill, { clipPath: 'inset(0px 0px 0px 0px round 999px)' });
+    pillTo(home, true);
+    navUl.addEventListener('pointerover', function (e) { var a = e.target.closest('a'); if (a) pillTo(a); });
+    navUl.addEventListener('pointerleave', function () { pillTo(home); });
+    navUl.addEventListener('focusin', function (e) { pillTo(e.target.closest('a')); });
+    navUl.addEventListener('focusout', function () { pillTo(home); });
+    addEventListener('resize', function () { pillTo(home, true); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { pillTo(home, true); });
+  }
+})();
+</script>
+
+<script>
+/* 2. Scroll story (GSAP + ScrollTrigger + SplitText, Lenis on fine-pointer desktops) */
+(function () {
+  'use strict';
+  var G = window.gsap, ST = window.ScrollTrigger, SPLIT = window.SplitText || null;
+  var panel = document.getElementById('panel');
+  if (!G || !ST || !panel || !window.fmtFig) return;
+  G.registerPlugin(ST);
+  if (SPLIT) G.registerPlugin(SPLIT);
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var fmt = window.fmtFig, root = document.documentElement;
+  var pTitle = $('.p-title', panel), pFig = $('.p-mid .p-fig', panel), pCap = $('.p-cap', panel), pSub = $('.p-sub', panel);
+  var probe = $('.p-probe', panel), rail = $$('.p-rail li', panel);
+  var wide = matchMedia('(min-width: 1000px)');
+  var MOTION = false, curKey = null, curState = null, titleTw = null, titleSplit = null, figTw = null;
+  /* SplitText only runs once the web fonts are in (capped at 2s so a stalled font never holds the page) */
+  var fontsOK = false, RUN = 0;
+  var fontsP = Promise.race([(document.fonts && document.fonts.ready) || Promise.resolve(), new Promise(function (r) { setTimeout(r, 2000); })]);
+
+  /* ---------- panel ---------- */
+  function fitFig(text) {
+    if (!wide.matches) { pFig.style.removeProperty('--fs'); return; }
+    probe.textContent = text;
+    var w = probe.getBoundingClientRect().width, avail = pFig.clientWidth;
+    if (w && avail) pFig.style.setProperty('--fs', Math.min(innerHeight * 0.22, avail / w * 96) + 'px');
+  }
+  function swapTitle(text) {
+    if (titleTw) { titleTw.kill(); titleTw = null; }
+    if (titleSplit) { titleSplit.revert(); titleSplit = null; }
+    pTitle.textContent = text;
+    if (!MOTION || !SPLIT || !fontsOK) return;
+    var s = titleSplit = SPLIT.create(pTitle, { type: 'words,chars', mask: 'words', wordsClass: 'sw' });
+    /* ScrollFloat-style: chars rise and un-stretch */
+    titleTw = G.from(s.chars, {
+      yPercent: 118, scaleY: 1.9, opacity: 0, transformOrigin: '50% 0%', duration: .75, ease: 'back.out(1.5)', stagger: .028,
+      onComplete: function () { s.revert(); if (titleSplit === s) titleSplit = null; }
+    });
+  }
+  function swapFig(st) {
+    if (figTw) { figTw.kill(); figTw = null; }
+    var text = fmt(st);
+    fitFig(text);
+    if (!MOTION) { pFig.textContent = text; return; }
+    var o = { v: st.from || 0 };
+    pFig.textContent = fmt(st, o.v);
+    figTw = G.timeline()
+      .to(o, { v: st.value, duration: 1.1, ease: 'expo.out', onUpdate: function () { pFig.textContent = fmt(st, Math.round(o.v)); } }, 0)
+      .fromTo(pFig, { yPercent: 25, opacity: 0, filter: 'blur(10px)' }, { yPercent: 0, opacity: 1, filter: 'blur(0px)', duration: .55, ease: 'power3.out', clearProps: 'transform,opacity,filter' }, 0);
+  }
+  function setState(st, force) {
+    var key = st.title + '|' + st.value + '|' + st.caption;
+    if (!force && key === curKey) return;
+    var sameTitle = !force && curState && curState.title === st.title;
+    curKey = key; curState = st;
+    if (!sameTitle) swapTitle(st.title);
+    swapFig(st);
+    pCap.textContent = st.caption || '';
+    pSub.textContent = st.sub || '';
+    if (MOTION) G.fromTo([pCap, pSub], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .45, stagger: .05, ease: 'power2.out', clearProps: 'transform,opacity' });
+    rail.forEach(function (li) { li.classList.toggle('is-on', li.getAttribute('data-t') === st.title); });
+  }
+
+  /* the active state = last [data-fig] marker above the middle of the viewport */
+  var figEls = $$('[data-fig]');
+  var figStates = figEls.map(function (el) { try { return JSON.parse(el.getAttribute('data-fig')); } catch (e) { return null; } });
+  var tops = [], dirty = true;
+  function pick(force) {
+    if (dirty) { var y = scrollY; tops = figEls.map(function (el) { return el.getBoundingClientRect().top + y; }); dirty = false; }
+    var line = scrollY + innerHeight * 0.5, i = 0;
+    for (var k = 0; k < tops.length; k++) if (tops[k] <= line) i = k;
+    if (figStates[i]) setState(figStates[i], force);
+  }
+  ST.addEventListener('refresh', function () { dirty = true; pick(); if (curState) fitFig(fmt(curState)); });
+
+  /* ---------- sections ---------- */
+  function heroMotion(later) {
+    var h1 = $('#clubName');
+    if (SPLIT && h1) {
+      G.set(h1, { autoAlpha: 0 });
+      later(function () {
+        G.set(h1, { clearProps: 'opacity,visibility' });
+        var s = SPLIT.create(h1, { type: 'words,chars', mask: 'words', wordsClass: 'sw' });
+        G.from(s.chars, { yPercent: 120, scaleY: 2.1, opacity: 0, transformOrigin: '50% 0%', duration: 1, ease: 'back.out(1.4)', stagger: .03, delay: .15, onComplete: function () { s.revert(); } });
+      });
+    }
+    G.from('#heroMeta p', { y: 18, opacity: 0, duration: .7, stagger: .1, delay: .7, ease: 'power3.out', clearProps: 'transform,opacity' });
+    var frame = $('#slides');
+    /* iris: the banner opens from a circle as the page starts to scroll */
+    if (frame) G.fromTo(frame, { clipPath: 'circle(17% at 50% 50%)' }, {
+      clipPath: 'circle(72% at 50% 50%)', ease: 'none',
+      scrollTrigger: { start: 0, end: function () { return Math.max(280, frame.getBoundingClientRect().bottom + scrollY - innerHeight * 0.55); }, scrub: .6, invalidateOnRefresh: true }
+    });
+  }
+  function panelMotion() {
+    var range = { trigger: '#story', start: 'top top', end: 'bottom bottom' };
+    G.fromTo('.p-progress i', { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: Object.assign({ scrub: true }, range) });
+    G.to('.p-orbit', { rotation: 360, ease: 'none', scrollTrigger: Object.assign({ scrub: 1 }, range) });
+  }
+  function storyMotion(later) {
+    var lead = $('.lead');
+    if (!SPLIT || !lead) return;
+    later(function () {
+      var s = SPLIT.create(lead, { type: 'words' });
+      G.fromTo(s.words, { opacity: .12, filter: 'blur(5px)' }, { opacity: 1, filter: 'blur(0px)', ease: 'none', stagger: .12, scrollTrigger: { trigger: lead, start: 'top 85%', end: 'bottom 40%', scrub: true } });
+    });
+  }
+  function statsMotion(cleanups) {
+    var cards = $$('.stat'), sents = $$('.stack .sentinel');
+    cards.forEach(function (card, i) {
+      var num = $('.stat-num', card), to = +num.getAttribute('data-to'), money = num.getAttribute('data-money') === '1', final = num.textContent;
+      var show = function (v) { return (money ? '₹' : '') + Math.round(v).toLocaleString('en-IN'); };
+      var o = { v: 0 };
+      num.textContent = show(0);
+      cleanups.push(function () { num.textContent = final; });
+      ST.create({ trigger: sents[i], start: 'top 85%', once: true, onEnter: function () {
+        G.to(o, { v: to, duration: 1.8, ease: 'power2.out', onUpdate: function () { num.textContent = show(o.v); } });
+      } });
+      /* stack cards: each card swings in, then sinks back as the next one lands */
+      G.from(card, { yPercent: 18, rotation: i % 2 ? 2.5 : -2.5, ease: 'none', scrollTrigger: { trigger: sents[i], start: 'top bottom', end: 'top 55%', scrub: .5 } });
+      if (sents[i + 1]) G.fromTo(card, { scale: 1, filter: 'brightness(1)' }, { scale: .9, filter: 'brightness(.8)', ease: 'none', immediateRender: false, scrollTrigger: { trigger: sents[i + 1], start: 'top bottom', end: 'top 15%', scrub: .5 } });  /* fromTo: from filter:none GSAP starts at brightness(0) - the card went near-black mid-scroll */
+    });
+  }
+  function timelineMotion() {
+    var tl = $('.tl');
+    if (!tl) return;
+    G.fromTo('.tl-line i', { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: tl, start: 'top 55%', end: 'bottom 55%', scrub: .3 } });
+    $$('.tl-item', tl).forEach(function (item, i) {
+      ST.create({
+        trigger: item, start: 'top 55%',
+        onEnter: function () { item.classList.add('is-lit'); },
+        onLeaveBack: function () { item.classList.remove('is-lit'); },
+        onRefresh: function (self) { item.classList.toggle('is-lit', self.progress > 0); }
+      });
+      G.from($('.tl-date', item), { x: -40, opacity: 0, duration: .8, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: item, start: 'top 80%' } });
+      var ph = $('.tl-photo', item), img = ph && $('img', ph);
+      if (!ph) return;
+      var iris = i % 2 === 0;
+      G.fromTo(ph,
+        { clipPath: iris ? 'circle(8% at 50% 50%)' : 'polygon(0% 0%, 0% 0%, -30% 100%, -30% 100%)' },
+        { clipPath: iris ? 'circle(75% at 50% 50%)' : 'polygon(0% 0%, 130% 0%, 100% 100%, -30% 100%)', ease: 'none', scrollTrigger: { trigger: ph, start: 'top 95%', end: 'top 40%', scrub: .4 } });
+      if (img) G.fromTo(img, { scale: 1.25 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: ph, start: 'top bottom', end: 'bottom 40%', scrub: .4 } });
+    });
+  }
+  function peopleMotion(sec, cleanups) {
+    var track = $('.track', sec), stage = $('.stage', sec), cards = $$('.person', sec), n = cards.length, proxy = { p: 0 };
+    var spread = function () { return cards[0].offsetWidth * .74; };
+    /* hold on each card for a while before turning to the next */
+    var plateau = function (p) { var k = Math.floor(p), f = p - k, t = f < .2 ? 0 : f > .8 ? 1 : (f - .2) / .6; return k + (1 - Math.cos(Math.PI * t)) / 2; };
+    var render = function () {
+      var pe = plateau(proxy.p), sp = spread();
+      cards.forEach(function (c, i) {
+        var d = i - pe, ad = Math.abs(d);
+        G.set(c, { x: d * sp, z: -ad * 260, rotationY: G.utils.clamp(-70, 70, -d * 36), scale: 1 - Math.min(ad, 2) * .06, opacity: ad > 2.5 ? 0 : 1 - Math.min(ad, 2) * .3, zIndex: 100 - Math.round(ad * 10) });
+      });
+    };
+    G.set(cards, { xPercent: -50, yPercent: -50 });
+    var st = G.to(proxy, { p: n - 1, ease: 'none', onUpdate: render, scrollTrigger: { trigger: track, start: 'top top', end: 'bottom bottom', scrub: .7 } }).scrollTrigger;
+    render();
+    var toY = function (y) { var L = window.__lenis; if (L) L.scrollTo(y, { duration: 1.1 }); else window.scrollTo({ top: y, behavior: 'smooth' }); };
+    var byY = function (dy) { var L = window.__lenis; if (L) L.scrollTo(L.targetScroll + dy, { immediate: true }); else window.scrollBy(0, dy); };
+    var onBtn = function (e) {
+      var b = e.target.closest('.ctrl');
+      if (!b) return;
+      var k = G.utils.clamp(0, n - 1, Math.round(st.progress * (n - 1)) + Number(b.getAttribute('data-dir')));
+      toY(st.start + k / (n - 1) * (st.end - st.start));
+    };
+    var dragging = false, lx = 0;
+    var down = function (e) { if (e.button !== 0 || e.target.closest('button')) return; dragging = true; lx = e.clientX; stage.setPointerCapture(e.pointerId); stage.classList.add('is-drag'); };
+    var move = function (e) { if (!dragging) return; var dx = e.clientX - lx; lx = e.clientX; byY(-dx / spread() * (st.end - st.start) / (n - 1)); };
+    var up = function () { dragging = false; stage.classList.remove('is-drag'); };
+    stage.addEventListener('click', onBtn);
+    stage.addEventListener('pointerdown', down);
+    stage.addEventListener('pointermove', move);
+    stage.addEventListener('pointerup', up);
+    stage.addEventListener('pointercancel', up);
+    cleanups.push(function () {
+      stage.removeEventListener('click', onBtn);
+      stage.removeEventListener('pointerdown', down);
+      stage.removeEventListener('pointermove', move);
+      stage.removeEventListener('pointerup', up);
+      stage.removeEventListener('pointercancel', up);
+      G.set(cards, { clearProps: 'all' });
+    });
+  }
+  function magnet(cleanups) {
+    $$('.news a').forEach(function (a) {
+      var pill = $('.news-cta', a);
+      if (!pill) return;
+      var xTo = G.quickTo(pill, 'x', { duration: .5, ease: 'power3' }), yTo = G.quickTo(pill, 'y', { duration: .5, ease: 'power3' });
+      var move = function (e) {
+        var r = pill.getBoundingClientRect();
+        var cx = r.left + r.width / 2 - (G.getProperty(pill, 'x') || 0), cy = r.top + r.height / 2 - (G.getProperty(pill, 'y') || 0);
+        xTo(G.utils.clamp(-40, 40, (e.clientX - cx) * .35));
+        yTo(G.utils.clamp(-18, 18, (e.clientY - cy) * .35));
+      };
+      var leave = function () { xTo(0); yTo(0); };
+      a.addEventListener('pointermove', move);
+      a.addEventListener('pointerleave', leave);
+      cleanups.push(function () { a.removeEventListener('pointermove', move); a.removeEventListener('pointerleave', leave); G.set(pill, { clearProps: 'transform' }); });
+    });
+  }
+  function meetMotion(later) {
+    var meet = $('#meet');
+    if (!meet) return;
+    /* the gold band rises from the bottom edge */
+    G.fromTo(meet, { clipPath: 'circle(0% at 50% 100%)' }, { clipPath: 'circle(160% at 50% 100%)', ease: 'none', scrollTrigger: { trigger: meet, start: 'top bottom', end: 'top 20%', scrub: .5 } });
+    var h2 = $('#meetTitle');
+    if (SPLIT && h2) later(function () {
+      var s = SPLIT.create(h2, { type: 'words,chars', mask: 'words', wordsClass: 'sw' });
+      G.fromTo(s.chars, { yPercent: 120, scaleY: 2.3, scaleX: .7, opacity: 0, transformOrigin: '50% 0%' },
+        { yPercent: 0, scaleY: 1, scaleX: 1, opacity: 1, ease: 'back.inOut(2)', stagger: .03, scrollTrigger: { trigger: h2, start: 'top 85%', end: 'top 35%', scrub: true } });
+    });
+    var g = $('.meet-giant > span');
+    if (g) G.fromTo(g, { x: function () { return innerWidth * .12; } }, {
+      x: function () { return -Math.max(0, g.offsetWidth - meet.clientWidth + innerWidth * .08); }, ease: 'none',
+      scrollTrigger: { trigger: meet, start: 'top bottom', end: 'bottom top', scrub: .6, invalidateOnRefresh: true }
+    });
+  }
+
+  /* ---------- wiring ---------- */
+  var mm = G.matchMedia();
+  mm.add('(prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine)', function () {
+    if (!window.Lenis) return;
+    var lenis = new window.Lenis({ lerp: .1 });
+    window.__lenis = lenis;
+    lenis.on('scroll', ST.update);
+    var raf = function (t) { lenis.raf(t * 1000); };
+    G.ticker.add(raf);
+    G.ticker.lagSmoothing(0);
+    return function () { G.ticker.remove(raf); lenis.destroy(); window.__lenis = null; G.ticker.lagSmoothing(500, 33); };
+  });
+
+  mm.add({
+    motion: '(prefers-reduced-motion: no-preference)',
+    reduce: '(prefers-reduced-motion: reduce)',
+    wide: '(min-width: 1000px)',
+    fine: '(hover: hover) and (pointer: fine)'
+  }, function (ctx) {
+    var c = ctx.conditions, cleanups = [], run = ++RUN;
+    /* run a SplitText effect inside this context once fonts are in; dropped if the context was reverted meanwhile */
+    var later = function (fn) { fontsP.then(function () { if (run === RUN) ctx.add(fn); }); };
+    MOTION = !!c.motion;
+    var leaders = $('#ch-leaders'), tl = $('.tl');
+    var is3d = MOTION && c.wide && leaders && $$('.person', leaders).length > 1;
+    root.classList.toggle('is-motion', MOTION);
+    if (leaders) leaders.classList.toggle('is-3d', !!is3d);
+    if (tl) tl.classList.toggle('is-live', MOTION);
+
+    /* panel tracking runs in every mode; with reduced motion it swaps text without animating */
+    ST.create({ trigger: '.split', start: 'top bottom', end: 'bottom top', onUpdate: function () { pick(); } });
+
+    if (MOTION) {
+      heroMotion(later);
+      panelMotion();
+      storyMotion(later);
+      statsMotion(cleanups);
+      timelineMotion();
+      if (is3d) peopleMotion(leaders, cleanups);
+      if (c.fine) magnet(cleanups);
+      meetMotion(later);
+    }
+    dirty = true;
+    requestAnimationFrame(function () { pick(true); });
+
+    return function () {
+      RUN++;
+      cleanups.forEach(function (f) { f(); });
+      if (titleTw) titleTw.kill();
+      if (titleSplit) { titleSplit.revert(); titleSplit = null; }
+      if (figTw) figTw.kill();
+      G.set([pFig, pCap, pSub], { clearProps: 'transform,opacity,filter' });
+      root.classList.remove('is-motion');
+      if (leaders) leaders.classList.remove('is-3d');
+      if (tl) tl.classList.remove('is-live');
+      curKey = null; curState = null;
+    };
+  });
+
+  addEventListener('load', function () { ST.refresh(); });
+  /* registered after mm.add, so it runs after the deferred SplitText setups above */
+  fontsP.then(function () { fontsOK = true; ST.refresh(); });
+})();
+</script>
+</body>
+</html>

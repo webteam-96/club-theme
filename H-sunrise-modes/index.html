@@ -1,0 +1,1252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rotary Club of Thane Hills</title>
+<meta name="description" content="Rotary Club of Thane Hills, District 3142. Theme 8 design sample H: Sunrise Depth, day and night.">
+<meta name="theme-color" content="#060D26">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Instrument+Serif:ital@0;1&family=Unbounded:wght@300..900&display=swap">
+<script>
+  // mode before first paint: the visitor's own choice, else the device setting
+  (function () { var m = null; try { m = localStorage.getItem("t8-mode"); } catch (e) {}
+    if (m !== "light" && m !== "dark") m = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", m); })();
+</script>
+<link rel="stylesheet" href="../vendor/lenis.css">
+<style>
+/*
+  THEME 8 / OPTION H: SUNRISE DEPTH, DAY + NIGHT
+  Option D's scroll story (one sky for the whole page, zoom through the banner into the figures,
+  the landmark drum, the photo tunnel, portraits rising, sunrise over the hills) set in option E's
+  type, with a light and a dark mode.
+    night (dark): pre-dawn navy -> Rotary Royal Blue -> violet dusk -> rose/peach/gold sunrise
+    day (light):  clear morning sky -> periwinkle -> lilac -> apricot golden hour
+  Every colour that differs by mode is a token on :root / [data-theme="light"]. The footer, the
+  newsletter covers and the sunrise section keep one palette in both modes (they sit on their own
+  dark or warm grounds).
+  Type: Unbounded (headings, numbers, names), Instrument Serif (the "Rotary Club of" line, the
+  about lead, newsletter covers), Geist (body and labels).
+*/
+:root{
+  color-scheme:dark;
+  /* sky stops, top of the page to the bottom */
+  --s0:#060D26; --s1:#0A1840; --s2:#17458F; --s3:#2C3A8E; --s4:#4B2F86; --s5:#6B2F80;
+  --s6:#A34C82; --s7:#E0746F; --s8:#F6A87C; --s9:#FFD58C;
+  --x1:#204090; --x2:#2A3B8E; --x3:#502F85; --x4:#873E81;
+  --ink:#FFF6EC; --mist:#D9D4F5; --accent:#FFC46B; --line:rgba(217,212,245,.16);
+  --hdr-bg:rgba(6,13,38,.8); --field-bg:rgba(10,24,64,.7);
+  --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%23FFC46B' stroke-width='1.8'/%3E%3C/svg%3E");
+  --hover-line:rgba(255,196,107,.6);
+  --menu-bg:radial-gradient(120% 55% at 50% 112%,rgba(246,168,124,.5),transparent 62%),linear-gradient(180deg,#060D26,#1B2A6B 55%,#4B2F86);
+  --name-grad:linear-gradient(180deg,#FFF9F0 22%,#FFE2BE 60%,#FFC996 100%);
+  --num-grad:linear-gradient(180deg,#FFFFFF 15%,#FFD58C 100%);
+  --dot:rgba(255,246,236,.55); --btn-line:rgba(255,246,236,.45);
+  --win-bg:#0A1840;
+  --win-shadow:0 0 0 1px rgba(255,214,170,.32),0 30px 90px -24px rgba(0,0,0,.7),0 0 140px -6px rgba(255,170,120,.34);
+  --ring:rgba(255,214,170,.34); --ring-dash:rgba(255,214,170,.28); --ring-in:rgba(255,214,170,.5);
+  --card-bg:rgba(14,18,54,.88); --card-line:rgba(217,212,245,.16); --card-img:#141A4A; --card-shadow:0 30px 70px -30px rgba(3,6,20,.8);
+  --scrim:0 0 34px rgba(6,13,38,.9),0 2px 12px rgba(6,13,38,.75);
+  --spark:#FFE6C2; --spark-glow:rgba(255,200,150,.7);
+  --glow-a:rgba(126,96,230,.26);
+  --sheet:#FFF4E8; --sheet-shadow:0 50px 120px -50px rgba(20,8,40,.7);
+  --hill-back:#B85E86; --hill-mid:#74377C;
+  --grain:.07;
+  /* one palette in both modes */
+  --dk:#1C1236; --dk2:#3E2447; --berry:#A8364A; --hill:#2A1843;
+  --night-ink:#FFF6EC; --night-mist:#D9D4F5; --night-accent:#FFC46B;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --sans:"Geist","Segoe UI",system-ui,-apple-system,sans-serif;
+  --hh:72px; --note:34px;
+  --pad:clamp(16px,4vw,48px);
+  --side:max(var(--pad),calc(50% - 640px));
+}
+/* day: same journey in daylight. Contrast (WCAG 2.x), worst case over the stops each colour sits on:
+   ink #13183A 12.2:1 . mist #3F4670 6.4:1 . accent #A3234A 5.1:1 (worst: the peach stop #FBD0C2) */
+:root[data-theme="light"]{
+  color-scheme:light only;
+  --s0:#F7F9FF; --s1:#EEF3FF; --s2:#D8E6FF; --s3:#DCDDFF; --s4:#E6D9FA; --s5:#F0D7EE;
+  --s6:#F7D4DF; --s7:#FBD0C2; --s8:#FDD6B0; --s9:#FFE4B2;
+  --x1:#D9E2FF; --x2:#DCDDFF; --x3:#E9D8F6; --x4:#F4D5E6;
+  --ink:#13183A; --mist:#3F4670; --accent:#A3234A; --line:rgba(19,24,58,.14);
+  --hdr-bg:rgba(247,249,255,.8); --field-bg:rgba(255,255,255,.75);
+  --chev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%23A3234A' stroke-width='1.8'/%3E%3C/svg%3E");
+  --hover-line:rgba(163,35,74,.55);
+  --menu-bg:radial-gradient(120% 55% at 50% 112%,rgba(253,214,176,.8),transparent 62%),linear-gradient(180deg,#F7F9FF,#E2E8FF 55%,#EBDAF7);
+  --name-grad:linear-gradient(180deg,#13183A 20%,#27418F 62%,#7A2E78 100%);
+  --num-grad:linear-gradient(180deg,#13183A 15%,#A3234A 100%);
+  --dot:rgba(19,24,58,.32); --btn-line:rgba(19,24,58,.4);
+  --win-bg:#E3E8F8;
+  --win-shadow:0 0 0 1px rgba(19,24,58,.1),0 30px 80px -26px rgba(40,50,110,.4),0 0 140px -6px rgba(255,170,120,.3);
+  --ring:rgba(39,65,143,.26); --ring-dash:rgba(39,65,143,.22); --ring-in:rgba(163,35,74,.34);
+  --card-bg:rgba(255,255,255,.9); --card-line:rgba(19,24,58,.1); --card-img:#E3E8F8; --card-shadow:0 30px 70px -30px rgba(40,40,100,.38);
+  --scrim:0 0 34px rgba(247,249,255,.95),0 2px 12px rgba(247,249,255,.85);
+  --spark:#8E63D8; --spark-glow:rgba(142,99,216,.45);
+  --glow-a:rgba(255,236,190,.7);
+  --sheet:#FFFFFF; --sheet-shadow:0 50px 120px -50px rgba(70,40,110,.4);
+  --hill-back:#E39AB0; --hill-mid:#9A4C8C;
+  --grain:.04;
+}
+@media (max-width:599px){ :root{ --hh:64px } }
+
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--s0);-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--s0);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.65;font-weight:400;
+  overflow-x:clip;-webkit-font-smoothing:antialiased;
+}
+html.menu-open body{overflow:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+p,h1,h2,h3,figure,address{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+button,select{font:inherit;color:inherit}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.sheet :focus-visible,.meet :focus-visible{outline-color:var(--dk)}
+.foot :focus-visible{outline-color:var(--night-accent)}
+main{display:block;overflow-x:clip}
+main:focus{outline:none}
+section[id]{scroll-margin-top:var(--hh)}
+
+.skip{position:absolute;left:16px;top:-120px;z-index:400;background:var(--night-accent);color:var(--dk);font-weight:700;padding:12px 18px;border-radius:12px;text-decoration:none}
+.skip:focus{top:12px}
+
+/* the mode switch: the new mode spreads from the button as a circle (JS; view transitions) */
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+
+/* ---------- sample note (same in both modes) ---------- */
+.note{
+  position:relative;font-size:13px;line-height:1.45;color:#D9D4F5;text-align:center;
+  padding:8px var(--pad);background:#060D26;border-bottom:1px solid rgba(217,212,245,.16);
+}
+
+/* ---------- the sky (motion only; JS adds html.sky-live) ---------- */
+.sky{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;display:none;contain:strict}
+.sky-live .sky{display:block}
+/* body is not a stacking context, so its own background paints ABOVE a z-index:-1 layer: the sky
+   would be invisible. html keeps the base colour; body goes clear while the sky is live. */
+.sky-live body{background:transparent}
+.sky__band{
+  position:absolute;left:0;top:0;width:100%;height:100%;transform-origin:0 0;will-change:transform;transform:scaleY(30);
+  background:linear-gradient(180deg,var(--s0) 0%,var(--s1) 10%,var(--s2) 30%,var(--s3) 52%,var(--s4) 64%,var(--s5) 76%,var(--s6) 80%,var(--s7) 84.5%,var(--s8) 90%,var(--s9) 100%);
+}
+.sky__stars{position:absolute;left:0;right:0;top:0;height:112%;will-change:transform,opacity}
+[data-theme="light"] .sky__stars{display:none}
+.st{position:absolute;left:0;top:0;width:1px;height:1px;border-radius:50%}
+.sky-live .st--b{animation:twinkle 3.6s ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:.35}to{opacity:1}}
+.sky__glow{position:absolute;border-radius:50%;will-change:transform,opacity}
+.sky__glow--a{width:80vmax;height:80vmax;left:-28vmax;top:-26vmax;background:radial-gradient(circle,var(--glow-a),transparent 62%)}
+.sky__glow--b{width:90vmax;height:90vmax;right:-34vmax;bottom:-50vmax;background:radial-gradient(circle,rgba(255,168,130,.28),transparent 62%)}
+.sky__horizon{position:absolute;left:-10%;right:-10%;bottom:-34vh;height:72vh;will-change:transform,opacity;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(255,226,170,.45),rgba(255,160,120,.16) 45%,transparent 72%)}
+.sky__grain{position:absolute;inset:0;opacity:var(--grain);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* static sky: each section paints its own slice (same stops as the band) */
+.intro{background:linear-gradient(var(--s0),var(--s1) 32%,var(--s2))}
+.about{background:linear-gradient(var(--s2),var(--x1))}
+.marks{background:linear-gradient(var(--x1),var(--x2))}
+.projects{background:linear-gradient(var(--x2),var(--x3))}
+.leaders{background:linear-gradient(var(--x3),var(--x4))}
+.news{background:linear-gradient(var(--x4),var(--s7) 70%,var(--s8))}
+.meet{background:linear-gradient(var(--s8),var(--s9))}
+.sky-live .intro,.sky-live .about,.sky-live .marks,.sky-live .projects,.sky-live .leaders,.sky-live .news,.sky-live .meet{background:none}
+
+/* ---------- header ---------- */
+.hdr{
+  position:sticky;top:0;z-index:100;height:var(--hh);
+  display:flex;align-items:center;gap:12px;padding:0 var(--side);
+  background:var(--hdr-bg);border-bottom:1px solid var(--line);
+  -webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);
+}
+.hdr__dawn{position:absolute;left:0;right:0;bottom:-1px;height:2px;transform-origin:0 50%;transform:scaleX(0);display:none;
+  background:linear-gradient(90deg,#17458F,#4B2F86,#A34C82,#E0746F,#FFD58C)}
+.sky-live .hdr__dawn{display:block}
+.brand{flex:none;display:flex;align-items:center;min-height:44px;padding:2px 10px;background:#fff;border-radius:12px;box-shadow:0 0 0 1px var(--line)}
+.brand img{height:42px;width:auto}
+@media (max-width:599px){ .brand{padding:2px 6px} .brand img{height:36px} }
+.nav{display:none;margin-left:auto}
+.nav ul{display:flex}
+.nav a{position:relative;display:flex;align-items:center;min-height:44px;padding:0 10px;font-size:14.5px;font-weight:500;color:var(--mist);text-decoration:none;white-space:nowrap;transition:color .25s}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:50%;bottom:4px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px 2px var(--hover-line)}
+.hdr__end{display:flex;align-items:center;gap:10px;margin-left:auto}
+.year{position:relative;display:none}
+.year select,.menu select{
+  -webkit-appearance:none;appearance:none;cursor:pointer;height:44px;padding:0 38px 0 16px;border-radius:999px;
+  border:1px solid var(--line);font-size:14.5px;font-weight:600;color:var(--ink);
+  background:var(--field-bg) var(--chev) no-repeat right 15px center;
+}
+.year select option,.menu select option{color:var(--dk);background:#fff}
+.year select:hover,.menu select:hover{border-color:var(--hover-line)}
+.burger,.mode{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer}
+.burger:hover,.mode:hover{border-color:var(--hover-line)}
+.burger__bars{position:relative;width:20px;height:10px}
+.burger__bars i{position:absolute;left:0;right:0;height:2px;border-radius:2px;background:var(--ink);transition:transform .35s cubic-bezier(.7,0,.2,1)}
+.burger__bars i:first-child{top:0}
+.burger__bars i:last-child{bottom:0}
+.burger[aria-expanded="true"] .burger__bars i:first-child{transform:translateY(4px) rotate(45deg)}
+.burger[aria-expanded="true"] .burger__bars i:last-child{transform:translateY(-4px) rotate(-45deg)}
+@media (min-width:600px){ .year{display:block} }
+@media (min-width:1180px){ .nav{display:block} .hdr__end{margin-left:12px} .burger{display:none} }
+
+/* sun in the day, moon at night: the moon's bite slides over the disc and the rays fold away */
+.mode svg{width:22px;height:22px;overflow:visible}
+.mode__disc{fill:var(--accent);transition:r .5s cubic-bezier(.7,0,.2,1)}
+.mode__bite{fill:#000;transition:transform .5s cubic-bezier(.7,0,.2,1)}
+.mode__rays{stroke:var(--accent);stroke-width:2;stroke-linecap:round;transform-origin:12px 12px;transition:transform .5s cubic-bezier(.7,0,.2,1),opacity .35s}
+[data-theme="light"] .mode__disc{r:5px}
+[data-theme="light"] .mode__bite{transform:translate(14px,-14px)}
+:root:not([data-theme="light"]) .mode__rays{transform:rotate(-60deg) scale(.4);opacity:0}
+
+/* ---------- mobile menu ---------- */
+.menu{
+  position:fixed;inset:0;z-index:90;overflow-y:auto;overscroll-behavior:contain;
+  padding:calc(var(--hh) + 40px) var(--side) 48px;display:flex;flex-direction:column;gap:32px;
+  background:var(--menu-bg);
+}
+.menu[hidden]{display:none}
+.menu li a{display:flex;align-items:center;min-height:52px;padding:2px 0;text-decoration:none;font:600 clamp(22px,6vw,36px)/1.1 var(--display);letter-spacing:-.02em}
+.menu li a[aria-current="page"]{color:var(--accent)}
+.menu li a:hover{color:var(--accent)}
+.menu .year{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:var(--mist);max-width:220px}
+.menu select{height:48px}
+
+/* ---------- shared ---------- */
+.wrap{width:min(1240px,calc(100% - 2 * var(--pad)));margin-inline:auto}
+.sec{position:relative;padding-block:clamp(88px,12vw,168px)}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.h2{font:600 clamp(34px,5.4vw,84px)/1.02 var(--display);letter-spacing:-.035em;text-wrap:balance}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;
+  font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap;cursor:pointer;
+  transition:background-color .25s,border-color .25s,color .25s,box-shadow .25s;
+}
+.btn svg{width:16px;height:16px}
+.btn--sun{background:linear-gradient(90deg,#FFD58C,#F6A87C);color:var(--dk);box-shadow:0 10px 40px -12px rgba(246,168,124,.8)}
+.btn--sun:hover{box-shadow:0 12px 48px -8px rgba(255,213,140,.95)}
+.btn--line{border:1.5px solid var(--btn-line);color:var(--ink)}
+.btn--line:hover{border-color:var(--accent);color:var(--accent)}
+.btn--dark{background:var(--dk);color:var(--night-ink)}
+.btn--dark:hover{background:#34225E}
+
+/* ---------- intro: hero window + figures (one scene when 3D) ---------- */
+.intro{position:relative}
+.hero{
+  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  gap:clamp(16px,3vh,32px);min-height:calc(100svh - var(--hh) - var(--note));
+  padding:clamp(20px,4vh,48px) var(--pad);
+}
+.hero__head{display:flex;flex-direction:column;align-items:center;gap:clamp(10px,1.8vh,18px)}
+.hero .eyebrow{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 26px}
+.hero .eyebrow>span+span::before{content:"";display:inline-block;width:5px;height:5px;margin:0 16px 2px -16px;border-radius:50%;background:currentColor;vertical-align:middle}
+.hero h1{font-weight:400;line-height:1}
+.hero__pre{display:block;margin-bottom:.2em;font:italic 400 clamp(24px,2.8vw,42px)/1.1 var(--serif);color:var(--accent)}
+.hero__name{
+  display:block;padding:0 .08em .06em;font:700 clamp(30px,min(9.6vw,15.5svh),156px)/.98 var(--display);letter-spacing:-.045em;
+}
+.hero__name:not(.is-split),.hero__name .c{
+  background:var(--name-grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero__name,.meet__day-vis{white-space:nowrap}
+.hero__name .c,.meet__day-vis .c{display:inline-block}
+.hero__name .c{padding:0 .07em;margin:0 -.07em}
+.hero__win{width:max(min(260px,100%),min(820px,100%,(100svh - var(--hh) - 400px) * 2.2))}
+.win{
+  position:relative;aspect-ratio:2.2/1;border-radius:clamp(14px,2vw,28px);overflow:hidden;background:var(--win-bg);
+  box-shadow:var(--win-shadow);
+}
+.win__slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.4s ease,transform 7s linear}
+.win__slides img.is-on{opacity:1;transform:scale(1)}
+.win::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,236,210,.25),inset 0 -60px 80px -40px rgba(6,13,38,.35)}
+.win__light{display:none}
+.hero__ctrl{display:flex;align-items:center;gap:2px}
+.dot{position:relative;width:44px;height:44px;border:0;background:none;cursor:pointer;border-radius:50%}
+.dot::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px;border-radius:4px;background:var(--dot);transition:width .35s,margin .35s,background-color .35s}
+.dot[aria-current="true"]::before{width:26px;margin-left:-13px;background:var(--accent)}
+.pause{display:grid;place-items:center;width:44px;height:44px;margin-left:6px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer}
+.pause svg{width:12px;height:12px;fill:var(--ink)}
+.pause:hover{border-color:var(--hover-line)}
+.pause[hidden]{display:none}
+
+.figs{position:relative;padding:clamp(72px,10vw,140px) var(--pad) clamp(88px,11vw,150px);text-align:center}
+.figs__head{margin-bottom:clamp(36px,5vw,64px)}
+.figs__head .h2{font-size:clamp(32px,4.4vw,60px);margin-top:10px}
+.figs__list{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:36px 24px;max-width:1240px;margin:0 auto}
+.fig__num{
+  font:700 clamp(34px,3.8vw,54px)/1.05 var(--display);letter-spacing:-.04em;white-space:nowrap;
+  background:var(--num-grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.fig--long .fig__num{font-size:clamp(24px,2.3vw,34px)}
+.fig__label{margin-top:12px;font-size:12.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+
+/* 3D scene (JS adds .is-3d under motion) */
+.intro.is-3d{height:calc(100svh - var(--hh));overflow:hidden;overflow:clip}
+.intro.is-3d .hero{position:absolute;inset:0;z-index:2;min-height:0;padding-bottom:calc(clamp(20px,4vh,48px) + var(--note))}
+.intro.is-3d .hero__name{perspective:700px}
+.intro.is-3d .win__light{display:block;position:absolute;inset:0;background:radial-gradient(closest-side,rgba(255,250,238,.97),rgba(255,222,176,.8) 55%,rgba(246,168,124,.6))}
+.intro.is-3d .figs{position:absolute;inset:0;z-index:1;padding:0}
+.intro.is-3d .figs::before{content:"";position:absolute;left:50%;top:56%;width:min(900px,120vw);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(255,213,140,.2),rgba(163,76,130,.12) 40%,transparent 68%)}
+.intro.is-3d .figs__head{position:absolute;left:0;right:0;top:clamp(20px,6vh,64px);margin:0;padding:0 var(--pad)}
+.intro.is-3d .figs__list{position:absolute;inset:0;display:block;max-width:none;perspective:1100px;perspective-origin:50% 50%}
+.intro.is-3d .fig{position:absolute;left:50%;top:57%;width:max-content;will-change:transform,opacity}
+.intro.is-3d .fig__num{font-size:clamp(60px,min(12vw,22svh),184px);line-height:1}
+.intro.is-3d .fig--long .fig__num{font-size:clamp(34px,min(8vw,15svh),124px)}
+.intro.is-3d .fig__label{font-size:clamp(12.5px,1.25vw,16px);margin-top:.9em}
+
+/* ---------- about ---------- */
+.about__grid{display:grid;gap:clamp(40px,6vw,96px);align-items:center}
+@media (min-width:900px){ .about__grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr)} }
+.emblem{position:relative;display:grid;place-items:center;width:min(100%,420px);aspect-ratio:1;margin-inline:auto}
+@media (max-width:899px){ .emblem{width:min(78%,300px)} }
+.emblem__glow{position:absolute;inset:4%;border-radius:50%;background:radial-gradient(circle,rgba(255,206,150,.55),rgba(255,150,130,.18) 45%,transparent 70%)}
+.emblem__ring{position:absolute;border-radius:50%;border:1px solid var(--ring)}
+.emblem__ring:nth-of-type(2){inset:0}
+.emblem__ring:nth-of-type(3){inset:11%;border-style:dashed;border-color:var(--ring-dash)}
+.emblem__ring:nth-of-type(4){inset:22%;border-color:var(--ring-in)}
+.emblem__plate{position:relative;display:grid;place-items:center;width:min(52%,210px);aspect-ratio:1;border-radius:50%;background:#fff;overflow:hidden;
+  box-shadow:0 0 0 8px rgba(255,255,255,.1),0 0 90px 10px rgba(255,190,130,.45)}
+.emblem__plate img{width:78%;height:auto}
+.about__lead{margin:.55em 0 .7em;font:400 clamp(26px,3vw,44px)/1.16 var(--serif);letter-spacing:-.005em;text-wrap:pretty}
+.about__lead em{font-style:italic;color:var(--accent)}
+.about__body p{max-width:62ch;color:var(--mist)}
+.about__body p+p{margin-top:1em}
+.about__cta{margin-top:32px}
+
+/* ---------- landmark projects: the drum ---------- */
+.marks__head{max-width:820px;margin:0 auto clamp(40px,6vw,80px);text-align:center}
+.marks__intro{margin-top:1.2em;color:var(--mist)}
+.drum{position:relative;max-width:980px;margin:0 auto;counter-reset:m}
+.drum li{
+  display:grid;grid-template-columns:auto 1fr;gap:6px 20px;align-items:baseline;padding:clamp(14px,2vh,22px) 0;
+  border-top:1px solid var(--line);font:500 clamp(18px,2.3vw,32px)/1.22 var(--display);letter-spacing:-.025em;
+}
+.drum li::before{counter-increment:m;content:counter(m,decimal-leading-zero);font:600 13px/1 var(--sans);letter-spacing:.16em;color:var(--accent)}
+.drum.is-live li{grid-template-columns:1fr;justify-items:center;text-align:center;border-top-color:transparent;will-change:transform,opacity}
+.drum.is-live li::before{color:var(--mist);transition:color .3s}
+.drum.is-live li.is-on::before{color:var(--accent)}
+
+/* ---------- projects: tunnel (desktop, motion) / list ---------- */
+.tunnel{position:relative;padding:clamp(88px,11vw,150px) var(--pad)}
+.tunnel__head{text-align:center;margin-bottom:clamp(36px,5vw,64px)}
+.tunnel__head .h2{margin-top:10px}
+.tunnel__cards{display:grid;gap:22px;max-width:1240px;margin:0 auto;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.pcard article{position:relative;display:flex;flex-direction:column;height:100%;border-radius:20px;overflow:hidden;
+  background:var(--card-bg);border:1px solid var(--card-line);box-shadow:var(--card-shadow)}
+.pcard article:has(a:focus-visible){outline:3px solid var(--accent);outline-offset:3px}
+.pcard__img{aspect-ratio:4/3;overflow:hidden;background:var(--card-img)}
+.pcard__img img{width:100%;height:100%;object-fit:cover}
+.pcard__body{display:flex;flex-direction:column;gap:8px;flex:1;padding:18px 20px 20px}
+.pcard__meta{display:flex;flex-wrap:wrap;gap:2px 14px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.pcard__meta time{color:var(--mist)}
+.pcard__title{font:600 clamp(16px,1.3vw,19px)/1.28 var(--display);letter-spacing:-.02em}
+.pcard__title a{text-decoration:none}
+.pcard__title a::after{content:"";position:absolute;inset:0;z-index:1}
+.pcard__title a:focus-visible{outline:none}
+.pcard__desc{font-size:15px;line-height:1.55;color:var(--mist);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.pcard__more{margin-top:auto;padding-top:4px;font-size:14px;font-weight:600;color:var(--ink)}
+.pcard article:hover .pcard__more{color:var(--accent)}
+.tunnel__end{margin-top:48px;text-align:center}
+.tunnel__gauge,.tunnel__light,.tunnel__sparks{display:none}
+
+/* clip (not hidden): no scroll container, so focusing a card can never scroll the stage's contents */
+.projects.is-tunnel .tunnel{height:calc(100svh - var(--hh));padding:0;overflow:hidden;overflow:clip}
+/* the full-stage card layer sits above the end button (z1): only the cards themselves take the pointer */
+.is-tunnel .tunnel__cards{position:absolute;inset:0;z-index:2;display:block;max-width:none;perspective:900px;pointer-events:none}
+.is-tunnel .pcard{position:absolute;left:50%;top:50%;width:var(--w);will-change:transform,opacity;pointer-events:auto}
+.is-tunnel .pcard__img{aspect-ratio:var(--ar)}
+.is-tunnel .pcard__desc{display:none}
+.is-tunnel .tunnel__head,.is-tunnel .tunnel__end{position:absolute;inset:0;z-index:3;margin:0;display:grid;place-content:center;text-align:center;pointer-events:none}
+.is-tunnel .tunnel__head .h2{font-size:clamp(52px,8.6vw,132px)}
+/* the title starts in front of the first two (small, distant) photos: glyph-hugging scrim */
+.is-tunnel .tunnel__head>div{text-shadow:var(--scrim)}
+.is-tunnel .tunnel__end{z-index:1}
+.is-tunnel .tunnel__end .btn{pointer-events:auto}
+.is-tunnel .tunnel__light{display:block;position:absolute;left:50%;top:50%;width:70vmin;height:70vmin;margin:-35vmin 0 0 -35vmin;border-radius:50%;z-index:0;will-change:transform;
+  background:radial-gradient(circle,rgba(255,222,170,.42),rgba(255,150,130,.12) 42%,transparent 70%)}
+.is-tunnel .tunnel__sparks{display:block;position:absolute;inset:0;z-index:1;perspective:900px;pointer-events:none}
+.spark{position:absolute;left:50%;top:50%;width:3px;height:3px;margin:-1.5px;border-radius:2px;background:var(--spark);box-shadow:0 0 8px 1px var(--spark-glow)}
+.is-tunnel .tunnel__gauge{display:flex;align-items:baseline;gap:6px;position:absolute;right:var(--pad);bottom:24px;z-index:4;font-weight:600;font-size:13px;letter-spacing:.18em;color:var(--mist)}
+.tunnel__gauge b{font:600 26px/1 var(--display);letter-spacing:-.02em;color:var(--ink)}
+
+/* ---------- leadership: portraits rising over a horizon ---------- */
+.leaders .h2{text-align:center;margin-bottom:clamp(44px,6vw,84px)}
+.people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 16px;max-width:1160px;margin:0 auto}
+@media (min-width:900px){ .people{grid-template-columns:repeat(4,minmax(0,1fr));gap:36px} }
+.person{display:flex;flex-direction:column;align-items:center;text-align:center}
+.arch{position:relative;width:min(100%,250px);margin-bottom:22px}
+.arch__halo{position:absolute;inset:-8% -8% 8%;border-radius:50%;background:radial-gradient(circle at 50% 58%,rgba(255,206,150,.6),rgba(255,140,130,.2) 45%,transparent 70%)}
+.arch__win{position:relative;aspect-ratio:4/5;border-radius:999px 999px 14px 14px;overflow:hidden;background:linear-gradient(#4B2F86,#6B2F80)}
+.arch__win::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,226,196,.45)}
+.arch__win img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.arch::after{content:"";position:absolute;left:-6%;right:-6%;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,220,170,.9),transparent)}
+[data-theme="light"] .arch::after{background:linear-gradient(90deg,transparent,rgba(163,35,74,.6),transparent)}
+.person__role{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mist)}
+.person__name{margin-top:8px;font:600 clamp(16px,1.5vw,20px)/1.25 var(--display);letter-spacing:-.02em}
+.person__bio{margin-top:10px;max-width:34ch;font-size:14.5px;line-height:1.55;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+@media (max-width:599px){ .person__bio{font-size:14px;-webkit-line-clamp:4} }
+
+/* ---------- newsletters: a sheet (cream at night, white by day) ---------- */
+.sheet{
+  position:relative;display:grid;gap:clamp(28px,4vw,56px);color:var(--dk);background:var(--sheet);
+  border-radius:clamp(20px,3vw,36px);padding:clamp(28px,5vw,72px);
+  box-shadow:var(--sheet-shadow);
+}
+.sheet::before{content:"";position:absolute;left:clamp(28px,5vw,72px);right:clamp(28px,5vw,72px);top:0;height:4px;border-radius:0 0 4px 4px;background:linear-gradient(90deg,#17458F,#4B2F86,#A34C82,#E0746F,#FFD58C)}
+@media (min-width:900px){ .sheet{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center} }
+.sheet .eyebrow{color:var(--berry)}
+.sheet .h2{margin-top:10px;color:var(--dk);font-size:clamp(30px,3.4vw,52px)}
+.sheet__text{margin-top:18px;color:var(--dk2);max-width:40ch}
+.issues{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2.4vw,28px)}
+.issue a{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit;border-radius:16px}
+.cover{
+  position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:16px;color:var(--night-ink);
+  display:flex;flex-direction:column;gap:8px;padding:clamp(14px,2vw,26px);
+  background:linear-gradient(172deg,#0A1840 0%,#2C3A8E 48%,#6B2F80 100%);
+  box-shadow:0 26px 50px -26px rgba(28,18,54,.75);
+}
+.cover__sun{position:absolute;left:5%;right:5%;bottom:-40%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,#FFF4D6 0 22%,#FFD58C 34%,#F6A87C 46%,rgba(224,116,111,.45) 58%,transparent 70%)}
+.cover__name{position:relative;font:italic 400 clamp(26px,3vw,44px)/1 var(--serif)}
+.cover__month{position:relative;font-size:clamp(11px,1vw,13px);font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.issue__foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 10px;min-height:44px;margin-top:12px;font-size:14.5px}
+.issue__foot time{color:var(--dk2);font-weight:500}
+.issue__cta{display:inline-flex;align-items:center;gap:6px;font-weight:600}
+.issue__cta svg{width:14px;height:14px}
+.issue a:hover .issue__cta{color:var(--berry)}
+
+/* ---------- meet: the sunrise (same warm ground in both modes) ---------- */
+.meet{position:relative;overflow:hidden;color:var(--dk);text-align:center;padding-top:clamp(96px,12vw,168px)}
+.sun{position:absolute;left:50%;top:30%;width:min(96vw,900px);aspect-ratio:1;margin-left:calc(min(96vw,900px) / -2);border-radius:50%;z-index:0;
+  background:radial-gradient(circle,#FFFBEF 0 18%,#FFEDBE 28%,rgba(255,213,140,.8) 40%,rgba(246,168,124,.4) 55%,transparent 70%)}
+.meet__copy{position:relative;z-index:2;padding-bottom:clamp(150px,24vw,330px)}
+.meet .h2{color:var(--dk)}
+.meet__day{margin:.2em 0 .12em;font:800 clamp(44px,11vw,176px)/.95 var(--display);letter-spacing:-.05em}
+.meet__day-vis{display:inline-block;perspective:600px}
+.meet__time{font:600 clamp(22px,2.6vw,36px)/1.15 var(--display);letter-spacing:-.02em}
+.meet address{max-width:36ch;margin:16px auto 28px;font-style:normal;font-size:17px;line-height:1.55;font-weight:500}
+.hills{position:absolute;left:0;right:0;bottom:-1px;height:clamp(120px,20vw,300px);z-index:1}
+.hill{position:absolute;left:0;bottom:0;width:100%;height:100%}
+.hill--back path{fill:var(--hill-back)}
+.hill--mid path{fill:var(--hill-mid)}
+.hill--front path{fill:var(--hill)}
+
+/* ---------- footer: the front hill (night palette in both modes) ---------- */
+/* .hills{bottom:-1px} is clipped by .meet{overflow:hidden}; overlap here instead so no sky hairline shows */
+.foot{position:relative;margin-top:-1px;background:var(--hill);color:var(--night-ink);padding:clamp(20px,3vw,36px) 0 clamp(36px,5vw,56px)}
+.foot__row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
+.foot__club{display:flex;align-items:center;gap:16px}
+.foot__logo{flex:none;width:72px;height:72px;padding:5px;border-radius:50%;background:#fff;object-fit:contain}
+.foot__name{font:600 19px/1.25 var(--display);letter-spacing:-.02em}
+.foot__dist{font-size:14.5px;color:var(--night-mist)}
+.socials{display:flex;gap:8px}
+.socials a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(217,212,245,.28);transition:border-color .25s,color .25s}
+.socials a:hover{border-color:var(--night-accent);color:var(--night-accent)}
+.socials svg{width:18px;height:18px}
+.foot__admin{display:inline-flex;align-items:center;min-height:44px;font-size:14.5px;font-weight:600;text-decoration:none;border-bottom:1px solid transparent}
+.foot__admin:hover{color:var(--night-accent)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<p class="note" role="note">Design sample - Theme 8 option H: Sunrise Depth, day and night. Built from Thane Hills' own data. Page links are inactive.</p>
+
+<div class="sky" aria-hidden="true">
+  <div class="sky__band"></div>
+  <div class="sky__stars"><i class="st st--a"></i><i class="st st--b"></i></div>
+  <div class="sky__glow sky__glow--a"></div>
+  <div class="sky__glow sky__glow--b"></div>
+  <div class="sky__horizon"></div>
+  <div class="sky__grain"></div>
+</div>
+
+<header class="hdr" id="hdr">
+  <a class="brand" href="#"><img data-src="rotaryLogo" alt="Rotary Club of Thane Hills" width="900" height="240"></a>
+  <nav class="nav" aria-label="Main"><ul data-menu></ul></nav>
+  <div class="hdr__end">
+    <label class="year"><span class="sr-only">Rotary year</span><select data-years></select></label>
+    <button class="mode" type="button" aria-pressed="true"><span class="sr-only">Dark mode</span><svg viewBox="0 0 24 24" aria-hidden="true"><mask id="mode-m"><rect width="24" height="24" fill="#fff"/><circle class="mode__bite" cx="18" cy="7" r="7"/></mask><circle class="mode__disc" cx="12" cy="12" r="9" mask="url(#mode-m)"/><g class="mode__rays" fill="none"><path d="M12 1.5v2.2M12 20.3v2.2M1.5 12h2.2M20.3 12h2.2M4.6 4.6l1.5 1.5M17.9 17.9l1.5 1.5M4.6 19.4l1.5-1.5M17.9 6.1l1.5-1.5"/></g></svg></button>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu"><span class="sr-only" data-burger-label>Open menu</span><span class="burger__bars" aria-hidden="true"><i></i><i></i></span></button>
+  </div>
+  <span class="hdr__dawn" aria-hidden="true"></span>
+</header>
+
+<div class="menu" id="menu" hidden data-lenis-prevent>
+  <nav aria-label="Menu"><ul data-menu></ul></nav>
+  <label class="year">Rotary year<select data-years></select></label>
+</div>
+
+<main id="main" tabindex="-1">
+  <div class="intro">
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="hero__head">
+        <p class="eyebrow"><span>District <span data-text="district"></span></span><span>Rotary year <span data-text="year"></span></span></p>
+        <h1 id="hero-h"><span class="sr-only" data-text="club"></span><span class="hero__pre" aria-hidden="true">Rotary Club of</span><span class="hero__name" aria-hidden="true" data-text="short"></span></h1>
+      </div>
+      <div class="hero__win">
+        <div class="win"><div class="win__slides" data-slides></div><div class="win__light" aria-hidden="true"></div></div>
+      </div>
+      <div class="hero__ctrl" role="group" aria-label="Banner slideshow">
+        <span data-dots></span>
+        <button class="pause" type="button" aria-pressed="false"><span class="sr-only">Pause slideshow</span><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg></button>
+      </div>
+    </section>
+
+    <section class="figs" id="impact" aria-labelledby="figs-h">
+      <div class="figs__head"><p class="eyebrow">Rotary year <span data-text="year"></span></p><h2 class="h2" id="figs-h">Our impact</h2></div>
+      <ul class="figs__list" data-figs></ul>
+    </section>
+  </div>
+
+  <section class="sec about" id="about" aria-labelledby="about-h" data-sky=".30">
+    <div class="wrap about__grid">
+      <div class="emblem">
+        <div class="emblem__glow" aria-hidden="true"></div>
+        <div class="emblem__ring" aria-hidden="true"></div>
+        <div class="emblem__ring" aria-hidden="true"></div>
+        <div class="emblem__ring" aria-hidden="true"></div>
+        <div class="emblem__plate"><img data-src="clubLogo" alt="Rotary Club of Thane Hills club logo" width="191" height="191" loading="lazy"></div>
+      </div>
+      <div class="about__text">
+        <p class="eyebrow" data-overview></p>
+        <h2 class="h2 fly" id="about-h">About the club</h2>
+        <p class="about__lead" data-lead></p>
+        <div class="about__body" data-history></div>
+        <div class="about__cta"><a class="btn btn--line" href="#">More about the club</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec marks" id="landmarks" aria-labelledby="marks-h" data-sky=".40">
+    <div class="wrap">
+      <div class="marks__head">
+        <h2 class="h2 fly" id="marks-h">Landmark projects</h2>
+        <p class="marks__intro" data-marks-intro></p>
+      </div>
+      <ol class="drum" data-marks></ol>
+    </div>
+  </section>
+
+  <section class="projects" id="projects" aria-labelledby="proj-h" data-sky=".50">
+    <div class="tunnel">
+      <div class="tunnel__light" aria-hidden="true"></div>
+      <div class="tunnel__sparks" aria-hidden="true"></div>
+      <div class="tunnel__head"><div><p class="eyebrow">Rotary year <span data-text="year"></span></p><h2 class="h2 fly" id="proj-h">Our projects</h2></div></div>
+      <ul class="tunnel__cards" data-projects></ul>
+      <div class="tunnel__end"><div><a class="btn btn--sun" href="#">View all projects<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div></div>
+      <p class="tunnel__gauge" aria-hidden="true"><b data-gauge>01</b><span data-gauge-total></span></p>
+    </div>
+  </section>
+
+  <section class="sec leaders" id="leadership" aria-labelledby="lead-h" data-sky=".66">
+    <div class="wrap">
+      <h2 class="h2 fly" id="lead-h">Leadership</h2>
+      <ul class="people" data-people></ul>
+    </div>
+  </section>
+
+  <section class="sec news" id="newsletters" aria-labelledby="news-h" data-sky=".78">
+    <div class="wrap">
+      <div class="sheet">
+        <div>
+          <p class="eyebrow" data-news-name></p>
+          <h2 class="h2" id="news-h">Newsletters</h2>
+        </div>
+        <ul class="issues" data-news></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="meet" id="meet" aria-labelledby="meet-h" data-sky=".90">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="wrap meet__copy">
+      <h2 class="h2 fly" id="meet-h">Where we meet</h2>
+      <p class="meet__day"><span class="sr-only" data-text="meetDay"></span><span class="meet__day-vis" aria-hidden="true" data-text="meetDay"></span></p>
+      <p class="meet__time" data-text="meetTime"></p>
+      <address data-text="meetVenue"></address>
+      <a class="btn btn--dark" data-maps href="#" target="_blank" rel="noopener">Open in Maps<span class="sr-only"> (opens in a new tab)</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13"/></svg></a>
+    </div>
+    <div class="hills" aria-hidden="true">
+      <svg class="hill hill--back" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0 150C170 96 300 84 450 118S730 60 900 96S1230 62 1440 104V320H0Z" fill="#B85E86"/></svg>
+      <svg class="hill hill--mid" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0 206C160 168 330 150 520 186S860 136 1050 172S1320 150 1440 178V320H0Z" fill="#74377C"/></svg>
+      <svg class="hill hill--front" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0 256C210 224 390 218 610 244S990 206 1190 236S1390 226 1440 232V320H0Z" fill="#2A1843"/></svg>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" data-sky=".985">
+  <div class="wrap foot__row">
+    <div class="foot__club">
+      <img class="foot__logo" data-src="clubLogo" alt="Rotary Club of Thane Hills club logo" width="191" height="191" loading="lazy">
+      <div><p class="foot__name" data-text="club"></p><p class="foot__dist">District <span data-text="district"></span></p></div>
+    </div>
+    <ul class="socials" data-socials aria-label="Social media"></ul>
+    <a class="foot__admin" href="#">Admin login</a>
+  </div>
+</footer>
+
+<script src="../vendor/gsap.min.js"></script>
+<script src="../vendor/ScrollTrigger.min.js"></script>
+<script src="../vendor/SplitText.min.js"></script>
+<script src="../vendor/lenis.min.js"></script>
+
+<!-- 1. Data + rendering. Runs with or without motion; everything it builds is visible. -->
+<script>
+(function () {
+  "use strict";
+  var D = {
+    club: "Rotary Club of Thane Hills", short: "Thane Hills", district: "3142", year: "2026–27",
+    rotaryLogo: "https://rizones45678.org/API/Documents/WebsiteData/Group1/LOGO/UpperLogo_a8029d9327634b199550d6b2050e100d.png",
+    clubLogo: "https://rizones45678.org/API/Documents/group/club_logo_3686e0c78f04411893de23ec6bf36c6d.png",
+    about: "Rotary Club of Thane Hills – An overview Rotary Club of Thane Hills (RCTH) was chartered on May 20, 1991. The idea of this club was sown sometime around October 1990 when a group of like-minded professionals and businessmen came together to form a new Rotary club. The idea of this new club was mooted by Rotary Club of Thane North, with strong support from the then President Nana Khambete and PP Suresh Dhawan. The initial meetings of this group were held at Mr. Bhoomreddi’s residence and after the initial work of 7 months; the club got its charter. RCTH started its journey under the able leadership of PP Late Vasant Zalani as the Club President and PP (Dr.) Suhas Kulkarni as the Club Secretary. There were about thirty charter members and it is a matter of pride for us that a good number of those charter members continue to be the members of this prestigious club. In the last 30 years of its existence, RCTH has grown by leaps and bounds and has turned into a strong tree from a sapling sown 30 years back. Today, the club’s strength has risen to 105 members and growing steadily with every passing year. In all these years, RCTH has been led by very able leaders and teams, who have made this club as one of the leading clubs in the District and the Rotary world. Every year, RCTH has undertaken numerous projects for the community welfare. In 2000, RCTH founded a charitable Trust called Triumph Foundation and executes various social initiatives and community-based projects through this foundation. Besides the annual projects like the Triumph Run (sports events for special children), Blood Donation Camps, Senior Citizen Health check-ups, Vocational Guidance Seminars, RCTH has undertaken some huge projects in the past. Listed below are a few of our Landmark projects: Earthen Dam Project at Shirol Tribal Employment Scheme Self-employment Centre for Destitute women at Premdhaan at Airoli, New Mumbai Triumph Garden at Jidd School Infrastructure for Vocational Training in Special School Upgradation for Crematorium at Thane Career Training Centre at Holy Cross Convent Special school at Thane Infrastructual Assistance to Tribal school, Utavali Village, Wada. Triumph Blood Bank and Thalassemia Day-care centre ‘Right to Go’ – building Toilet blocks for villagers in Sogav. Check dams at Shahpur and Murbad ‘Virtual eye’ – a learning tool for visually-impaired Pediatric Heart surgeries ‘Mission for Vision’ – Eye sight corrective surgeries Hamari Pari – Installation of sanitary pad machines in schools Rotarian Rakesh Wadhawan Memorial Education Complex at Shenve village, Taluka shahpur Check dams at ambadi and umroli in shahpur Joint venture between Triump Foundation and Seetabai Gadgil Trust Eye care center at Thane",
+    banners: [
+      "https://rizones45678.org/API/uploads/banner/e2e31bc4-b8d5-4f1a-be78-4cc109962da0.jpg",
+      "https://rizones45678.org/API/uploads/banner/449dddc4-53c4-4ce3-935f-f3496647eb5b.jpg",
+      "https://rizones45678.org/API/uploads/banner/d22b9e0f-665a-42bc-9d75-bf91181067f1.jpg"
+    ],
+    figures: { beneficiaries: 6752, projects: 32, manHours: 686, totalCost: 1021500, members: 121 },
+    featured: [
+      { id: 31327, title: "Project 23- Drug Deaddiction Awareness @ RS Deokar", desc: "Today, under the Rotary Club of Thane Hills’ Drug Deaddiction Awareness Initiative, I had the privilege of conducting an interactive session on Drug Awareness for 120 students of standard 9th & 10th of R.S. Deokar School. The session focused on understanding a", avenue: "Community Service", date: "2026-08-25", w: 1387, h: 780, img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album31327/2d84e808-bb52-4c0a-a214-2c9b007b19f5.png" },
+      { id: 28602, title: "Project 22: Blood Donation Camp at Fortress", desc: "We are pleased to share the success of our Blood Donation Drive today at Fortress Office An impressive 35 units of blood were collected during the camp. Kudos to Hillers Kumar and Anuradha for donating blood. Attended by President Dr Anagha Karkhanis, CS Vasan", avenue: "Community Service", date: "2026-08-21", w: 720, h: 960, img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28602/b450feb3-9d35-4e2a-a5a4-5e7ed88d938b.png" },
+      { id: 28658, title: "Press Coverage: Ganapati Idol making workshop", desc: "Ganapati Idol making workshop was covered in Indian Express", avenue: "Public Image", date: "2026-08-12", w: 746, h: 995, img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28658/16c61874-f0ca-4087-b001-7d83a84ba24b.png" },
+      { id: 28603, title: "Project 21: Annapoorna Drive at Yogi Hills", desc: "August 12, 2026, our Rotary Club of Thane Hills team successfully completed another Annapurna distribution at Yogi Hills, reaching out to 1,000 visually challenged beneficiaries! We distributed essential household kits containing food grains, pulses, tea, toot", avenue: "Community Service", date: "2026-08-12", w: 1600, h: 900, img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28603/f17131c6-236f-4102-b304-e86593b06298.png" },
+      { id: 34259, title: "Press Coverage: Orchestra for specially abled", desc: "News of RCTH organized orchestra for specially abled covered in Indian Express", avenue: "Public Image", date: "2026-08-11", w: 734, h: 979, img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album34259/f517b14b-76bf-4b6a-8774-ba66ccb5de67.png" },
+      { id: 28634, title: "Rotaract Club of Thane Hills Installation", desc: "The Installation Ceremony of the Rotaract Club of Thane Hills marked the beginning of a new year filled with leadership, service, and fellowship. The new President, Rtr. Prajakta Bhadadare, along with her team, was formally inducted and entrusted with the resp", avenue: "New Generation Service", date: "2026-08-09", w: 1200, h: 1600, img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28634/29e9cb35-2a10-4ff5-8dbb-0c56ac307e02.png" },
+      { id: 28605, title: "Project 20: Musical event for Specially abled", desc: "🌟 Project 20 Musical event for Specially abled children by visually challenged students 🌟 Rotary Club of Thane Hills hosted a beautiful musical morning where visually challenged students from Pragati Andh Vidyalay, Badlapur presented a soulful orchestra for sp", avenue: "Community Service", date: "2026-08-09", w: 1280, h: 720, img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28605/b343681b-3aaa-463f-87e6-541530889d14.png" }
+    ],
+    people: [
+      { role: "Club President", name: "Anagha Amit Karkhanis", w: 159, h: 196, img: "https://rizones45678.org/API/Documents/directory/anagha28022023120212PM.jpg", bio: "Dr Anagha Karkhanis is a Consultant Gynaecologist with expertise in IVF, Cosmetic Gynaecology, Urogynaecology and Facial Aesthetics. Her academic achievements include MRCPI(Ireland), FRM(Germany), MRM(UK), DOWH(Ireland)," },
+      { role: "Club Secretary", name: "Vasant Bhat", w: 1024, h: 1024, img: "https://rizones45678.org/API/Documents/directory/20082023092950PM.png", bio: "" },
+      { role: "District Governor, 3142", name: "Nilesh Vinayak Jaywant", w: 398, h: 513, img: "https://rizones45678.org/API/Documents/directory/DA2C741D-0B64-4185-B35C-10A258BA409219122024113304AM.jpeg", bio: "Dr Nilesh Vinayak Jaywant was born on 27th March 1970, at Chembur Mumbai. He did his schooling from the St John Baptist High School, Thane, Maharashtra. Being a very bright student, he won many awards" },
+      { role: "President, Rotary International 2026-27", name: "Olayinka Hakeem Babalola", w: 288, h: 288, img: "https://rizones45678.org/API/Documents/WebsiteData/International_President/PRESIDENT020720261207057300549PM.jpg", bio: "Olayinka Hakeem Babalola, a member of the Rotary Club of Trans Amadi, Nigeria, has been selected by the Board of Directors to become Rotary International’s president for 2026-27. His term will begin o" }
+    ],
+    newsletters: [
+      { title: "August 2026- Hill Echoes", date: "2026-08-04", url: "https://rizones45678.org/API/Documents/ebulletin/Group1/AUGUST_-_2026_8663f9e604082026091523PM.pdf" },
+      { title: "July 2026- Hill Echoes", date: "2026-07-10", url: "https://rizones45678.org/API/Documents/ebulletin/Group1/July_2026-_Hill_Echoes_bb63aea210072026103527PM.pdf" }
+    ],
+    meeting: { day: "Thursday", time: "19:30–21:30", venue: "Smt. Savitridevi Thirani Highschools, Road No. 1, Vartak Nagar, Thane West, Maharashtra 400606" },
+    socials: [
+      { platform: "facebook", linkUrl: "https://www.facebook.com/rcthanehills/" },
+      { platform: "instagram", linkUrl: "https://www.instagram.com/rotaryclubofthanehills/?hl=en" },
+      { platform: "linkedin", linkUrl: "https://www.linkedin.com/company/rotary-club-of-thane-hills/" },
+      { platform: "twitter", linkUrl: "https://twitter.com/RCThaneHills" }
+    ]
+  };
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var fix = function (s) { return String(s == null ? "" : s).replace(/�/g, "’"); };
+  var esc = function (s) { return fix(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var noEmoji = function (s) { return s.replace(/\p{Extended_Pictographic}️?/gu, "").replace(/\s{2,}/g, " ").trim(); };
+  /* API excerpts (~200+ chars) stop mid-word: keep whole sentences when most of the text survives,
+     else end on a word. A "sentence end" needs a real word before it, so "Rtr." / "Dr." never count. */
+  var trimText = function (s) {
+    s = noEmoji(fix(s)).trim();
+    if (s.length < 180 || /[.!?]$/.test(s)) return s;
+    var re = /[.!?] /g, m, cut = -1;
+    while ((m = re.exec(s))) {
+      var w = s.slice(0, m.index).match(/(\S+)$/);
+      if (w && (/\d$/.test(w[1]) || w[1].replace(/[^A-Za-z]/g, "").length > 3)) cut = m.index;
+    }
+    if (cut > s.length * 0.4) return s.slice(0, cut + 1);
+    return s.slice(0, s.lastIndexOf(" ")).replace(/[,;:\s]+$/, "") + "…";
+  };
+  var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  var fmtDate = function (d) { var p = d.split("-"); return +p[2] + " " + MON[+p[1] - 1] + " " + p[0]; };
+  var fmtNum = function (n, money) { return (money ? "₹" : "") + Math.round(n).toLocaleString("en-IN"); };
+
+  /* ---- simple bindings ---- */
+  var TEXT = { club: D.club, short: D.short, district: D.district, year: D.year, meetDay: D.meeting.day, meetTime: D.meeting.time, meetVenue: D.meeting.venue };
+  $$("[data-text]").forEach(function (el) { el.textContent = fix(TEXT[el.getAttribute("data-text")]); });
+  $$("[data-src]").forEach(function (el) { el.src = D[el.getAttribute("data-src")]; });
+  $("[data-maps]").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(fix(D.meeting.venue));
+
+  /* ---- menu + year ---- */
+  var MENU = ["Home", "About", "Directory", "Directors", "Calendar", "Projects", "Past Presidents", "Events"];
+  $$("[data-menu]").forEach(function (ul) {
+    ul.innerHTML = MENU.map(function (m, i) { return '<li><a href="#"' + (i ? "" : ' aria-current="page"') + ">" + m + "</a></li>"; }).join("");
+  });
+  $$("[data-years]").forEach(function (s) { s.innerHTML = "<option selected>" + esc(D.year) + "</option>"; });
+
+  /* ---- hero banners ---- */
+  $("[data-slides]").innerHTML = D.banners.map(function (u, i) {
+    return '<img src="' + u + '" alt="Banner ' + (i + 1) + " of " + D.banners.length + '" width="1700" height="530"' + (i ? "" : ' class="is-on" fetchpriority="high"') + ">";
+  }).join("");
+  $("[data-dots]").innerHTML = D.banners.map(function (u, i) {
+    return '<button class="dot" type="button"' + (i ? "" : ' aria-current="true"') + '><span class="sr-only">Show banner ' + (i + 1) + " of " + D.banners.length + "</span></button>";
+  }).join("");
+
+  /* ---- figures ---- */
+  var FIGS = [
+    { k: "beneficiaries", label: "Beneficiaries" }, { k: "projects", label: "Projects" }, { k: "manHours", label: "Man-hours" },
+    { k: "totalCost", label: "Total cost", money: true }, { k: "members", label: "Members" }
+  ];
+  $("[data-figs]").innerHTML = FIGS.map(function (f) {
+    var v = fmtNum(D.figures[f.k], f.money);
+    return '<li class="fig' + (v.length > 7 ? " fig--long" : "") + '"><p class="fig__num" aria-hidden="true">' + v + '</p><p class="fig__label" aria-hidden="true">' + f.label + '</p><span class="sr-only">' + v + " " + f.label + "</span></li>";
+  }).join("");
+
+  /* ---- about: split the club's own text into lead / history / landmarks ---- */
+  var A = fix(D.about);
+  var startAt = A.indexOf("Rotary Club of Thane Hills (RCTH)");
+  var overview = A.slice(0, startAt).replace(/^.*?[–-]\s*/, "").trim();
+  var rest = A.slice(startAt);
+  var LM = "Listed below are a few of our Landmark projects:";
+  var hist = rest.slice(0, rest.indexOf(LM)).trim();
+  var lmText = rest.slice(rest.indexOf(LM) + LM.length).trim();
+  var paras = [], from = 0;
+  ["The idea of this club", "RCTH started its journey", "In the last 30 years", "Every year, RCTH"].forEach(function (k) {
+    var i = hist.indexOf(k, from); paras.push(hist.slice(from, i).trim()); from = i;
+  });
+  paras.push(hist.slice(from).trim());
+  $("[data-overview]").textContent = overview;
+  $("[data-lead]").innerHTML = esc(paras[0]).replace(/(May 20, 1991)/, "<em>$1</em>");
+  $("[data-history]").innerHTML = paras.slice(1, 4).map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
+  $("[data-marks-intro]").textContent = paras[4];
+  var STARTS = ["Earthen Dam", "Tribal Employment", "Self-employment Centre", "Triumph Garden", "Infrastructure for Vocational", "Upgradation for Crematorium",
+    "Career Training Centre", "Infrastructual Assistance", "Triumph Blood Bank", "‘Right to Go’", "Check dams at Shahpur", "‘Virtual eye’",
+    "Pediatric Heart", "‘Mission for Vision’", "Hamari Pari", "Rotarian Rakesh", "Check dams at ambadi", "Joint venture"];
+  var idx = STARTS.map(function (s) { return lmText.indexOf(s); });
+  $("[data-marks]").innerHTML = idx.map(function (s, i) {
+    return "<li>" + esc(lmText.slice(s, i + 1 < idx.length ? idx[i + 1] : undefined).trim().replace(/\.$/, "")) + "</li>";
+  }).join("");
+
+  /* ---- projects ---- */
+  $("[data-projects]").innerHTML = D.featured.map(function (p) {
+    var t = esc(p.title), land = p.w > p.h;
+    return '<li class="pcard" style="--ar:' + p.w + "/" + p.h + ";--w:" + (land ? "min(38vw,560px)" : "min(22vw,320px,(100svh - var(--hh)) * .42)") + '"><article>' +
+      '<div class="pcard__img"><img src="' + p.img + '" alt="' + t + '" width="' + p.w + '" height="' + p.h + '" loading="lazy" decoding="async"></div>' +
+      '<div class="pcard__body"><p class="pcard__meta"><span>' + esc(p.avenue) + '</span><time datetime="' + p.date + '">' + fmtDate(p.date) + "</time></p>" +
+      '<h3 class="pcard__title"><a href="#">' + t + "</a></h3>" +
+      '<p class="pcard__desc">' + esc(trimText(p.desc)) + '</p><span class="pcard__more" aria-hidden="true">Read more →</span></div></article></li>';
+  }).join("");
+  $("[data-gauge-total]").textContent = "/ " + String(D.featured.length).padStart(2, "0");
+
+  /* ---- people ---- */
+  $("[data-people]").innerHTML = D.people.map(function (p) {
+    var bio = trimText(p.bio);
+    return '<li class="person"><div class="arch"><div class="arch__halo" aria-hidden="true"></div><div class="arch__win"><img src="' + p.img + '" alt="' + esc(p.name) + '" width="' + p.w + '" height="' + p.h + '" loading="lazy" decoding="async"></div></div>' +
+      '<p class="person__role">' + esc(p.role) + '</p><h3 class="person__name">' + esc(p.name) + "</h3>" + (bio ? '<p class="person__bio">' + esc(bio) + "</p>" : "") + "</li>";
+  }).join("");
+
+  /* ---- newsletters ---- */
+  var split = function (t) { var m = fix(t).match(/^(.*?)\s*-\s*(.*)$/); return m ? { month: m[1], name: m[2] } : { month: fix(t), name: "" }; };
+  $("[data-news-name]").textContent = split(D.newsletters[0].title).name;
+  var arrow = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13"/></svg>';
+  $("[data-news]").innerHTML = D.newsletters.map(function (n) {
+    var s = split(n.title);
+    return '<li class="issue"><a href="' + n.url + '" target="_blank" rel="noopener"><div class="cover"><span class="cover__sun" aria-hidden="true"></span>' +
+      '<span class="cover__name">' + esc(s.name) + '</span><span class="cover__month">' + esc(s.month) + "</span></div>" +
+      '<span class="issue__foot"><time datetime="' + n.date + '">' + fmtDate(n.date) + '</time><span class="issue__cta">Open PDF' + arrow + "</span></span>" +
+      '<span class="sr-only"> (PDF, opens in a new tab)</span></a></li>';
+  }).join("");
+
+  /* ---- socials ---- */
+  var ICON = {
+    facebook: ["Facebook", '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H6v4h3v9h4v-9h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg>'],
+    instagram: ["Instagram", '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>'],
+    linkedin: ["LinkedIn", '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 9h4v12H4zM6 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h4v1.7c.6-1 1.9-2 3.8-2 4 0 4.2 2.6 4.2 6V21h-4v-5.4c0-1.5 0-3.3-2-3.3s-2.3 1.5-2.3 3.2V21h-4z"/></svg>'],
+    twitter: ["X (Twitter)", '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3h4.5l4.2 5.8L17.8 3H21l-6.8 7.9L21.5 21H17l-4.6-6.3L6.9 21H3.6l7.2-8.4z"/></svg>']
+  };
+  $("[data-socials]").innerHTML = D.socials.filter(function (s) { return ICON[s.platform]; }).map(function (s) {
+    var ic = ICON[s.platform];
+    return '<li><a href="' + esc(s.linkUrl) + '" target="_blank" rel="noopener">' + ic[1] + '<span class="sr-only">' + ic[0] + " (opens in a new tab)</span></a></li>";
+  }).join("");
+
+  /* ---- note height feeds the hero's bottom padding ---- */
+  var setNote = function () { document.documentElement.style.setProperty("--note", $(".note").offsetHeight + "px"); };
+  setNote(); addEventListener("resize", setNote);
+
+  /* ---- UI ---- */
+  var App = window.__T8 = { lenis: null, FIGS: FIGS, D: D, fmtNum: fmtNum };
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)");
+
+  // light / dark: the visitor's choice is remembered; until they choose, the device setting decides.
+  // The new mode spreads from the switch as a circle (View Transitions; an instant swap elsewhere).
+  var html = document.documentElement, modeBtn = $(".mode"), themeMeta = $('meta[name="theme-color"]');
+  var syncMode = function () {
+    var dark = html.getAttribute("data-theme") !== "light";
+    modeBtn.setAttribute("aria-pressed", String(dark));
+    themeMeta.content = dark ? "#060D26" : "#F7F9FF";
+  };
+  var setMode = function (m, x, y) {
+    var apply = function () { html.setAttribute("data-theme", m); syncMode(); };
+    if (!document.startViewTransition || reduce.matches || x == null) { apply(); return; }
+    var r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    document.startViewTransition(apply).ready.then(function () {
+      html.animate({ clipPath: ["circle(0px at " + x + "px " + y + "px)", "circle(" + Math.ceil(r) + "px at " + x + "px " + y + "px)"] },
+        { duration: 800, easing: "cubic-bezier(.7,0,.2,1)", pseudoElement: "::view-transition-new(root)" });
+    });
+  };
+  modeBtn.addEventListener("click", function () {
+    var m = html.getAttribute("data-theme") === "light" ? "dark" : "light", b = modeBtn.getBoundingClientRect();
+    try { localStorage.setItem("t8-mode", m); } catch (e) {}
+    setMode(m, b.left + b.width / 2, b.top + b.height / 2);
+  });
+  matchMedia("(prefers-color-scheme: light)").addEventListener("change", function (e) {
+    var chosen = null; try { chosen = localStorage.getItem("t8-mode"); } catch (err) {}
+    if (!chosen) setMode(e.matches ? "light" : "dark");
+  });
+  syncMode();
+
+  // slideshow (autoplays only when motion is allowed; pause button meets WCAG 2.2.2)
+  var slides = $$("[data-slides] img"), dots = $$(".dot"), pauseBtn = $(".pause"), cur = 0, paused = false;
+  var show = function (i) {
+    slides[cur].classList.remove("is-on"); dots[cur].removeAttribute("aria-current");
+    cur = i; slides[cur].classList.add("is-on"); dots[cur].setAttribute("aria-current", "true");
+  };
+  dots.forEach(function (d, i) { d.addEventListener("click", function () { show(i); }); });
+  pauseBtn.addEventListener("click", function () {
+    paused = !paused; pauseBtn.setAttribute("aria-pressed", String(paused));
+    $(".sr-only", pauseBtn).textContent = paused ? "Play slideshow" : "Pause slideshow";
+    pauseBtn.querySelector("svg").innerHTML = paused ? '<path d="M3 1.5v11l9.5-5.5z"/>' : '<rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/>';
+  });
+  var syncPause = function () { pauseBtn.hidden = reduce.matches; };
+  syncPause(); reduce.addEventListener("change", syncPause);
+  setInterval(function () { if (!paused && !reduce.matches && !document.hidden) show((cur + 1) % slides.length); }, 6000);
+
+  // mobile menu
+  var burger = $(".burger"), menu = $("#menu"), root = document.documentElement;
+  var setMenu = function (open) {
+    if (open === !menu.hidden) return;
+    // at scroll 0 the header sits below the note bar (74px tall on a phone): start the list under it
+    if (open) menu.style.paddingTop = Math.round($(".hdr").getBoundingClientRect().bottom + 32) + "px";
+    menu.hidden = !open;
+    burger.setAttribute("aria-expanded", String(open));
+    $("[data-burger-label]").textContent = open ? "Close menu" : "Open menu";
+    root.classList.toggle("menu-open", open);
+    if (App.lenis) { if (open) App.lenis.stop(); else App.lenis.start(); }
+    if (open) {
+      if (!reduce.matches && window.gsap) gsap.from($$("li", menu), { y: 26, opacity: 0, duration: .6, stagger: .035, ease: "power3.out", clearProps: "transform,opacity" });
+      $("a", menu).focus();
+    }
+  };
+  burger.addEventListener("click", function () { setMenu(menu.hidden); });
+  document.addEventListener("keydown", function (e) {
+    if (menu.hidden) return;
+    if (e.key === "Escape") { setMenu(false); burger.focus(); return; }
+    if (e.key !== "Tab") return;
+    var f = [burger].concat($$("a[href], select", menu)), first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  matchMedia("(min-width: 1180px)").addEventListener("change", function (e) { if (e.matches) setMenu(false); });
+
+  // page links are inert in the sample
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest('a[href="#"]');
+    if (!a) return;
+    e.preventDefault();
+    if (menu.contains(a)) { setMenu(false); burger.focus(); }
+  });
+})();
+</script>
+
+<!-- 2. Motion. Everything below lives inside gsap.matchMedia: with reduced motion nothing here runs,
+     no class is added, no hidden start state exists, and the page above is the whole page. -->
+<script>
+(function () {
+  "use strict";
+  if (!window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  if (window.SplitText) gsap.registerPlugin(SplitText);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  var T8 = window.__T8;
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var clamp = function (v, a, b) { return v < a ? a : v > b ? b : v; };
+  var hdr = $("#hdr");
+  var hh = function () { return hdr.offsetHeight; };
+  var root = document.documentElement;
+  var fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+
+  var mm = gsap.matchMedia();
+  mm.add({
+    motion: "(prefers-reduced-motion: no-preference)",
+    fine: "(hover: hover) and (pointer: fine)",
+    wide: "(min-width: 900px)"
+  }, function (ctx) {
+    var c = ctx.conditions;
+    if (!c.motion) return;
+    var alive = true; // guards the async (fonts.ready) splits against a context already reverted
+    var off = [];
+    var tickers = [];
+    var addTick = function (fn) { gsap.ticker.add(fn); tickers.push(fn); };
+
+    /* ---------- smooth scroll: mouse/trackpad desktops only ---------- */
+    if (c.fine && window.Lenis) {
+      var lenis = new Lenis({ autoRaf: false, lerp: 0.1 });
+      lenis.on("scroll", ScrollTrigger.update);
+      var raf = function (t) { lenis.raf(t * 1000); };
+      gsap.ticker.add(raf);
+      gsap.ticker.lagSmoothing(0);
+      T8.lenis = lenis;
+      off.push(function () { gsap.ticker.remove(raf); gsap.ticker.lagSmoothing(500, 33); lenis.destroy(); T8.lenis = null; });
+    }
+    // without Lenis, update pins synchronously so the browser's focus-scroll sees the pinned stage
+    var scrollToY = function (y) { if (T8.lenis) T8.lenis.scrollTo(y, { immediate: true }); else { window.scrollTo(0, y); ScrollTrigger.update(); } };
+
+    /* ---------- the sky ---------- */
+    root.classList.add("sky-live");
+    off.push(function () { root.classList.remove("sky-live"); });
+    var band = $(".sky__band"), starsBox = $(".sky__stars"), gA = $(".sky__glow--a"), gB = $(".sky__glow--b"), hor = $(".sky__horizon"), dawn = $(".hdr__dawn");
+    if (!starsBox.dataset.done) {
+      var field = function (n, size, alpha) {
+        var s = [];
+        for (var i = 0; i < n; i++) s.push((Math.random() * 100).toFixed(2) + "vw " + (Math.random() * 100).toFixed(2) + "vh 0 " + (Math.random() * size).toFixed(1) + "px rgba(255,248,235," + (alpha * (.35 + Math.random() * .65)).toFixed(2) + ")");
+        return s.join(",");
+      };
+      $(".st--a").style.boxShadow = field(c.wide ? 150 : 80, .8, .8);
+      $(".st--b").style.boxShadow = field(c.wide ? 36 : 20, 1.6, 1);
+      starsBox.dataset.done = "1";
+    }
+    var N = 30; // band = N viewport heights; one screen shows 1/N of the dawn
+
+    /* ---------- intro: zoom through the banner window into the figures ---------- */
+    var intro = $(".intro"), nameEl = $(".hero__name"), win = $(".win"), light = $(".win__light");
+    var figs = $$(".fig"), nums = figs.map(function (f) { return $(".fig__num", f); });
+    intro.classList.add("is-3d");
+    var split = null; // letters are split only after document.fonts.ready (below)
+    off.push(function () {
+      intro.classList.remove("is-3d");
+      if (split) split.revert();
+      nameEl.classList.remove("is-split");
+      figs.forEach(function (f, i) {
+        f.style.transform = f.style.opacity = f.style.visibility = "";
+        nums[i].style.opacity = "";
+        nums[i].textContent = T8.fmtNum(T8.D.figures[T8.FIGS[i].k], T8.FIGS[i].money);
+      });
+    });
+
+    var fstate = { f: -1.4 }, FW = 1, FH = 1, shown = [];
+    var renderFigs = function () {
+      figs.forEach(function (el, i) {
+        var d = i - fstate.f, x, y, z, ry, op;
+        if (d >= 0) {
+          x = d * FW * (c.wide ? .5 : .6); y = -d * FH * .05; z = -d * 560; ry = -Math.min(d, 2) * 16;
+          op = d < 1 ? 1 - d * .45 : .55 * Math.pow(.5, d - 1);
+        } else {
+          x = d * FW * .34; y = d * FH * .03; z = -d * 760; ry = -d * 14;
+          op = Math.max(0, 1 + d * 2.4);
+        }
+        el.style.transform = "translate(-50%,-50%) translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px," + z.toFixed(1) + "px) rotateY(" + ry.toFixed(2) + "deg)";
+        el.style.opacity = op.toFixed(3); // opacity only: visibility:hidden would hide the sr-only figure text
+        // the number materialises and counts up as it arrives
+        nums[i].style.opacity = clamp((1 - d) / .7, 0, 1).toFixed(3);
+        var k = clamp((1 - d) / .85, 0, 1), eased = 1 - Math.pow(1 - k, 3);
+        var txt = T8.fmtNum(T8.D.figures[T8.FIGS[i].k] * eased, T8.FIGS[i].money);
+        if (shown[i] !== txt) { nums[i].textContent = txt; shown[i] = txt; }
+      });
+    };
+
+    var U = c.wide ? .55 : .42, TOTAL = 7.8;
+    gsap.set(win, { transformPerspective: 1000 });
+    var tl = gsap.timeline({
+      defaults: { ease: "none" },
+      scrollTrigger: {
+        trigger: intro, pin: true, scrub: c.fine ? .8 : .5, invalidateOnRefresh: true,
+        start: function () { return "top " + hh() + "px"; },
+        end: function () { return "+=" + Math.round(innerHeight * U * TOTAL); },
+        onRefresh: function () { FW = intro.clientWidth; FH = intro.clientHeight; renderFigs(); }
+      }
+    });
+    tl.to(".hero .eyebrow, .hero__pre", { yPercent: -90, opacity: 0, duration: .45, stagger: .06 }, 0)
+      .to(".hero__ctrl", { autoAlpha: 0, y: 24, duration: .35 }, 0)
+      .to(win, { z: 860, duration: 1.45, ease: "power2.in" }, .2)
+      .fromTo(light, { opacity: 0 }, { opacity: 1, duration: .5 }, 1)
+      .to(win, { autoAlpha: 0, duration: .3 }, 1.38)
+      // opacity, not autoAlpha: a hidden list would hide the figures' sr-only text until scrolled
+      .fromTo(".figs__list", { opacity: 0 }, { opacity: 1, duration: .5 }, 1.05)
+      .fromTo(".figs__head", { z: -800, opacity: 0, transformPerspective: 800 }, { z: 0, opacity: 1, duration: .7, ease: "power2.out" }, 1.15)
+      .to(fstate, { f: figs.length - 1, duration: TOTAL - 2, onUpdate: renderFigs }, 1.5)
+      .to({}, { duration: .3 }, TOTAL - .3);
+    renderFigs();
+
+    // the name's letters fly apart toward the viewer; added to the scrubbed timeline once split
+    var flyName = function (chars) {
+      var mid = (chars.length - 1) / 2, now = tl.totalTime();
+      gsap.set(chars, { transformPerspective: 700 });
+      tl.to(chars, {
+        z: function (i) { return 300 + Math.abs(i - mid) * 40; },
+        x: function (i) { return (i - mid) * (c.wide ? 38 : 16); },
+        y: function (i) { return -18 - Math.abs(i - mid) * 5; },
+        rotationY: function (i) { return (i - mid) * 7; },
+        opacity: 0, duration: .9, ease: "power2.in", stagger: { each: .035, from: "center" }
+      }, .05);
+      tl.totalTime(0, true).totalTime(now, true); // render the new tween at the current scroll position
+    };
+    if (window.SplitText) fontsReady.then(function () {
+      if (alive) ctx.add(function () {
+        split = SplitText.create(nameEl, { type: "chars", charsClass: "c", tag: "span", aria: "none" });
+        nameEl.classList.add("is-split");
+        flyName(split.chars);
+      });
+    });
+    else flyName([nameEl]);
+
+    // load entrance (wrappers only, so the scrubbed children keep clean start values)
+    gsap.from(".hero__head", { y: 36, opacity: 0, duration: 1.2, ease: "power3.out", clearProps: "transform,opacity" });
+    gsap.from(".hero__win", { y: 50, opacity: 0, scale: .94, duration: 1.4, delay: .15, ease: "power3.out", clearProps: "transform,opacity" });
+
+    if (c.fine && c.wide) {
+      var rx = gsap.quickTo(win, "rotationX", { duration: .9, ease: "power3" });
+      var ry = gsap.quickTo(win, "rotationY", { duration: .9, ease: "power3" });
+      var onHeroMove = function (e) { rx((e.clientY / innerHeight - .5) * -6); ry((e.clientX / innerWidth - .5) * 8); };
+      addEventListener("pointermove", onHeroMove, { passive: true });
+      off.push(function () { removeEventListener("pointermove", onHeroMove); });
+    }
+
+    /* ---------- about: focus pull + the emblem's rings rise ---------- */
+    $$(".about__lead, .about__body p").forEach(function (p) {
+      var a = c.wide ? { opacity: .15, y: 40, filter: "blur(8px)" } : { opacity: .15, y: 30 };
+      var b = c.wide ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 1, y: 0 };
+      b.ease = "none";
+      b.scrollTrigger = { trigger: p, start: "top 95%", end: "top 62%", scrub: true };
+      gsap.fromTo(p, a, b);
+    });
+    gsap.fromTo(".emblem__glow, .emblem__ring", { scale: .5, opacity: 0 }, {
+      scale: 1, opacity: 1, stagger: .12, ease: "none",
+      scrollTrigger: { trigger: ".emblem", start: "top 92%", end: "center 45%", scrub: true }
+    });
+
+    /* ---------- landmarks: a drum that turns under the reading line ---------- */
+    var drum = $(".drum"), marks = $$(".drum li"), centers = [];
+    drum.classList.add("is-live");
+    var measureDrum = function () {
+      var top = drum.getBoundingClientRect().top + window.scrollY;
+      centers = marks.map(function (li) { return top + li.offsetTop + li.offsetHeight / 2; });
+    };
+    var renderDrum = function () {
+      var cy = window.scrollY + (innerHeight + hh()) / 2, R = innerHeight / 2;
+      marks.forEach(function (li, i) {
+        var a = clamp((centers[i] - cy) / R, -1.3, 1.3), ab = Math.abs(a);
+        li.style.transform = "perspective(900px) translateZ(" + (-ab * 160).toFixed(1) + "px) rotateX(" + (-a * 52).toFixed(2) + "deg)";
+        li.style.opacity = Math.max(.14, 1 - ab * .8).toFixed(3);
+        li.classList.toggle("is-on", ab < .14);
+      });
+    };
+    ScrollTrigger.create({ trigger: drum, start: "top bottom", end: "bottom top", onUpdate: renderDrum, onRefresh: function () { measureDrum(); renderDrum(); } });
+    off.push(function () {
+      drum.classList.remove("is-live");
+      marks.forEach(function (li) { li.style.transform = li.style.opacity = ""; li.classList.remove("is-on"); });
+    });
+
+    /* ---------- projects ---------- */
+    var cards = $$(".pcard");
+    if (c.wide) {
+      // desktop: travel through a tunnel of photos
+      var proj = $(".projects"), stage = $(".tunnel"), head = $(".tunnel__head"), endEl = $(".tunnel__end"),
+        gauge = $("[data-gauge]"), sparkBox = $(".tunnel__sparks"), glow = $(".tunnel__light"), cardsBox = $(".tunnel__cards");
+      proj.classList.add("is-tunnel");
+      var n = cards.length, SP = 1250, D0 = 70, LZ = 4200, SW = 1, SH = 1, layout = [], sparks = [];
+      var YS = [-.06, .07, -.02, .05];
+      cards.forEach(function (el, i) { el.style.zIndex = n - i; });
+      for (var s = 0; s < (c.fine ? 46 : 30); s++) {
+        var sp = document.createElement("i");
+        sp.className = "spark"; sparkBox.appendChild(sp);
+        sparks.push({ el: sp, a: Math.random() * Math.PI * 2, r: .3 + Math.random() * .7, zb: Math.random() * LZ });
+      }
+      var measureT = function () {
+        SW = stage.clientWidth; SH = stage.clientHeight;
+        layout = cards.map(function (el, i) { var side = i % 2 ? 1 : -1; return { x: side * SW * .22, y: YS[i % 4] * SH, ry: -side * 12 }; });
+      };
+      // camera eases to a near-stop each time a photo reaches the reading distance
+      var camAt = function (t) { var k = Math.floor(t), u = t - k; return SP * (k + u - Math.sin(u * Math.PI * 2) * .13); };
+      var fog = function (rel) {
+        if (rel > 60) return Math.max(0, 1 - (rel - 60) / 320);
+        if (rel < -2600) return Math.max(0, 1 - (-2600 - rel) / 1100);
+        return 1;
+      };
+      var place = function (el, x, y, rel, extra, o, card) {
+        el.style.transform = extra.replace("#", x.toFixed(1) + "px," + y.toFixed(1) + "px," + rel.toFixed(1) + "px");
+        var gone = o < .01 || rel > 780;
+        el.style.opacity = gone ? "0" : o.toFixed(3);
+        // cards out of sight stay focusable (Shift+Tab back to a passed card flies the camera to it)
+        // but stop taking the pointer; the title and end button simply hide
+        if (card) el.style.pointerEvents = gone ? "none" : "";
+        else el.style.visibility = gone ? "hidden" : "";
+      };
+      var tp = 0, vT = 0, vC = 0, inView = false, po = { x: 0, y: 0 };
+      var renderT = function () {
+        var t = -1 + tp * (n + 1), cam = camAt(t);
+        vC += (vT - vC) * .15; vT *= .9;
+        cards.forEach(function (el, i) {
+          var L = layout[i], rel = cam - (SP * i + D0);
+          place(el, L.x, L.y, rel, "translate(-50%,-50%) translate3d(#) rotateY(" + L.ry + "deg)", fog(rel), true);
+        });
+        var rh = cam + SP - 120, re = cam - SP * n - 110;
+        place(head, 0, 0, rh, "perspective(900px) translate3d(#)", fog(rh));
+        place(endEl, 0, 0, re, "perspective(900px) translate3d(#)", fog(re));
+        var g = String(clamp(Math.round(t), 0, n - 1) + 1).padStart(2, "0");
+        if (gauge.textContent !== g) gauge.textContent = g;
+        var R = Math.max(SW, SH) * .5, str = (1 + vC).toFixed(2);
+        sparks.forEach(function (p) {
+          var rel = ((p.zb + cam) % LZ + LZ) % LZ - LZ + 260;
+          var o = rel > 0 ? 1 - rel / 260 : rel < -3000 ? 0 : rel < -2200 ? (rel + 3000) / 800 : 1;
+          p.el.style.transform = "translate3d(" + (Math.cos(p.a) * p.r * R).toFixed(1) + "px," + (Math.sin(p.a) * p.r * R * .75).toFixed(1) + "px," + rel.toFixed(1) + "px) rotate(" + p.a.toFixed(3) + "rad) scaleX(" + str + ")";
+          p.el.style.opacity = (o * .9).toFixed(3);
+        });
+        glow.style.transform = "scale(" + (1 + vC * .04).toFixed(3) + ")";
+        var origin = (50 + po.x * 8).toFixed(2) + "% " + (50 + po.y * 8).toFixed(2) + "%";
+        cardsBox.style.perspectiveOrigin = sparkBox.style.perspectiveOrigin = origin;
+      };
+      var tst = ScrollTrigger.create({
+        trigger: stage, pin: true, invalidateOnRefresh: true,
+        start: function () { return "top " + hh() + "px"; },
+        end: function () { return "+=" + Math.round(innerHeight * 4.4); },
+        onUpdate: function (self) { tp = self.progress; vT = Math.min(12, Math.abs(self.getVelocity()) / 240); },
+        onRefresh: function (self) { measureT(); tp = self.progress; renderT(); }
+      });
+      ScrollTrigger.create({ trigger: proj, start: "top bottom", end: "bottom top", onToggle: function (self) { inView = self.isActive; } });
+      addTick(function () { if (inView) renderT(); });
+      if (c.fine) {
+        var pox = gsap.quickTo(po, "x", { duration: 1, ease: "power3" }), poy = gsap.quickTo(po, "y", { duration: 1, ease: "power3" });
+        var onTunMove = function (e) { pox(e.clientX / innerWidth - .5); poy(e.clientY / innerHeight - .5); };
+        addEventListener("pointermove", onTunMove, { passive: true });
+        off.push(function () { removeEventListener("pointermove", onTunMove); });
+      }
+      // keyboard: focusing a photo's link flies the camera to it
+      var onFocus = function (e) {
+        if (!e.target.matches(":focus-visible")) return; // a mouse click on a card must not jump the scroll
+        var card = e.target.closest(".pcard");
+        var i = card ? cards.indexOf(card) : endEl.contains(e.target) ? n : -1;
+        if (i < 0) return;
+        scrollToY(tst.start + ((i + 1) / (n + 1)) * (tst.end - tst.start));
+      };
+      stage.addEventListener("focusin", onFocus);
+      off.push(function () {
+        stage.removeEventListener("focusin", onFocus);
+        proj.classList.remove("is-tunnel");
+        sparks.forEach(function (p) { p.el.remove(); });
+        cards.concat([head, endEl]).forEach(function (el) { el.style.transform = el.style.opacity = el.style.visibility = el.style.zIndex = el.style.pointerEvents = ""; });
+        glow.style.transform = cardsBox.style.perspectiveOrigin = sparkBox.style.perspectiveOrigin = "";
+      });
+    } else {
+      // phones/tablets: cards lift off a tilted plane, photos drift inside their frames
+      cards.forEach(function (el) {
+        gsap.fromTo(el, { rotationX: 16, y: 60, opacity: .2, transformPerspective: 900, transformOrigin: "50% 0%" }, {
+          rotationX: 0, y: 0, opacity: 1, ease: "none",
+          scrollTrigger: { trigger: el, start: "top 100%", end: "top 62%", scrub: true }
+        });
+        gsap.fromTo($("img", el), { scale: 1.22, yPercent: -5 }, {
+          scale: 1.02, yPercent: 5, ease: "none",
+          scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true }
+        });
+      });
+    }
+
+    /* ---------- section titles fly out of the distance and past the viewer ---------- */
+    $$(".fly").forEach(function (h) {
+      if (h.closest(".is-tunnel")) return;
+      var ftl = gsap.timeline({ scrollTrigger: { trigger: h, start: "top bottom", end: "bottom top", scrub: true } });
+      ftl.fromTo(h, { z: -380, opacity: 0, transformPerspective: 700 }, { z: 0, opacity: 1, duration: .4, ease: "power2.out" })
+        .to({}, { duration: .34 })
+        .to(h, { z: c.wide ? 150 : 60, opacity: 0, duration: .26, ease: "power1.in" });
+    });
+
+    /* ---------- leadership: portraits rise over the horizon like suns ---------- */
+    var cols = c.wide ? 4 : 2;
+    $$(".person").forEach(function (p, i) {
+      var k = (i % cols) * (c.wide ? 5 : 4);
+      var ltl = gsap.timeline({ scrollTrigger: { trigger: p, start: "top " + (94 - k) + "%", end: "top " + (48 - k) + "%", scrub: .6 } });
+      ltl.fromTo($(".arch__win", p), { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: .6, ease: "power2.out" }, 0)
+        .fromTo($(".arch__win img", p), { yPercent: 35, scale: 1.15 }, { yPercent: 0, scale: 1, duration: .6, ease: "power2.out" }, 0)
+        .fromTo($(".arch__halo", p), { scale: .4, opacity: 0 }, { scale: 1, opacity: 1, duration: .7 }, 0)
+        .fromTo($$(".person__role, .person__name, .person__bio", p), { y: 24, opacity: 0 }, { y: 0, opacity: 1, stagger: .06, duration: .4 }, .25);
+    });
+
+    /* ---------- newsletters: the sheet lifts, covers stand up, their suns rise ---------- */
+    gsap.fromTo(".sheet", { rotationX: 20, y: 90, transformPerspective: 1600, transformOrigin: "50% 100%" }, {
+      rotationX: 0, y: 0, ease: "none", scrollTrigger: { trigger: ".news", start: "top bottom", end: "top 30%", scrub: true }
+    });
+    gsap.fromTo(".cover", { rotationX: -72, opacity: .3, transformPerspective: 1100, transformOrigin: "50% 100%" }, {
+      rotationX: 0, opacity: 1, stagger: .18, ease: "none", scrollTrigger: { trigger: ".issues", start: "top 92%", end: "top 45%", scrub: true }
+    });
+    gsap.fromTo(".cover__sun", { yPercent: 55 }, {
+      yPercent: 0, ease: "none", scrollTrigger: { trigger: ".issues", start: "top 85%", end: "bottom 55%", scrub: true }
+    });
+
+    /* ---------- meet: sunrise over the hills ---------- */
+    var mtrig = { trigger: ".meet", start: "top bottom", end: "bottom bottom", scrub: true };
+    gsap.fromTo(".sun", { yPercent: 38, scale: .78 }, { yPercent: 0, scale: 1, ease: "none", scrollTrigger: mtrig });
+    gsap.fromTo(".hill--back", { yPercent: 36 }, { yPercent: 0, ease: "none", scrollTrigger: mtrig });
+    gsap.fromTo(".hill--mid", { yPercent: 18 }, { yPercent: 0, ease: "none", scrollTrigger: mtrig });
+    var dayEl = $(".meet__day-vis"), dsplit = null;
+    var flyDay = function (t) {
+      gsap.fromTo(t, { z: -600, opacity: 0, rotationX: -40, transformPerspective: 600 }, {
+        z: 0, opacity: 1, rotationX: 0, stagger: .06, ease: "power2.out",
+        scrollTrigger: { trigger: dayEl, start: "top 94%", end: "top 52%", scrub: true }
+      });
+    };
+    if (window.SplitText) fontsReady.then(function () {
+      if (alive) ctx.add(function () {
+        dsplit = SplitText.create(dayEl, { type: "chars", charsClass: "c", tag: "span", aria: "none" });
+        flyDay(dsplit.chars);
+      });
+    });
+    else flyDay(dayEl);
+    off.push(function () { if (dsplit) dsplit.revert(); });
+
+    /* ---------- sky driver (created last so its anchors see every pin's spacing) ---------- */
+    var anchors = $$("[data-sky]").map(function (el) {
+      return { v: parseFloat(el.getAttribute("data-sky")), st: ScrollTrigger.create({ trigger: el, start: "top 55%" }) };
+    });
+    var pts = [[0, 0]];
+    var buildPts = function () {
+      var max = ScrollTrigger.maxScroll(window);
+      pts = [[0, 0]];
+      anchors.forEach(function (a) { var s = clamp(a.st.start, 0, max); if (s > pts[pts.length - 1][0]) pts.push([s, a.v]); });
+      pts.push([Math.max(max, pts[pts.length - 1][0] + 1), 1]);
+    };
+    var vAt = function (s) {
+      if (pts.length < 2) return 0;
+      for (var i = 1; i < pts.length; i++) if (s <= pts[i][0]) {
+        var a = pts[i - 1], b = pts[i];
+        return a[1] + (b[1] - a[1]) * clamp((s - a[0]) / (b[0] - a[0]), 0, 1);
+      }
+      return 1;
+    };
+    var paint = function () {
+      var s = window.scrollY, max = ScrollTrigger.maxScroll(window) || 1, v = vAt(s);
+      band.style.transform = "translate3d(0," + (-v * (N - 1) * 100).toFixed(3) + "%,0) scaleY(" + N + ")";
+      starsBox.style.opacity = clamp(1 - v / .5, 0, 1).toFixed(3);
+      starsBox.style.transform = "translate3d(0," + (-v * 140).toFixed(1) + "px,0)";
+      gA.style.opacity = clamp(1 - v * 1.1, .15, 1).toFixed(3);
+      gA.style.transform = "translate3d(" + (v * 24).toFixed(2) + "vw," + (v * 30).toFixed(2) + "vh,0)";
+      gB.style.opacity = clamp(v * 1.5, .2, 1).toFixed(3);
+      gB.style.transform = "translate3d(0," + ((1 - v) * 24).toFixed(2) + "vh,0)";
+      hor.style.opacity = Math.max(.08, v * v * v).toFixed(3);
+      hor.style.transform = "translate3d(0," + ((1 - v) * 26).toFixed(2) + "vh,0)";
+      dawn.style.transform = "scaleX(" + clamp(s / max, 0, 1).toFixed(4) + ")";
+    };
+    ScrollTrigger.create({ start: 0, end: "max", onUpdate: paint, onRefresh: function () { buildPts(); paint(); } });
+    off.push(function () {
+      [band, starsBox, gA, gB, hor, dawn].forEach(function (el) { el.style.transform = el.style.opacity = ""; });
+    });
+
+    return function () {
+      alive = false;
+      tickers.forEach(function (fn) { gsap.ticker.remove(fn); });
+      off.forEach(function (fn) { fn(); });
+    };
+  });
+
+  var refresh = function () { ScrollTrigger.refresh(); };
+  addEventListener("load", refresh);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+})();
+</script>
+</body>
+</html>

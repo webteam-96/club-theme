@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rotary Club of Thane Hills</title>
+<meta name="description" content="Design sample, Theme 8 option B: Vibrant Bento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../vendor/lenis.css">
+<style>
+/*
+  Theme 8 / option B: VIBRANT BENTO
+  Rotary's secondary palette used as full-colour tiles on a cool white ground.
+
+  WCAG AA contrast (computed, relative luminance):
+    ink #1A1446 on white 17.0:1, on paper #F5F7FC 15.8:1
+    muted #4B5068 on white 7.9:1, on paper 7.4:1
+    white on azure #0067C8 5.6:1, cranberry #D41367 5.1:1, violet #901F93 7.5:1, royal #17458F 9.2:1
+    ink on turquoise #00ADBB 6.3:1, orange #FF7600 6.4:1, gold #F7A81B 8.6:1
+    white on ink (note, footer) 17.0:1; #B9BCD6 on ink 9.1:1
+  Turquoise / orange / gold never carry white text (all < 3:1), so they always take ink.
+*/
+:root{
+  --paper:#F5F7FC; --ink:#1A1446; --muted:#4B5068; --line:#E2E6F1; --mist:#EDF0F8;
+  --azure:#0067C8; --cranberry:#D41367; --turquoise:#00ADBB; --violet:#901F93;
+  --orange:#FF7600; --gold:#F7A81B; --royal:#17458F;
+  --r-xl:32px; --r-lg:24px; --r-md:16px;
+  --gut:24px; --gap:16px; --hh:72px; --sg:10px;
+  --display:"Sora",ui-sans-serif,system-ui,sans-serif;
+  --text:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;
+  color-scheme:only light;
+}
+@media (max-width:599px){:root{--gut:16px;--gap:12px;--hh:64px;--r-xl:28px;--sg:6px}}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 1rem/1.6 var(--text);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3,p,ul{margin:0}
+ul{padding:0;list-style:none}
+a{color:inherit}
+button,select{font:inherit;color:inherit}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
+.dk :focus-visible,.foot :focus-visible,.panel :focus-visible{outline-color:#fff;box-shadow:0 0 0 3px var(--ink)}
+main:focus{outline:none}
+.wrap{width:min(1360px,calc(100% - 2*var(--gut)));margin-inline:auto}
+[id]{scroll-margin-top:calc(var(--hh) + 12px)}
+
+.skip{position:absolute;left:12px;top:-90px;z-index:100;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-weight:700;text-decoration:none}
+.skip:focus{top:12px}
+.note{position:relative;z-index:2;background:var(--ink);color:#fff;font-size:.8125rem;line-height:1.45;text-align:center;padding:7px var(--gut)}
+
+/* ---------- colour tiles ---------- */
+.t-white{background:#fff;color:var(--ink)}
+.t-azure{background:var(--azure);color:#fff}
+.t-cranberry{background:var(--cranberry);color:#fff}
+.t-violet{background:var(--violet);color:#fff}
+.t-royal{background:var(--royal);color:#fff}
+.t-turquoise{background:var(--turquoise);color:var(--ink)}
+.t-orange{background:var(--orange);color:var(--ink)}
+.t-gold{background:var(--gold);color:var(--ink)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;border:2px solid transparent;font:700 1rem/1.1 var(--text);text-decoration:none;cursor:pointer;white-space:nowrap;transition:background-color .2s,color .2s,border-color .2s}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{background:var(--gold);color:var(--ink)}
+.btn-ghost{border-color:currentColor;background:transparent}
+.btn-ghost:hover{background:rgba(255,255,255,.16)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:var(--royal)}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
+.hdr-in{height:var(--hh);display:flex;align-items:center;gap:16px}
+.brand{flex:none;display:flex;align-items:center;min-height:44px;border-radius:8px}
+.brand img{height:44px;width:auto}
+.nav{position:relative;margin-left:auto;display:none}
+.nav-list,.nav-mask ul{display:flex;gap:2px;padding:4px;border-radius:999px}
+.nav-list{background:var(--mist)}
+.nav-list a,.nav-mask span{display:block;padding:10px 14px;border-radius:999px;font:600 .9375rem/1.2 var(--text);white-space:nowrap;text-decoration:none;color:var(--ink)}
+.nav-list a:hover{background:#fff}
+.nav-list a[aria-current="page"]{background:var(--azure);color:#fff}
+.nav-mask{position:absolute;inset:0;pointer-events:none;display:none}
+.nav-mask ul{height:100%;background:var(--azure)}
+.nav-mask span{color:#fff}
+.nav--live .nav-mask{display:block}
+.nav--live .nav-list a:hover,.nav--live .nav-list a[aria-current="page"]{background:none;color:var(--ink)}
+.year{margin-left:auto;flex:none}
+.year select{appearance:none;-webkit-appearance:none;height:44px;padding:0 36px 0 16px;border:2px solid var(--ink);border-radius:999px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%231A1446' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 14px center/12px 8px;font:700 .9375rem/1 var(--text);color:var(--ink);cursor:pointer}
+.menu-btn{flex:none;width:48px;height:48px;border:0;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-content:center;gap:5px;cursor:pointer}
+.menu-btn i{display:block;width:20px;height:2.5px;border-radius:2px;background:currentColor}
+@media (min-width:1280px){.nav{display:block}.year{margin-left:0}.menu-btn{display:none}}
+@media (max-width:599px){.brand img{height:34px}.hdr-in{gap:8px}.year select{padding:0 30px 0 12px;background-position:right 10px center;font-size:.875rem}}
+@media (max-width:359px){.brand img{height:28px}}
+
+.panel{position:fixed;inset:0;z-index:60;background:var(--azure);color:#fff;overflow-y:auto;overscroll-behavior:contain}
+.panel[hidden]{display:none}
+.panel-top{height:var(--hh);display:flex;align-items:center;justify-content:space-between}
+.panel-title{font:700 1.125rem/1 var(--display)}
+.panel-close{width:48px;height:48px;border:0;border-radius:50%;background:#fff;color:var(--ink);font:400 2rem/1 var(--text);cursor:pointer}
+.panel-list{display:grid;gap:2px;padding:12px 0 40px}
+.panel-list a{display:inline-block;padding:8px 0;font:800 clamp(1.75rem,8vw,3rem)/1.1 var(--display);letter-spacing:-.03em;text-decoration:none}
+.panel-list a:hover,.panel-list a[aria-current="page"]{text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:8px}
+
+/* ---------- background blobs (static unless motion is allowed) ---------- */
+.blobs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.blob{position:absolute;width:62vmax;height:62vmax}
+.blob i{position:absolute;inset:0;border-radius:50%;background:radial-gradient(closest-side,var(--c),transparent)}
+.b1{left:-24vmax;top:-20vmax;--c:rgba(0,103,200,.20)}
+.b2{right:-28vmax;top:20vh;--c:rgba(212,19,103,.15)}
+.b3{left:-14vmax;top:70vh;--c:rgba(0,173,187,.20)}
+.b4{right:-14vmax;top:95vh;--c:rgba(247,168,27,.22)}
+main,.foot{position:relative;z-index:1}
+
+/* ---------- shared layout ---------- */
+.sec{padding-block:clamp(56px,8vw,112px)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 32px;margin-bottom:clamp(24px,3.5vw,44px)}
+.h2{font:800 clamp(2.25rem,5.4vw,4.75rem)/1 var(--display);letter-spacing:-.04em}
+.h3{font:700 clamp(1.25rem,2vw,1.625rem)/1.2 var(--display);letter-spacing:-.02em}
+.lede{color:var(--muted);font-size:1.0625rem;font-weight:600}
+.label{font:700 1rem/1.3 var(--text)}
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap)}
+.tile{position:relative;min-width:0;border-radius:var(--r-xl);padding:clamp(20px,2.6vw,36px);overflow:hidden;container-type:inline-size}
+
+/* ---------- hero bento ---------- */
+.hero{position:relative;z-index:1;padding-block:clamp(12px,1.6vw,20px) clamp(8px,2vw,24px)}
+.hero .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"nm nm" "bn bn" "mt mt" "mb pj"}
+@media (min-width:600px){.hero .bento{grid-template-columns:repeat(6,minmax(0,1fr));grid-template-areas:"nm nm nm nm nm nm" "bn bn bn bn bn bn" "mt mt mt mb mb mb" "mt mt mt pj pj pj"}}
+@media (min-width:900px){.hero .bento{grid-template-columns:repeat(12,minmax(0,1fr));grid-template-areas:"nm nm nm nm nm nm nm nm mt mt mt mt" "bn bn bn bn bn bn bn bn mb mb pj pj"}}
+.h-name{grid-area:nm;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(18px,2.4vw,28px);--st:clamp(84px,8vw,112px)}
+.h1{font-family:var(--display);position:relative;z-index:1}
+.h1 .l1{display:block;font:600 clamp(1rem,1.5vw,1.375rem)/1.3 var(--text)}
+.h1 .l2{display:block;margin-top:6px;font:800 clamp(2.75rem,15cqi,9rem)/.92 var(--display);letter-spacing:-.045em;overflow-wrap:break-word}
+.h-cta{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.sticker{position:absolute;right:-18px;bottom:-18px;width:var(--st);height:var(--st);border-radius:50%;background:var(--gold);color:var(--ink)}
+.spin{position:absolute;inset:0}
+.spin svg{display:block;width:100%;height:100%}
+.spin text{font:700 10.5px var(--display);fill:currentColor}
+.sticker-dot{position:absolute;inset:37%;border-radius:50%;background:var(--cranberry)}
+@media (max-width:599px){
+  .h1 .l2{font-size:22cqi}
+  .h-name{--st:72px}
+  .sticker{top:14px;right:14px;bottom:auto}
+  .h1 .l1{min-height:72px;padding-right:84px}
+}
+.h-meet{grid-area:mt;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.h-day{margin-top:auto;padding-top:12px;font:800 clamp(2rem,17cqi,4.5rem)/1 var(--display);letter-spacing:-.04em}
+.h-time{font:700 clamp(1.1rem,2vw,1.5rem)/1.25 var(--display)}
+.h-meet .btn{margin-top:16px}
+.h-fig{display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-height:140px}
+.h-mem{grid-area:mb}.h-prj{grid-area:pj}
+.fig-n{font:800 clamp(2.5rem,40cqi,5.5rem)/.9 var(--display);letter-spacing:-.04em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.h-ban{grid-area:bn;padding:0;background:#fff;display:flex;flex-direction:column}
+.ban-frame{position:relative;aspect-ratio:16/5;overflow:hidden;background:var(--mist)}
+.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.slide.is-on{opacity:1}
+.ban-ctl{display:flex;align-items:center;gap:2px;padding:8px 16px}
+.dot{width:44px;height:44px;border:0;border-radius:50%;background:none;display:grid;place-items:center;cursor:pointer}
+.dot::before{content:"";width:10px;height:10px;border-radius:6px;background:var(--muted)}
+.dot[aria-current="true"]::before{width:26px;background:var(--azure)}
+.ban-pause{margin-left:auto;height:44px;padding:0 16px;border:2px solid var(--ink);border-radius:999px;background:#fff;font:700 .875rem/1 var(--text);cursor:pointer}
+@media (min-width:900px){.ban-ctl{position:absolute;right:14px;bottom:14px;z-index:3;padding:2px 4px;border-radius:999px;background:#fff}.ban-pause{margin-left:4px}}
+
+/* ---------- marquee ---------- */
+.mq{position:relative;z-index:1;display:grid;gap:clamp(10px,1.6vw,20px);padding-block:clamp(24px,4vw,48px) 0}
+.mq-row{overflow:hidden}
+.mq-track{display:flex;justify-content:center}
+.mq-group{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;row-gap:10px}
+.mq--live .mq-track{justify-content:flex-start;width:max-content}
+.mq--live .mq-group{flex:none;flex-wrap:nowrap}
+/* nowrap only while scrolling: static rows (reduced motion) must wrap, "New Generation Service" is ~430px at 2rem */
+.mq--live .mq-w,.mq--live .mq-p{white-space:nowrap}
+.mq-w{display:inline-flex;align-items:center;gap:.5em;margin-inline:.28em;text-align:center;font:800 clamp(2rem,6vw,5.5rem)/1.1 var(--display);letter-spacing:-.04em}
+.mq-w::after{content:"";flex:none;width:.4em;height:.4em;border-radius:50%;background:var(--c)}
+.mq-p{margin-inline:6px;padding:.6em 1.15em;border-radius:999px;text-align:center;font:700 clamp(.95rem,1.4vw,1.25rem)/1.2 var(--text)}
+
+/* ---------- about ---------- */
+.float{margin:clamp(18px,3vw,32px) 0 clamp(32px,5vw,64px);max-width:21ch;font:800 clamp(1.9rem,5vw,4.5rem)/1.06 var(--display);letter-spacing:-.035em}
+.about-grid > *{grid-column:1/-1}
+@media (min-width:900px){.a-begin{grid-column:span 7}.a-found{grid-column:span 5}.a-land{grid-column:span 8}.a-annual{grid-column:span 4}}
+.prose{margin-top:16px;display:grid;gap:14px;max-width:62ch;color:var(--muted);font-size:1.0625rem}
+.big-year{font:800 min(34cqi,8rem)/.9 var(--display);letter-spacing:-.05em;margin-bottom:14px}
+.a-found .h3 + p{margin-top:10px;font-size:1.0625rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips li{max-width:100%;padding:.5em 1em;border-radius:18px;background:#fff;color:var(--ink);font:600 .9375rem/1.35 var(--text)}
+.dots{margin-top:14px}
+.dots li{display:flex;gap:12px;padding:12px 0;border-top:2px solid rgba(26,20,70,.2);font-weight:600}
+.dots li::before{content:"";flex:none;width:12px;height:12px;margin-top:.45em;border-radius:50%;background:var(--ink)}
+.more{margin-top:clamp(20px,3vw,32px)}
+
+/* ---------- numbers ---------- */
+.n-tile{grid-column:1/-1;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(16px,2vw,28px);min-height:clamp(190px,22vw,300px)}
+@media (min-width:600px){.n1,.n2{grid-column:span 6}}
+.n-big{font:800 min(22cqi,9rem)/.9 var(--display);letter-spacing:-.045em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.n3 .n-big{font-size:min(13cqi,10rem)}
+.bar{height:14px;border-radius:999px;background:rgba(255,255,255,.28);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:inherit;background:#fff;transform-origin:0 50%}
+.t-gold .bar,.t-orange .bar,.t-turquoise .bar{background:rgba(26,20,70,.16)}
+.t-gold .bar i,.t-orange .bar i,.t-turquoise .bar i{background:var(--ink)}
+
+/* ---------- stacking project cards ---------- */
+.stack::after{content:"";display:block;height:calc(6*var(--sg))}
+.pcard{position:sticky;top:calc(var(--hh) + 20px + var(--i)*var(--sg));height:min(620px,calc(100svh - var(--hh) - 40px - 6*var(--sg)));margin-bottom:24px;border-radius:var(--r-xl);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 -10px 40px -14px rgba(26,20,70,.35)}
+.pcard:last-child{margin-bottom:0}
+.p-img{flex:1 1 auto;min-height:0;overflow:hidden;background:rgba(255,255,255,.14)}
+.p-img img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.p-body{flex:none;display:flex;flex-direction:column;gap:12px;padding:clamp(20px,3vw,44px)}
+.p-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.chip{padding:.35em .9em;border-radius:999px;background:#fff;color:var(--ink);font:700 .8125rem/1.3 var(--text)}
+.p-date{font-weight:700;font-size:.9375rem}
+.p-title{font:700 clamp(1.3rem,2.6vw,2.5rem)/1.12 var(--display);letter-spacing:-.025em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.p-desc{max-width:56ch;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+@media (min-width:900px){
+  .pcard{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+  .p-img{height:100%}
+  .p-body{justify-content:center;gap:18px}
+  .p-desc{-webkit-line-clamp:5;font-size:1.0625rem}
+  .p-cta{margin-top:8px}
+}
+
+/* ---------- people (tilt + flip) ---------- */
+.people{display:grid;gap:var(--gap);grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:899px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:599px){.people{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:80%;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1*var(--gut));padding:6px var(--gut) 16px;scroll-padding-inline:var(--gut)}.pwrap{scroll-snap-align:start}}
+.person{position:relative;height:100%;perspective:1600px}
+.flip{display:grid;height:100%;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.3,1.4,.45,1)}
+.person.is-flipped .flip{transform:rotateY(180deg)}
+.face{grid-area:1/1;display:flex;flex-direction:column;border-radius:var(--r-lg);overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.front{position:relative;padding:12px}
+.ph{aspect-ratio:4/5;border-radius:var(--r-md);overflow:hidden;background:rgba(255,255,255,.18)}
+@media (min-width:600px) and (max-width:899px){.ph{aspect-ratio:1}}
+.ph img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.pinfo{flex:1;display:flex;flex-direction:column;gap:6px;padding:16px 8px 8px}
+.role{font:600 .9375rem/1.35 var(--text)}
+.pname{font:700 clamp(1.15rem,1.6vw,1.375rem)/1.2 var(--display);letter-spacing:-.02em}
+.flip-btn{margin-top:auto;align-self:flex-start}
+.pinfo .flip-btn{margin-top:14px}
+.back{transform:rotateY(180deg);gap:12px;padding:24px;background:#fff;color:var(--ink);border:3px solid var(--c)}
+.bio{color:var(--muted);font-size:.9375rem;line-height:1.6}
+.glare{position:absolute;left:0;top:0;width:90%;aspect-ratio:1;margin:-45% 0 0 -45%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.38),transparent);opacity:0;pointer-events:none}
+
+/* ---------- meeting + newsletters ---------- */
+.mn > *{grid-column:1/-1}
+@media (min-width:900px){.m-meet{grid-column:span 7}.m-news{grid-column:span 5}}
+.m-day{margin-top:clamp(20px,3vw,36px);font:800 min(16cqi,7rem)/.95 var(--display);letter-spacing:-.04em}
+.m-time{margin-top:8px;font:700 clamp(1.25rem,2.4vw,2rem)/1.2 var(--display)}
+.m-venue{margin-top:18px;max-width:44ch;font-size:1.0625rem}
+.m-cta{margin-top:24px}
+.m-news{display:flex;flex-direction:column;gap:var(--gap)}
+.m-news .h2{margin-bottom:4px}
+.nl{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.nl-date{font-weight:700}
+.nl .btn{margin-top:14px}
+
+/* ---------- footer ---------- */
+.foot{background:var(--ink);color:#fff;margin-top:clamp(24px,4vw,56px)}
+.foot::before{content:"";display:block;height:10px;background:linear-gradient(90deg,var(--azure) 0 14.28%,var(--cranberry) 0 28.57%,var(--turquoise) 0 42.86%,var(--violet) 0 57.14%,var(--orange) 0 71.43%,var(--gold) 0 85.71%,var(--royal) 0)}
+.foot-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px;padding-block:clamp(36px,5vw,64px)}
+.f-club{display:flex;align-items:center;gap:18px;min-width:0}
+.f-logo{flex:none;width:88px;height:88px;padding:8px;border-radius:24px;background:#fff}
+.f-logo img{width:100%;height:100%;object-fit:contain}
+.f-name{font:700 clamp(1.25rem,2.2vw,1.75rem)/1.2 var(--display);letter-spacing:-.02em}
+.f-d{margin-top:4px;color:#B9BCD6}
+.f-soc{display:flex;flex-wrap:wrap;gap:8px}
+.f-soc a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:2px solid rgba(255,255,255,.4);border-radius:999px;font-weight:700;text-decoration:none}
+.f-soc a:hover{background:#fff;color:var(--ink)}
+.f-admin{display:inline-flex;align-items:center;min-height:44px;padding:0 6px;border-radius:8px;color:#B9BCD6;font-weight:600}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<p class="note">Design sample - Theme 8 option B: Vibrant Bento. Built from Thane Hills' own data. Page links are inactive.</p>
+<div class="blobs" aria-hidden="true"><div class="blob b1"><i></i></div><div class="blob b2"><i></i></div><div class="blob b3"><i></i></div><div class="blob b4"><i></i></div></div>
+<header class="hdr" id="hdr"></header>
+<div class="panel" id="menu-panel" role="dialog" aria-modal="true" aria-label="Menu" data-lenis-prevent hidden></div>
+<main id="main" tabindex="-1"></main>
+<footer class="foot" id="foot"></footer>
+
+<script>
+/* ===== 1. Data + render + interactions (works with no animation library) ===== */
+const D = {"club":"Rotary Club of Thane Hills","short":"Thane Hills","district":"3142","year":"2026–27","rotaryLogo":"https://rizones45678.org/API/Documents/WebsiteData/Group1/LOGO/UpperLogo_a8029d9327634b199550d6b2050e100d.png","clubLogo":"https://rizones45678.org/API/Documents/group/club_logo_3686e0c78f04411893de23ec6bf36c6d.png","about":"Rotary Club of Thane Hills – An overview Rotary Club of Thane Hills (RCTH) was chartered on May 20, 1991. The idea of this club was sown sometime around October 1990 when a group of like-minded professionals and businessmen came together to form a new Rotary club. The idea of this new club was mooted by Rotary Club of Thane North, with strong support from the then President Nana Khambete and PP Suresh Dhawan. The initial meetings of this group were held at Mr. Bhoomreddi’s residence and after the initial work of 7 months; the club got its charter. RCTH started its journey under the able leadership of PP Late Vasant Zalani as the Club President and PP (Dr.) Suhas Kulkarni as the Club Secretary. There were about thirty charter members and it is a matter of pride for us that a good number of those charter members continue to be the members of this prestigious club. In the last 30 years of its existence, RCTH has grown by leaps and bounds and has turned into a strong tree from a sapling sown 30 years back. Today, the club’s strength has risen to 105 members and growing steadily with every passing year. In all these years, RCTH has been led by very able leaders and teams, who have made this club as one of the leading clubs in the District and the Rotary world. Every year, RCTH has undertaken numerous projects for the community welfare. In 2000, RCTH founded a charitable Trust called Triumph Foundation and executes various social initiatives and community-based projects through this foundation. Besides the annual projects like the Triumph Run (sports events for special children), Blood Donation Camps, Senior Citizen Health check-ups, Vocational Guidance Seminars, RCTH has undertaken some huge projects in the past. Listed below are a few of our Landmark projects: Earthen Dam Project at Shirol Tribal Employment Scheme Self-employment Centre for Destitute women at Premdhaan at Airoli, New Mumbai Triumph Garden at Jidd School Infrastructure for Vocational Training in Special School Upgradation for Crematorium at Thane Career Training Centre at Holy Cross Convent Special school at Thane Infrastructual Assistance to Tribal school, Utavali Village, Wada. Triumph Blood Bank and Thalassemia Day-care centre ‘Right to Go’ – building Toilet blocks for villagers in Sogav. Check dams at Shahpur and Murbad ‘Virtual eye’ – a learning tool for visually-impaired Pediatric Heart surgeries ‘Mission for Vision’ – Eye sight corrective surgeries Hamari Pari – Installation of sanitary pad machines in schools Rotarian Rakesh Wadhawan Memorial Education Complex at Shenve village, Taluka shahpur Check dams at ambadi and umroli in shahpur Joint venture between Triump Foundation and Seetabai Gadgil Trust Eye care center at Thane","banners":["https://rizones45678.org/API/uploads/banner/e2e31bc4-b8d5-4f1a-be78-4cc109962da0.jpg","https://rizones45678.org/API/uploads/banner/449dddc4-53c4-4ce3-935f-f3496647eb5b.jpg","https://rizones45678.org/API/uploads/banner/d22b9e0f-665a-42bc-9d75-bf91181067f1.jpg"],"figures":{"beneficiaries":6752,"projects":32,"manHours":686,"totalCost":1021500,"members":121},"featured":[{"id":31327,"title":"Project 23- Drug Deaddiction Awareness @ RS Deokar","desc":"Today, under the Rotary Club of Thane Hills’ Drug Deaddiction Awareness Initiative, I had the privilege of conducting an interactive session on Drug Awareness for 120 students of standard 9th & 10th of R.S. Deokar School. The session focused on understanding a","avenue":"Community Service","date":"2026-08-25","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album31327/2d84e808-bb52-4c0a-a214-2c9b007b19f5.png"},{"id":28602,"title":"Project 22: Blood Donation Camp at Fortress","desc":"We are pleased to share the success of our Blood Donation Drive today at Fortress Office An impressive 35 units of blood were collected during the camp. Kudos to Hillers Kumar and Anuradha for donating blood. Attended by President Dr Anagha Karkhanis, CS Vasan","avenue":"Community Service","date":"2026-08-21","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28602/b450feb3-9d35-4e2a-a5a4-5e7ed88d938b.png"},{"id":28658,"title":"Press Coverage: Ganapati Idol making workshop","desc":"Ganapati Idol making workshop was covered in Indian Express","avenue":"Public Image","date":"2026-08-12","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28658/16c61874-f0ca-4087-b001-7d83a84ba24b.png"},{"id":28603,"title":"Project 21: Annapoorna Drive at Yogi Hills","desc":"August 12, 2026, our Rotary Club of Thane Hills team successfully completed another Annapurna distribution at Yogi Hills, reaching out to 1,000 visually challenged beneficiaries! We distributed essential household kits containing food grains, pulses, tea, toot","avenue":"Community Service","date":"2026-08-12","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28603/f17131c6-236f-4102-b304-e86593b06298.png"},{"id":34259,"title":"Press Coverage: Orchestra for specially abled","desc":"News of RCTH organized orchestra for specially abled covered in Indian Express","avenue":"Public Image","date":"2026-08-11","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album34259/f517b14b-76bf-4b6a-8774-ba66ccb5de67.png"},{"id":28634,"title":"Rotaract Club of Thane Hills Installation","desc":"The Installation Ceremony of the Rotaract Club of Thane Hills marked the beginning of a new year filled with leadership, service, and fellowship. The new President, Rtr. Prajakta Bhadadare, along with her team, was formally inducted and entrusted with the resp","avenue":"New Generation Service","date":"2026-08-09","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28634/29e9cb35-2a10-4ff5-8dbb-0c56ac307e02.png"},{"id":28605,"title":"Project 20: Musical event for Specially abled","desc":"🌟 Project 20 Musical event for Specially abled children by visually challenged students 🌟 Rotary Club of Thane Hills hosted a beautiful musical morning where visually challenged students from Pragati Andh Vidyalay, Badlapur presented a soulful orchestra for sp","avenue":"Community Service","date":"2026-08-09","img":"https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28605/b343681b-3aaa-463f-87e6-541530889d14.png"}],"people":[{"role":"Club President","name":"Anagha Amit Karkhanis","img":"https://rizones45678.org/API/Documents/directory/anagha28022023120212PM.jpg","bio":"Dr Anagha Karkhanis is a Consultant Gynaecologist with expertise in IVF, Cosmetic Gynaecology, Urogynaecology and Facial Aesthetics. Her academic achievements include MRCPI(Ireland), FRM(Germany), MRM(UK), DOWH(Ireland),"},{"role":"Club Secretary","name":"Vasant Bhat","img":"https://rizones45678.org/API/Documents/directory/20082023092950PM.png","bio":""},{"role":"District Governor, 3142","name":"Nilesh Vinayak Jaywant","img":"https://rizones45678.org/API/Documents/directory/DA2C741D-0B64-4185-B35C-10A258BA409219122024113304AM.jpeg","bio":"Dr Nilesh Vinayak Jaywant was born on 27th March 1970, at Chembur Mumbai. He did his schooling from the St John Baptist High School, Thane, Maharashtra. Being a very bright student, he won many awards"},{"role":"President, Rotary International 2026-27","name":"Olayinka Hakeem Babalola","img":"https://rizones45678.org/API/Documents/WebsiteData/International_President/PRESIDENT020720261207057300549PM.jpg","bio":"Olayinka Hakeem Babalola, a member of the Rotary Club of Trans Amadi, Nigeria, has been selected by the Board of Directors to become Rotary International’s president for 2026-27. His term will begin o"}],"newsletters":[{"title":"August 2026- Hill Echoes","date":"2026-08-04","url":"https://rizones45678.org/API/Documents/ebulletin/Group1/AUGUST_-_2026_8663f9e604082026091523PM.pdf"},{"title":"July 2026- Hill Echoes","date":"2026-07-10","url":"https://rizones45678.org/API/Documents/ebulletin/Group1/July_2026-_Hill_Echoes_bb63aea210072026103527PM.pdf"}],"meeting":{"day":"Thursday","time":"19:30–21:30","venue":"Smt. Savitridevi Thirani Highschools, Road No. 1, Vartak Nagar, Thane West, Maharashtra 400606"},"contact":[],"socials":[{"platform":"facebook","linkUrl":"https://www.facebook.com/rcthanehills/"},{"platform":"instagram","linkUrl":"https://www.instagram.com/rotaryclubofthanehills/?hl=en"},{"platform":"linkedin","linkUrl":"https://www.linkedin.com/company/rotary-club-of-thane-hills/"},{"platform":"twitter","linkUrl":"https://twitter.com/RCThaneHills"}]};
+
+/* Verbatim excerpts of D.about, re-grouped for the layout. The "105 members" sentence is left out
+   because the live figure (D.figures.members) says 121. */
+const STORY = {
+  intro: 'Rotary Club of Thane Hills (RCTH) was chartered on May 20, 1991.',
+  begin: [
+    'The idea of this club was sown sometime around October 1990 when a group of like-minded professionals and businessmen came together to form a new Rotary club. The idea of this new club was mooted by Rotary Club of Thane North, with strong support from the then President Nana Khambete and PP Suresh Dhawan. The initial meetings of this group were held at Mr. Bhoomreddi’s residence and after the initial work of 7 months; the club got its charter.',
+    'RCTH started its journey under the able leadership of PP Late Vasant Zalani as the Club President and PP (Dr.) Suhas Kulkarni as the Club Secretary. There were about thirty charter members and it is a matter of pride for us that a good number of those charter members continue to be the members of this prestigious club.'
+  ],
+  foundation: { year: '2000', name: 'Triumph Foundation', text: 'In 2000, RCTH founded a charitable Trust called Triumph Foundation and executes various social initiatives and community-based projects through this foundation.' },
+  annual: ['Triumph Run (sports events for special children)', 'Blood Donation Camps', 'Senior Citizen Health check-ups', 'Vocational Guidance Seminars'],
+  landmarks: [
+    'Earthen Dam Project at Shirol', 'Tribal Employment Scheme',
+    'Self-employment Centre for Destitute women at Premdhaan at Airoli, New Mumbai', 'Triumph Garden at Jidd School',
+    'Infrastructure for Vocational Training in Special School', 'Upgradation for Crematorium at Thane',
+    'Career Training Centre at Holy Cross Convent Special school at Thane', 'Infrastructual Assistance to Tribal school, Utavali Village, Wada',
+    'Triumph Blood Bank and Thalassemia Day-care centre', '‘Right to Go’ – building Toilet blocks for villagers in Sogav',
+    'Check dams at Shahpur and Murbad', '‘Virtual eye’ – a learning tool for visually-impaired', 'Pediatric Heart surgeries',
+    '‘Mission for Vision’ – Eye sight corrective surgeries', 'Hamari Pari – Installation of sanitary pad machines in schools',
+    'Rotarian Rakesh Wadhawan Memorial Education Complex at Shenve village, Taluka shahpur', 'Check dams at ambadi and umroli in shahpur',
+    'Joint venture between Triump Foundation and Seetabai Gadgil Trust Eye care center at Thane'
+  ],
+  marquee: ['Triumph Run', 'Blood Donation Camps', 'Mission for Vision', 'Hamari Pari', 'Virtual eye', 'Right to Go', 'Triumph Blood Bank', 'Pediatric Heart surgeries', 'Check dams at Shahpur and Murbad', 'Triumph Garden at Jidd School', 'Senior Citizen Health check-ups']
+};
+
+const App = window.App = { lenis: null, slider: null, menuAnim: null };
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const fmtDate = s => { const [y, m, d] = String(s).split('-'); return m ? `${+d} ${MON[m - 1]} ${y}` : esc(s); };
+const num = n => Number(n).toLocaleString('en-IN');
+/* API text is cut at a fixed length; mark the cut instead of pretending the sentence ended */
+const more = s => { s = String(s || '').trim(); return s.length > 150 && !/[.!?)]$/.test(s) ? s.replace(/[\s,;:–-]+$/, '') + '…' : s; };
+const DARK = new Set(['azure', 'cranberry', 'violet', 'royal']);
+const tone = c => `t-${c}${DARK.has(c) ? ' dk' : ''}`;
+const NEW_TAB = '<span class="sr-only"> (opens in new tab)</span>';
+const MENU = ['Home', 'About', 'Directory', 'Directors', 'Calendar', 'Projects', 'Past Presidents', 'Events'];
+const P_COL = ['azure', 'cranberry', 'turquoise', 'violet', 'orange', 'royal', 'gold'];
+const DOT_COL = ['var(--cranberry)', 'var(--azure)', 'var(--gold)', 'var(--turquoise)', 'var(--violet)', 'var(--orange)'];
+const SOC = { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', twitter: 'Twitter', youtube: 'YouTube', x: 'X' };
+const l1 = D.club.replace(D.short, '').trim() || D.club;
+const avenues = [...new Set(D.featured.map(p => p.avenue).filter(Boolean))];
+
+/* header + mobile panel */
+$('#hdr').innerHTML = `<div class="wrap hdr-in">
+  <a class="brand" href="#"><img src="${esc(D.rotaryLogo)}" alt="${esc(D.club)} home" width="900" height="240"></a>
+  <nav class="nav" aria-label="Main">
+    <ul class="nav-list">${MENU.map((m, i) => `<li><a href="#"${i ? '' : ' aria-current="page"'}>${m}</a></li>`).join('')}</ul>
+    <div class="nav-mask" aria-hidden="true"><ul>${MENU.map(m => `<li><span>${m}</span></li>`).join('')}</ul></div>
+  </nav>
+  <div class="year"><label class="sr-only" for="year">Rotary year</label><select id="year"><option selected>${esc(D.year)}</option></select></div>
+  <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel"><span class="sr-only">Menu</span><i></i><i></i><i></i></button>
+</div>`;
+$('#menu-panel').innerHTML = `<div class="wrap">
+  <div class="panel-top"><p class="panel-title">Menu</p><button class="panel-close" id="menu-close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close menu</span></button></div>
+  <ul class="panel-list">${MENU.map((m, i) => `<li><a href="#"${i ? '' : ' aria-current="page"'}>${m}</a></li>`).join('')}</ul>
+</div>`;
+
+/* main */
+const F = D.figures, M = D.meeting;
+const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(M.venue);
+const NUMS = [
+  { k: 'Beneficiaries', v: F.beneficiaries, c: 'royal', cls: 'n1' },
+  { k: 'Man-hours', v: F.manHours, c: 'gold', cls: 'n2' },
+  { k: 'Total cost', v: F.totalCost, c: 'cranberry', cls: 'n3', money: true }
+];
+
+$('#main').innerHTML = `
+<section class="hero" aria-label="Welcome">
+  <div class="wrap bento">
+    <div class="tile ${tone('azure')} h-name">
+      <h1 class="h1"><span class="l1">${esc(l1)}</span> <span class="l2">${esc(D.short)}</span></h1>
+      <div class="h-cta"><a class="btn btn-light magnet" href="#projects">Our projects</a><a class="btn btn-ghost magnet" href="#about">About the club</a></div>
+      <div class="sticker" aria-hidden="true"><div class="spin"><svg viewBox="0 0 120 120"><defs><path id="ring" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#ring" textLength="280" lengthAdjust="spacing">District ${esc(D.district)} ✦ Rotary year ${esc(D.year)} ✦</textPath></text></svg></div><span class="sticker-dot"></span></div>
+    </div>
+    <div class="tile ${tone('gold')} h-meet">
+      <p class="label">Club meeting</p>
+      <p class="h-day">${esc(M.day)}</p>
+      <p class="h-time">${esc(M.time)}</p>
+      <a class="btn btn-ink magnet" href="#meet">Where we meet</a>
+    </div>
+    <div class="tile h-ban">
+      <div class="ban-frame">${D.banners.map((b, i) => `<img class="slide${i ? '' : ' is-on'}" src="${esc(b)}" alt="${esc(D.club)} banner ${i + 1} of ${D.banners.length}" width="1700" height="531"${i ? '' : ' fetchpriority="high"'}>`).join('')}</div>
+      ${D.banners.length > 1 ? `<div class="ban-ctl">${D.banners.map((_, i) => `<button class="dot" type="button" aria-label="Show banner ${i + 1}" aria-current="${!i}"></button>`).join('')}<button class="ban-pause" type="button" aria-pressed="false" hidden>Pause</button></div>` : ''}
+    </div>
+    <div class="tile ${tone('cranberry')} h-fig h-mem"><p class="fig-n" data-to="${F.members}">${num(F.members)}</p><p class="label">Members</p></div>
+    <div class="tile ${tone('turquoise')} h-fig h-prj"><p class="fig-n" data-to="${F.projects}">${num(F.projects)}</p><p class="label">Projects</p></div>
+  </div>
+</section>
+
+<div class="mq" aria-hidden="true">
+  <div class="mq-row"><div class="mq-track"><div class="mq-group">${avenues.map((a, i) => `<span class="mq-w" style="--c:${DOT_COL[i % DOT_COL.length]}">${esc(a)}</span>`).join('')}</div></div></div>
+  <div class="mq-row"><div class="mq-track"><div class="mq-group">${STORY.marquee.map((a, i) => `<span class="mq-p ${tone(P_COL[i % P_COL.length])}">${esc(a)}</span>`).join('')}</div></div></div>
+</div>
+
+<section class="sec" id="about" aria-labelledby="about-h">
+  <div class="wrap">
+    <h2 class="h2" id="about-h">Our story</h2>
+    <p class="float"><span class="sr-only">${esc(STORY.intro)}</span><span class="float-vis" aria-hidden="true">${esc(STORY.intro)}</span></p>
+    <div class="bento about-grid">
+      <article class="tile t-white pop a-begin"><h3 class="h3">How it began</h3><div class="prose">${STORY.begin.map(p => `<p>${esc(p)}</p>`).join('')}</div></article>
+      <article class="tile ${tone('orange')} pop a-found"><p class="big-year">${esc(STORY.foundation.year)}</p><h3 class="h3">${esc(STORY.foundation.name)}</h3><p>${esc(STORY.foundation.text)}</p></article>
+      <article class="tile ${tone('violet')} pop a-land"><h3 class="h3">Landmark projects</h3><ul class="chips">${STORY.landmarks.map(l => `<li>${esc(l)}</li>`).join('')}</ul></article>
+      <article class="tile ${tone('turquoise')} pop a-annual"><h3 class="h3">Annual projects</h3><ul class="dots">${STORY.annual.map(l => `<li>${esc(l)}</li>`).join('')}</ul></article>
+    </div>
+    <p class="more"><a class="btn btn-ink magnet" href="#">Read more about us</a></p>
+  </div>
+</section>
+
+<section class="sec" id="numbers" aria-labelledby="num-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="h2" id="num-h">By the numbers</h2><p class="lede">Rotary year ${esc(D.year)}</p></div>
+    <div class="bento">${NUMS.map(n => `
+      <div class="tile ${tone(n.c)} pop n-tile ${n.cls}"><p class="label">${n.k}</p><p class="n-big" data-to="${n.v}"${n.money ? ' data-money="1"' : ''}>${n.money ? '₹' : ''}${num(n.v)}</p><div class="bar" aria-hidden="true"><i></i></div></div>`).join('')}
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="projects" aria-labelledby="prj-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="h2" id="prj-h">Our projects</h2><a class="btn btn-ink magnet" href="#">View all projects</a></div>
+    <ul class="stack">${D.featured.map((p, i) => `
+      <li class="pcard ${tone(P_COL[i % P_COL.length])}" style="--i:${i}">
+        <div class="p-img"><img src="${esc(p.img)}" alt="${esc(p.title)}" loading="lazy" decoding="async"></div>
+        <div class="p-body">
+          <p class="p-meta"><span class="chip">${esc(p.avenue)}</span><time class="p-date" datetime="${esc(p.date)}">${fmtDate(p.date)}</time></p>
+          <h3 class="p-title">${esc(p.title)}</h3>
+          <p class="p-desc">${esc(more(p.desc))}</p>
+          <p class="p-cta"><a class="btn btn-light magnet" href="#">View project<span class="sr-only">: ${esc(p.title)}</span></a></p>
+        </div>
+      </li>`).join('')}
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="people" aria-labelledby="ppl-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="h2" id="ppl-h">Leadership ${esc(D.year)}</h2></div>
+    <ul class="people">${D.people.map((p, i) => { const c = ['azure', 'cranberry', 'violet', 'royal'][i % 4], bio = more(p.bio); return `
+      <li class="pwrap pop">
+        <article class="person" style="--c:var(--${c})">
+          <div class="flip">
+            <div class="face front ${tone(c)}">
+              <div class="ph"><img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy" decoding="async"></div>
+              <div class="pinfo"><p class="role">${esc(p.role)}</p><h3 class="pname">${esc(p.name)}</h3>${bio ? `
+                <button class="btn btn-light flip-btn" type="button" aria-expanded="false" aria-controls="bio-${i}">Read bio</button>` : ''}</div>
+              <span class="glare" aria-hidden="true"></span>
+            </div>${bio ? `
+            <div class="face back" id="bio-${i}" inert><p class="pname">${esc(p.name)}</p><p class="bio">${esc(bio)}</p><button class="btn btn-ink flip-btn" type="button">Close bio</button></div>` : ''}
+          </div>
+        </article>
+      </li>`; }).join('')}
+    </ul>
+  </div>
+</section>
+
+<div class="sec">
+  <div class="wrap bento mn">
+    <section class="tile ${tone('royal')} pop m-meet" id="meet" aria-labelledby="meet-h">
+      <h2 class="h2" id="meet-h">Where we meet</h2>
+      <p class="m-day">${esc(M.day)}</p>
+      <p class="m-time">${esc(M.time)}</p>
+      <p class="m-venue">${esc(M.venue)}</p>
+      <p class="m-cta"><a class="btn btn-light magnet" href="${esc(mapUrl)}" target="_blank" rel="noopener">Open in Maps${NEW_TAB}</a></p>
+    </section>
+    <section class="m-news" id="news" aria-labelledby="news-h">
+      <h2 class="h2" id="news-h">Newsletters</h2>${D.newsletters.map((n, i) => `
+      <article class="tile ${tone(['orange', 'turquoise'][i % 2])} pop nl"><h3 class="h3">${esc(n.title)}</h3><p class="nl-date"><time datetime="${esc(n.date)}">${fmtDate(n.date)}</time></p><a class="btn btn-ink magnet" href="${esc(n.url)}" target="_blank" rel="noopener">Read newsletter<span class="sr-only">: ${esc(n.title)} (PDF, opens in new tab)</span></a></article>`).join('')}
+    </section>
+  </div>
+</div>`;
+
+$('#foot').innerHTML = `<div class="wrap foot-in">
+  <div class="f-club"><span class="f-logo"><img src="${esc(D.clubLogo)}" alt="${esc(D.club)} logo" width="191" height="191" loading="lazy"></span>
+    <div><p class="f-name">${esc(D.club)}</p><p class="f-d">District ${esc(D.district)}</p></div></div>
+  <ul class="f-soc" aria-label="Social media">${D.socials.map(s => `<li><a href="${esc(s.linkUrl)}" target="_blank" rel="noopener">${esc(SOC[s.platform] || s.platform)}${NEW_TAB}</a></li>`).join('')}</ul>
+  <a class="f-admin" href="#">Admin login</a>
+</div>`;
+
+/* mobile menu */
+const menuBtn = $('#menu-btn'), panel = $('#menu-panel'), menuClose = $('#menu-close');
+const behind = () => [$('.skip'), $('.note'), $('#hdr'), $('#main'), $('#foot')];
+function openMenu() {
+  panel.hidden = false;
+  menuBtn.setAttribute('aria-expanded', 'true');
+  behind().forEach(el => { el.inert = true; });
+  document.documentElement.style.overflow = 'hidden';
+  if (App.lenis) App.lenis.stop();
+  if (App.menuAnim) App.menuAnim(panel, menuBtn);
+  menuClose.focus();
+}
+function closeMenu() {
+  if (panel.hidden) return;
+  panel.hidden = true;
+  menuBtn.setAttribute('aria-expanded', 'false');
+  behind().forEach(el => { el.inert = false; });
+  document.documentElement.style.overflow = '';
+  if (App.lenis) App.lenis.start();
+  menuBtn.focus();
+}
+menuBtn.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+/* page links are inert in the sample; in-page anchors glide when Lenis is on */
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const h = a.getAttribute('href');
+  if (h === '#') { e.preventDefault(); closeMenu(); return; }
+  const t = App.lenis && !a.classList.contains('skip') && document.querySelector(h);
+  if (t) { e.preventDefault(); App.lenis.scrollTo(t, { offset: -($('#hdr').offsetHeight + 12) }); }
+});
+
+/* profile card flip */
+document.addEventListener('click', e => {
+  const b = e.target.closest('.flip-btn');
+  if (!b) return;
+  const card = b.closest('.person'), on = !card.classList.contains('is-flipped');
+  const [front, back] = card.querySelectorAll('.face');
+  card.classList.toggle('is-flipped', on);
+  front.inert = on; back.inert = !on;
+  front.querySelector('.flip-btn').setAttribute('aria-expanded', String(on));
+  (on ? back : front).querySelector('.flip-btn').focus({ preventScroll: true });
+});
+
+/* banner slider: instant switch by default, the motion layer swaps in a morph */
+(() => {
+  const slides = [...document.querySelectorAll('.slide')], dots = [...document.querySelectorAll('.dot')];
+  const sl = App.slider = {
+    i: 0, slides, anim: null, onUser: null, pauseBtn: $('.ban-pause'),
+    show(n) {
+      n = (n + slides.length) % slides.length;
+      if (n === this.i) return;
+      const from = slides[this.i], to = slides[n];
+      this.i = n;
+      dots.forEach((d, j) => d.setAttribute('aria-current', String(j === n)));
+      if (this.anim) this.anim(from, to);
+      else { from.classList.remove('is-on'); to.classList.add('is-on'); }
+    }
+  };
+  dots.forEach((d, j) => d.addEventListener('click', () => { sl.show(j); if (sl.onUser) sl.onUser(); }));
+})();
+</script>
+
+<script src="../vendor/gsap.min.js"></script>
+<script src="../vendor/ScrollTrigger.min.js"></script>
+<script src="../vendor/SplitText.min.js"></script>
+<script src="../vendor/lenis.min.js"></script>
+
+<script>
+/* ===== 2. Motion layer. Everything here is optional: without it the page above is complete. ===== */
+(() => {
+  const App = window.App;
+  if (!window.gsap || !window.ScrollTrigger || !App) return;
+  const hasSplit = !!window.SplitText;
+  gsap.registerPlugin(ScrollTrigger);
+  if (hasSplit) gsap.registerPlugin(SplitText);
+
+  const fmt = (el, v) => (el.dataset.money ? '₹' : '') + Math.round(v).toLocaleString('en-IN');
+  const countUp = (el, dur) => { const o = { v: 0 }; return gsap.to(o, { v: +el.dataset.to, duration: dur, ease: 'power3.out', onUpdate: () => { el.textContent = fmt(el, o.v); } }); };
+
+  const mm = gsap.matchMedia();
+  mm.add({ motion: '(prefers-reduced-motion: no-preference)', fine: '(hover: hover) and (pointer: fine)' }, ctx => {
+    const { motion, fine } = ctx.conditions;
+    if (!motion) return; // reduced motion: no animations, no Lenis, everything stays as rendered
+
+    const off = [];
+    const on = (el, ev, fn) => { el.addEventListener(ev, fn); off.push(() => el.removeEventListener(ev, fn)); };
+    /* SplitText and text measuring wait for the web fonts; work added later goes through ctx.add so it reverts with this context */
+    const fontsIn = document.fonts ? document.fonts.ready : Promise.resolve();
+    let alive = true;
+    off.push(() => { alive = false; });
+    const later = fn => fontsIn.then(() => { if (alive) ctx.add(fn); });
+
+    /* --- Lenis smooth scroll: desktop mice/trackpads only --- */
+    if (fine && window.Lenis) {
+      const lenis = new Lenis({ autoRaf: false, lerp: 0.1 });
+      const raf = t => lenis.raf(t * 1000);
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(raf);
+      gsap.ticker.lagSmoothing(0);
+      App.lenis = lenis;
+      off.push(() => { gsap.ticker.remove(raf); lenis.destroy(); App.lenis = null; gsap.ticker.lagSmoothing(500, 33); });
+    }
+
+    /* --- gradient blobs: slow drift + scroll parallax --- */
+    gsap.utils.toArray('.blob i').forEach(b => gsap.to(b, {
+      xPercent: gsap.utils.random(-22, 22), yPercent: gsap.utils.random(-22, 22), scale: gsap.utils.random(0.8, 1.25),
+      duration: gsap.utils.random(7, 12), ease: 'sine.inOut', repeat: -1, yoyo: true
+    }));
+    gsap.utils.toArray('.blob').forEach((b, i) => gsap.to(b, { yPercent: [-40, -25, -55, -30][i % 4], ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 1.2 } }));
+
+    /* --- hero: tiles spring in, name letters bounce, figures count --- */
+    const heroFigs = gsap.utils.toArray('.hero [data-to]');
+    heroFigs.forEach(el => { el.textContent = fmt(el, 0); });
+    const tl = gsap.timeline({ delay: 0.1 });
+    tl.from('.hero .tile', { opacity: 0, y: 60, scale: 0.85, rotation: i => [-4, 3, -3, 4, -2][i % 5], duration: 1, ease: 'back.out(1.6)', stagger: 0.08, clearProps: 'transform,opacity' });
+    tl.add(() => heroFigs.forEach(el => countUp(el, 1.8)), 0.5);
+    const l2 = document.querySelector('.h1 .l2');
+    if (hasSplit && l2) {
+      /* hold the name (JS-only) until the fonts are in, then split and bounce it; if fonts are slow, show it unsplit after 1.5s */
+      let held = true;
+      gsap.set(l2, { opacity: 0 });
+      const release = gsap.delayedCall(1.5, () => { held = false; gsap.set(l2, { clearProps: 'opacity' }); });
+      later(() => {
+        if (!held) return;
+        held = false; release.kill();
+        SplitText.create('.h1', { type: 'words,chars', charsClass: 'ch', tag: 'span', aria: 'auto' });
+        gsap.from('.h1 .l2 .ch', { opacity: 0, yPercent: 90, scale: 0.3, rotation: i => (i % 2 ? 14 : -14), duration: 0.9, ease: 'back.out(2.4)', stagger: 0.045, delay: Math.max(0, 0.3 - tl.time()), clearProps: 'transform,opacity' });
+        gsap.set(l2, { clearProps: 'opacity' });
+      });
+    }
+
+    /* --- velocity marquee + spinning sticker, both steered by scroll speed and direction --- */
+    const mq = document.querySelector('.mq');
+    const rows = gsap.utils.toArray('.mq-row').map((row, i) => {
+      const track = row.querySelector('.mq-track');
+      return { track, html: track.innerHTML, dir: i % 2 ? 1 : -1, speed: i % 2 ? 0.06 : 0.08, x: 0, w: 0 };
+    });
+    if (mq) {
+      mq.classList.add('mq--live');
+      const need = Math.max(window.innerWidth, 1600);
+      rows.forEach(r => {
+        const g = r.track.querySelector('.mq-group'), items = [...g.children];
+        for (let n = 0; g.offsetWidth < need && n < 8; n++) items.forEach(it => g.appendChild(it.cloneNode(true)));
+        r.track.appendChild(g.cloneNode(true));
+        r.w = g.offsetWidth;
+        r.set = gsap.quickSetter(r.track, 'x', 'px');
+      });
+      const measure = () => rows.forEach(r => { r.w = r.track.firstElementChild.offsetWidth; });
+      on(window, 'resize', measure);
+      later(measure); // widths first read in the fallback font would make the loop jump once Sora arrives
+      off.push(() => { mq.classList.remove('mq--live'); rows.forEach(r => { r.track.innerHTML = r.html; gsap.set(r.track, { clearProps: 'transform' }); }); });
+    }
+    const spin = document.querySelector('.sticker .spin');
+    const spinSet = spin && gsap.quickSetter(spin, 'rotation', 'deg');
+    let boost = 1, sdir = 1, rot = 0;
+    const tick = (time, dt) => {
+      boost += (1 - boost) * 0.05;
+      const k = dt * boost * sdir;
+      rows.forEach(r => { if (r.w) { r.x = gsap.utils.wrap(-r.w, 0, r.x + r.dir * r.speed * k); r.set(r.x); } });
+      if (spinSet) { rot = (rot + k * 0.02) % 360; spinSet(rot); }
+    };
+    gsap.ticker.add(tick);
+    off.push(() => { gsap.ticker.remove(tick); if (spin) gsap.set(spin, { clearProps: 'transform' }); });
+    ScrollTrigger.create({ start: 0, end: 'max', onUpdate: self => { sdir = self.direction; boost = Math.max(boost, 1 + Math.min(Math.abs(self.getVelocity()) / 350, 5)); } });
+
+    /* --- section headings: letters hop in --- */
+    if (hasSplit) later(() => gsap.utils.toArray('.h2').forEach(h => {
+      const s = SplitText.create(h, { type: 'words,chars', charsClass: 'ch', tag: 'span', aria: 'auto' });
+      gsap.from(s.chars, { opacity: 0, yPercent: 80, scale: 0.6, rotation: 10, duration: 0.8, ease: 'back.out(2.2)', stagger: 0.025, clearProps: 'transform,opacity', scrollTrigger: { trigger: h, start: 'top 88%' } });
+    }));
+
+    /* --- about: scroll-float sentence (scrubbed) --- */
+    const fv = document.querySelector('.float-vis');
+    if (fv && hasSplit) later(() => {
+      const s = SplitText.create(fv, { type: 'words,chars', tag: 'span', aria: 'none' });
+      gsap.fromTo(s.chars,
+        { opacity: 0, yPercent: 120, scaleY: 2.3, scaleX: 0.7, transformOrigin: '50% 0%' },
+        { opacity: 1, yPercent: 0, scaleY: 1, scaleX: 1, stagger: 0.03, ease: 'back.inOut(2)', scrollTrigger: { trigger: fv, start: 'top 92%', end: 'bottom 50%', scrub: 1 } });
+    });
+
+    /* --- bento tiles pop in with a springy stagger --- */
+    const pops = gsap.utils.toArray('.pop');
+    gsap.set(pops, { opacity: 0, y: 70, scale: 0.9, rotation: i => [-3, 2, -2, 3][i % 4] });
+    ScrollTrigger.batch(pops, {
+      start: 'top 90%', once: true,
+      onEnter: b => gsap.to(b, { opacity: 1, y: 0, scale: 1, rotation: 0, duration: 1, ease: 'back.out(1.5)', stagger: 0.09, overwrite: true, clearProps: 'transform,opacity' })
+    });
+    gsap.from('.chips li', { opacity: 0, scale: 0.4, y: 20, rotation: i => (i % 2 ? 8 : -8), duration: 0.7, ease: 'back.out(2.5)', stagger: 0.035, clearProps: 'transform,opacity', scrollTrigger: { trigger: '.chips', start: 'top 85%' } });
+
+    /* --- numbers: count-up with a bar that charges alongside --- */
+    gsap.utils.toArray('.n-tile').forEach(t => {
+      const n = t.querySelector('[data-to]'), bar = t.querySelector('.bar i');
+      n.textContent = fmt(n, 0);
+      gsap.set(bar, { scaleX: 0 });
+      ScrollTrigger.create({ trigger: t, start: 'top 80%', once: true, onEnter: () => { countUp(n, 2.2); gsap.to(bar, { scaleX: 1, duration: 2.2, ease: 'power3.out', clearProps: 'transform' }); } });
+    });
+    off.push(() => document.querySelectorAll('[data-to]').forEach(n => { n.textContent = fmt(n, +n.dataset.to); }));
+
+    /* --- projects: sticky stack; each card recedes as the next slides over it --- */
+    const cards = gsap.utils.toArray('.pcard');
+    cards.forEach((c, i) => {
+      const img = c.querySelector('.p-img img');
+      if (img) gsap.fromTo(img, { scale: 1.3 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'top 30%', scrub: true } });
+      const next = cards[i + 1];
+      if (!next) return;
+      gsap.fromTo(c, { scale: 1, rotation: 0, filter: 'brightness(1)' }, {
+        scale: 0.9, rotation: i % 2 ? 1.5 : -1.5, filter: 'brightness(0.7)', transformOrigin: '50% 0%', ease: 'none',
+        scrollTrigger: { trigger: next, start: 'top bottom', end: () => 'top ' + (parseFloat(getComputedStyle(next).top) || 0) + 'px', scrub: true, invalidateOnRefresh: true }
+      });
+    });
+
+    /* --- gooey nav: an elastic pill that stretches between items (clip-path only) --- */
+    const nav = document.querySelector('.nav');
+    if (nav) {
+      const mask = nav.querySelector('.nav-mask'), links = [...nav.querySelectorAll('.nav-list a')];
+      const home = links.find(a => a.hasAttribute('aria-current')) || links[0];
+      const st = { l: 0, r: 0 };
+      const paint = () => { mask.style.clipPath = `inset(4px ${st.r}px 4px ${st.l}px round 999px)`; };
+      const edges = a => ({ l: a.offsetLeft, r: nav.offsetWidth - a.offsetLeft - a.offsetWidth });
+      const go = a => {
+        const e = edges(a), right = e.l > st.l; // leading edge races ahead, trailing edge catches up
+        gsap.to(st, { l: e.l, duration: right ? 0.6 : 0.3, ease: 'power3.out', onUpdate: paint, overwrite: 'auto' });
+        gsap.to(st, { r: e.r, duration: right ? 0.3 : 0.6, ease: 'power3.out', onUpdate: paint, overwrite: 'auto' });
+      };
+      const reset = () => { Object.assign(st, edges(home)); paint(); };
+      nav.classList.add('nav--live');
+      reset();
+      if (document.fonts) document.fonts.ready.then(reset);
+      on(window, 'resize', reset);
+      links.forEach(a => { on(a, 'pointerenter', () => go(a)); on(a, 'focus', () => go(a)); });
+      on(nav, 'pointerleave', () => go(home));
+      on(nav, 'focusout', e => { if (!nav.contains(e.relatedTarget)) go(home); });
+      off.push(() => { gsap.killTweensOf(st); nav.classList.remove('nav--live'); mask.style.clipPath = ''; });
+    }
+
+    /* --- banner: circular morph between slides, autoplay with a pause control --- */
+    const sl = App.slider;
+    if (sl && sl.slides.length > 1) {
+      sl.anim = (from, to) => {
+        gsap.killTweensOf(sl.slides);
+        sl.slides.forEach(s => { if (s !== to) gsap.set(s, { clearProps: 'clipPath,zIndex,transform' }); s.classList.toggle('is-on', s === from || s === to); });
+        const at = `${Math.round(gsap.utils.random(25, 75))}% 50%`;
+        gsap.fromTo(to, { zIndex: 2, clipPath: `circle(0% at ${at})`, scale: 1.15 }, {
+          clipPath: `circle(110% at ${at})`, scale: 1, // 16:5 frame: from a 25%/75% origin the far corner needs ~104% duration: 1.2, ease: 'expo.inOut',
+          onComplete: () => { from.classList.remove('is-on'); gsap.set(to, { clearProps: 'clipPath,zIndex,transform' }); }
+        });
+      };
+      let playing = true;
+      const auto = gsap.delayedCall(5.5, () => { sl.show(sl.i + 1); auto.restart(true); });
+      sl.onUser = () => { if (playing) auto.restart(true); };
+      const pb = sl.pauseBtn;
+      if (pb) {
+        pb.hidden = false;
+        on(pb, 'click', () => {
+          playing = !playing;
+          if (playing) auto.restart(true); else auto.pause();
+          pb.setAttribute('aria-pressed', String(!playing));
+          pb.textContent = playing ? 'Pause' : 'Play';
+        });
+      }
+      off.push(() => {
+        sl.anim = null; sl.onUser = null;
+        if (pb) { pb.hidden = true; pb.textContent = 'Pause'; pb.setAttribute('aria-pressed', 'false'); }
+        sl.slides.forEach((s, j) => { gsap.set(s, { clearProps: 'clipPath,zIndex,transform' }); s.classList.toggle('is-on', j === sl.i); });
+      });
+    }
+
+    /* --- menu panel opens as a circle from the button --- */
+    App.menuAnim = (panel, btn) => {
+      const r = btn.getBoundingClientRect(), at = `${Math.round(r.left + r.width / 2)}px ${Math.round(r.top + r.height / 2)}px`;
+      const R = Math.ceil(Math.hypot(window.innerWidth, window.innerHeight));
+      gsap.fromTo(panel, { clipPath: `circle(0px at ${at})` }, { clipPath: `circle(${R}px at ${at})`, duration: 0.7, ease: 'power3.inOut', overwrite: true, clearProps: 'clipPath' });
+      gsap.from(panel.querySelectorAll('.panel-list li'), { opacity: 0, y: 40, duration: 0.6, ease: 'back.out(1.8)', stagger: 0.04, delay: 0.2, clearProps: 'transform,opacity' });
+    };
+    off.push(() => { App.menuAnim = null; });
+
+    /* --- fine pointers: 3D tilt profile cards + magnetic buttons --- */
+    if (fine) {
+      document.querySelectorAll('.person').forEach(card => {
+        const glare = card.querySelector('.glare');
+        on(card, 'pointermove', e => {
+          const r = card.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+          gsap.to(card, { rotationY: px * 18, rotationX: -py * 14, transformPerspective: 900, duration: 0.5, ease: 'power2.out', overwrite: 'auto' });
+          if (glare) gsap.to(glare, { x: e.clientX - r.left, y: e.clientY - r.top, opacity: 1, duration: 0.4, overwrite: 'auto' });
+        });
+        on(card, 'pointerleave', () => {
+          gsap.to(card, { rotationX: 0, rotationY: 0, duration: 1.1, ease: 'elastic.out(1, 0.45)', overwrite: 'auto' });
+          if (glare) gsap.to(glare, { opacity: 0, duration: 0.5, overwrite: 'auto' });
+        });
+      });
+      document.querySelectorAll('.magnet').forEach(el => {
+        let r = null;
+        on(el, 'pointerenter', () => { r = el.getBoundingClientRect(); });
+        on(el, 'pointermove', e => {
+          if (!r) r = el.getBoundingClientRect();
+          gsap.to(el, { x: (e.clientX - r.left - r.width / 2) * 0.35, y: (e.clientY - r.top - r.height / 2) * 0.45, duration: 0.4, ease: 'power3.out', overwrite: 'auto' });
+        });
+        on(el, 'pointerleave', () => { r = null; gsap.to(el, { x: 0, y: 0, duration: 1, ease: 'elastic.out(1, 0.35)', overwrite: 'auto' }); });
+      });
+      off.push(() => { gsap.set('.person, .magnet', { clearProps: 'transform' }); gsap.set('.glare', { clearProps: 'transform,opacity' }); });
+    }
+
+    return () => off.forEach(f => f());
+  });
+
+  window.addEventListener('load', () => ScrollTrigger.refresh());
+  if (document.fonts) document.fonts.ready.then(() => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>

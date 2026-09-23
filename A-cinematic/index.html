@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Rotary Club of Thane Hills</title>
+<meta name="description" content="Rotary Club of Thane Hills, District 3142. Theme 8 design sample A: Cinematic.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<link rel="stylesheet" href="../vendor/lenis.css">
+<style>
+/*
+  THEME 8 / OPTION A: CINEMATIC
+  One family, three widths: Archivo expanded (125%) for titles, normal (100%) for reading,
+  condensed (62%) for figures and times.
+
+  Contrast (WCAG 2.x, measured on the flat colours):
+    ink  #F3F5FB on night #070B1A ....... 18.0 : 1
+    mist #A7B3D1 on night #070B1A ........ 9.3 : 1
+    mist #A7B3D1 on night-2 #0D1633 ...... 8.5 : 1
+    mist on hero scrim, worst case (white banner under >= .55 night) .. 5.3 : 1
+    slideshow dot bar (ink @ .5) on night ......................... 5.0 : 1 (UI, needs 3)
+    gold #F7A81B on night #070B1A ........ 9.9 : 1
+    night #070B1A on gold #F7A81B ........ 9.9 : 1  (gold buttons)
+    ink  #F3F5FB on royal #17458F ........ 8.4 : 1  (avenue pills, finale panel)
+    gold #F7A81B on royal #17458F ........ 4.6 : 1  (finale day, large text only)
+  Mist is never placed on royal (4.4 : 1).
+*/
+:root{
+  --night:#070B1A;
+  --night-2:#0D1633;
+  --royal:#17458F;
+  --gold:#F7A81B;
+  --gold-hi:#FFBE45;
+  --ink:#F3F5FB;
+  --mist:#A7B3D1;
+  --line:rgba(167,179,209,.18);
+  --hh:72px;
+  --pad:clamp(16px,4vw,56px);
+  --side:max(var(--pad), calc(50% - 660px));
+  --sans:"Archivo","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (max-width:599px){ :root{ --hh:64px } }
+
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--night);-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--night);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.6;font-weight:400;font-stretch:100%;
+  overflow-x:clip;-webkit-font-smoothing:antialiased;
+}
+/* film grain: sits under the header (z 100) and footer (z 60) so neither logo is ever tinted */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0}
+button,select{font:inherit;color:inherit}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+main:focus{outline:none}
+section[id]{scroll-margin-top:var(--hh)}
+
+.skip{position:absolute;left:16px;top:-120px;z-index:400;background:var(--gold);color:var(--night);font-weight:700;padding:12px 18px;border-radius:12px;text-decoration:none}
+.skip:focus{top:12px}
+
+/* ---------- sample note ---------- */
+.note{
+  font-size:13px;line-height:1.45;color:var(--mist);text-align:center;
+  padding:8px var(--pad);background:#0B1330;border-bottom:1px solid var(--line);
+}
+
+/* ---------- header ---------- */
+.hdr{
+  position:sticky;top:0;z-index:100;height:var(--hh);
+  display:flex;align-items:center;gap:12px;padding:0 var(--side);
+  background:rgba(7,11,26,.8);border-bottom:1px solid var(--line);
+  -webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);
+}
+.brand{flex:none;display:flex;align-items:center;background:#fff;border-radius:12px;padding:4px 12px;min-height:44px}
+.brand img{height:40px;width:auto}
+@media (max-width:599px){ .brand{padding:3px 8px} .brand img{height:34px} }
+.nav{display:none;position:relative;margin-left:auto}
+.nav ul{display:flex;list-style:none;margin:0;padding:0}
+.nav a{display:flex;align-items:center;min-height:44px;padding:0 11px;font-size:14.5px;font-weight:500;color:var(--mist);text-decoration:none;white-space:nowrap;transition:color .25s}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--ink)}
+.nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--gold)}
+.nav.has-ind a[aria-current="page"]{box-shadow:none}
+.nav__ind{position:absolute;left:0;bottom:6px;width:1px;height:2px;background:var(--gold);transform-origin:0 50%;opacity:0;pointer-events:none;box-shadow:0 0 12px rgba(247,168,27,.8)}
+.hdr__end{display:flex;align-items:center;gap:10px;margin-left:auto}
+.year{position:relative;display:none}
+.year select,.menu select{
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  height:44px;padding:0 38px 0 16px;border-radius:999px;border:1px solid var(--line);
+  background:rgba(13,22,51,.7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%23F7A81B' stroke-width='1.8'/%3E%3C/svg%3E") no-repeat right 15px center;
+  font-size:14.5px;font-weight:600;color:var(--ink);
+}
+.year select:hover,.menu select:hover{border-color:rgba(247,168,27,.6)}
+.burger{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer}
+.burger:hover{border-color:rgba(247,168,27,.6)}
+.burger__bars{position:relative;width:20px;height:10px}
+.burger__bars i{position:absolute;left:0;right:0;height:2px;border-radius:2px;background:var(--ink);transition:transform .35s cubic-bezier(.7,0,.2,1)}
+.burger__bars i:first-child{top:0}
+.burger__bars i:last-child{bottom:0}
+.burger[aria-expanded="true"] .burger__bars i:first-child{transform:translateY(4px) rotate(45deg)}
+.burger[aria-expanded="true"] .burger__bars i:last-child{transform:translateY(-4px) rotate(-45deg)}
+@media (min-width:600px){ .year{display:block} }
+@media (min-width:1180px){
+  .nav{display:block}
+  .hdr__end{margin-left:14px}
+  .burger{display:none}
+}
+
+/* ---------- mobile menu panel ---------- */
+.menu{
+  position:fixed;inset:0;z-index:90;overflow-y:auto;overscroll-behavior:contain;
+  padding:calc(var(--hh) + 64px) var(--side) 48px;
+  background:radial-gradient(90% 60% at 100% 0%,rgba(23,69,143,.55),transparent 70%),var(--night);
+  display:flex;flex-direction:column;gap:32px;
+}
+.menu[hidden]{display:none}
+.menu ul{list-style:none;margin:0;padding:0}
+.menu li a{display:flex;align-items:center;min-height:48px;padding:4px 0;text-decoration:none;font-stretch:118%;font-weight:700;font-size:clamp(24px,6.4vw,40px);line-height:1.1;letter-spacing:-.01em}
+.menu li a[aria-current="page"]{color:var(--gold)}
+.menu li a:hover{color:var(--gold-hi)}
+.menu .year{display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--mist);max-width:220px}
+.menu select{height:48px}
+
+/* ---------- shared ---------- */
+.sec{position:relative;padding:clamp(88px,11vw,164px) var(--side)}
+.h2{
+  font-stretch:125%;font-weight:760;font-size:clamp(30px,4.6vw,66px);line-height:1.02;
+  letter-spacing:-.015em;text-wrap:balance;margin:0 0 .7em;
+}
+.ch-mask{padding-block:.12em;margin-block:-.12em}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:0 26px;border-radius:999px;
+  font-size:15.5px;font-weight:650;text-decoration:none;white-space:nowrap;cursor:pointer;
+  transition:background-color .25s,border-color .25s,color .25s;
+}
+.btn--gold{background:var(--gold);color:var(--night)}
+.btn--gold:hover{background:var(--gold-hi)}
+.btn--line{border:1.5px solid rgba(243,245,251,.36);color:var(--ink)}
+.btn--line:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ---------- hero: the screen ---------- */
+.hero{
+  position:relative;isolation:isolate;overflow:hidden;
+  height:calc(100vh - var(--hh) - 36px);height:calc(100svh - var(--hh) - 36px);min-height:520px;
+  display:flex;flex-direction:column;
+}
+.hero__fill{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.hero__fill img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:blur(40px) saturate(1.35) brightness(.75);transform:scale(1.2);opacity:0;
+}
+.hero__fill img.is-on{opacity:.6}
+.hero__fill::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,var(--night) 0%,rgba(7,11,26,.25) 22%,rgba(7,11,26,.45) 58%,var(--night) 92%);
+}
+/* phones: the copy starts ~42% down the hero, where the .38 scrim left mist at 3.96:1 over a white banner */
+@media (max-width:899px){
+  .hero__fill::after{background:linear-gradient(180deg,var(--night) 0%,rgba(7,11,26,.25) 18%,rgba(7,11,26,.55) 40%,var(--night) 88%)}
+}
+.hero__stage{flex:1 1 0;min-height:0;container-type:size;display:grid;place-items:center;padding-top:12px}
+.hero__screen{position:relative;width:min(100cqw,calc(100cqh * 3.2));aspect-ratio:16/5}
+.hero__glow{
+  position:absolute;inset:-22% -10%;z-index:-1;pointer-events:none;opacity:.45;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(247,168,27,.42),rgba(23,69,143,.5) 46%,rgba(7,11,26,0) 72%);
+}
+.hero__frame{position:absolute;inset:0;overflow:hidden;background:#fff}
+.hero__reveal{position:absolute;inset:0}
+.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;pointer-events:none}
+.slide.is-on{opacity:1}
+.slide.is-top{z-index:2}
+.hero__copy{position:relative;padding:18px var(--side) clamp(18px,3.4vh,40px)}
+.hero h1{line-height:1}
+.hero__pre{display:block;font-size:clamp(15px,1.5vw,22px);font-weight:500;color:var(--mist);margin-bottom:.55em}
+.hero__big{
+  display:block;font-stretch:125%;font-weight:800;text-transform:uppercase;
+  font-size:17vw;line-height:.88;letter-spacing:-.01em;overflow-wrap:anywhere;
+}
+@media (min-width:600px){ .hero__big{font-size:13.5vw} }
+@media (min-width:900px){ .hero__big{font-size:min(9.2vw,200px)} }
+.hero__meta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:clamp(14px,2.6vh,28px)}
+.hero__facts{display:flex;flex-wrap:wrap;gap:4px 22px;font-size:15px;color:var(--mist)}
+.hero__facts b{color:var(--ink);font-weight:600}
+.hero__ctrl{display:flex;align-items:center;margin-left:auto}
+.dot,.pause{display:inline-grid;place-items:center;width:44px;height:44px;border:0;background:none;cursor:pointer;padding:0}
+.dot span{display:block;width:26px;height:3px;border-radius:2px;background:rgba(243,245,251,.5)}
+.dot[aria-current="true"] span{background:var(--gold)}
+.dot:hover span{background:var(--ink)}
+.pause svg{width:14px;height:14px;fill:var(--ink)}
+.pause[hidden]{display:none}
+
+/* ---------- about ---------- */
+.about{background:radial-gradient(60% 50% at 0% 30%,rgba(23,69,143,.28),transparent 70%)}
+.statement{
+  font-size:clamp(25px,3.3vw,50px);line-height:1.2;font-weight:560;font-stretch:108%;
+  letter-spacing:-.01em;max-width:24em;text-wrap:pretty;
+}
+.about__more{display:grid;gap:28px;margin-top:clamp(40px,6vw,72px);max-width:1100px}
+.about__more p{color:var(--mist);max-width:62ch}
+@media (min-width:900px){
+  .about__more{grid-template-columns:1fr auto;align-items:end;gap:56px;margin-left:clamp(0px,16vw,260px)}
+}
+
+/* ---------- figures ---------- */
+.figures{background:radial-gradient(55% 45% at 50% 55%,rgba(23,69,143,.35),transparent 75%)}
+.figures__head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px}
+.figures__head .h2{margin-bottom:.5em}
+.figures__note{color:var(--mist);font-size:15px}
+.figs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 20px}
+.fig{position:relative;padding-top:18px;border-top:1px solid var(--line);min-width:0}
+.fig--money{grid-column:1/-1;order:1}
+.fig__value{
+  display:block;font-stretch:62%;font-weight:800;line-height:.92;white-space:nowrap;
+  font-size:clamp(46px,7vw,88px);color:var(--gold);font-variant-numeric:tabular-nums;
+}
+.fig__label{display:block;margin-top:10px;font-size:15px;font-weight:600;color:var(--ink)}
+.fig__bar{position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--gold);transform-origin:0 50%;display:none}
+@media (min-width:900px){
+  .figs{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .fig--money{grid-column:span 2;order:0}
+  .fig__value{font-size:clamp(46px,5.2vw,84px)}
+}
+.dial{display:none}
+/* staged: added by the motion script on wide screens only */
+.figures.is-staged{padding-block:0}
+.figures.is-staged .figures__stage{
+  height:calc(100vh - var(--hh));height:calc(100svh - var(--hh));
+  display:grid;grid-template-rows:auto 1fr auto;padding-block:clamp(20px,4vh,48px);
+}
+.figures.is-staged .dial{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:0}
+.dial__num{
+  font-stretch:62%;font-weight:800;line-height:.86;white-space:nowrap;color:var(--gold);
+  font-size:min(22svh,11vw,240px);font-variant-numeric:tabular-nums;
+  text-shadow:0 0 60px rgba(247,168,27,.35);
+}
+.dial__label{margin-top:.6em;font-stretch:125%;font-weight:700;font-size:clamp(18px,2vw,28px)}
+.figures.is-staged .figs{grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
+.figures.is-staged .fig--money{grid-column:auto}
+.figures.is-staged .fig__value{font-size:clamp(22px,2.3vw,34px);color:var(--mist)}
+.figures.is-staged .fig__label{color:var(--mist);margin-top:6px;font-size:14px}
+.figures.is-staged .fig.is-active .fig__value{color:var(--gold)}
+.figures.is-staged .fig.is-active .fig__label{color:var(--ink)}
+.figures.is-staged .fig__bar{display:block}
+
+/* ---------- projects ---------- */
+.projects__head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px;margin-bottom:28px}
+.projects__head .h2{margin:0}
+.track{--h:min(58vw,380px);display:flex;gap:clamp(16px,2vw,32px);list-style:none;margin:0;padding:0}
+.card{--ar:1.333;position:relative;flex:none;width:calc(var(--h) * var(--ar));max-width:82vw}
+.card__media{position:relative;height:var(--h);border-radius:18px;overflow:hidden;background:var(--night-2);transition:box-shadow .35s}
+.card__media img{width:100%;height:100%;object-fit:cover}
+.card:hover .card__media{box-shadow:0 0 0 2px var(--gold),0 24px 60px -20px rgba(247,168,27,.45)}
+.card__body{padding-top:16px;max-width:46ch}
+.card__meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:13.5px;color:var(--mist)}
+.pill{display:inline-block;padding:3px 11px;border-radius:999px;background:var(--royal);color:var(--ink);font-weight:600}
+.card h3{margin-top:10px;font-stretch:110%;font-weight:700;font-size:clamp(18px,1.5vw,21px);line-height:1.22;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card h3 a{text-decoration:none}
+.card h3 a::after{content:"";position:absolute;inset:0;border-radius:18px}
+.card:has(a:focus-visible){outline:3px solid var(--gold);outline-offset:6px;border-radius:20px}
+.card h3 a:focus-visible{outline:none}
+.card p{margin-top:8px;font-size:15px;line-height:1.5;color:var(--mist);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.reel-bar{display:none;position:relative;height:2px;background:var(--line);margin-top:22px}
+.reel-bar__fill{position:absolute;inset:0;background:var(--gold);transform-origin:0 50%}
+@media (max-width:899px){
+  .track{
+    overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;
+    margin-inline:calc(var(--side) * -1);padding:4px var(--side) 16px;scroll-padding-inline:var(--side);
+    scrollbar-width:thin;scrollbar-color:var(--royal) transparent;
+  }
+  .card{scroll-snap-align:start}
+}
+@media (min-width:900px){ .track{--h:300px;flex-wrap:wrap;row-gap:44px} }
+/* reel: added by the motion script on wide screens only */
+.projects.is-reel{padding-block:0}
+.projects.is-reel .projects__stage{
+  height:calc(100vh - var(--hh));height:calc(100svh - var(--hh));
+  display:flex;flex-direction:column;justify-content:center;padding-block:24px;
+}
+.projects.is-reel .track{--h:clamp(220px,calc(100svh - var(--hh) - 360px),540px);flex-wrap:nowrap;width:max-content}
+.projects.is-reel .card__media img{width:116%;max-width:none;margin-left:-8%}
+.projects.is-reel .reel-bar{display:block}
+.projects{overflow-x:clip}
+
+/* ---------- leadership ---------- */
+.leaders{background:linear-gradient(180deg,transparent,#0A1026 18%,#0A1026 82%,transparent)}
+.people{list-style:none;margin:0;padding:0;display:grid;gap:20px;grid-template-columns:1fr;max-width:1180px}
+.pcard{perspective:1000px}
+.pcard__in{
+  position:relative;height:100%;border-radius:24px;padding:12px;
+  background:linear-gradient(160deg,#122047,#0B1230 60%);border:1px solid var(--line);
+  display:grid;grid-template-columns:38% 1fr;gap:16px;align-items:start;transform-style:preserve-3d;
+}
+.pcard__photo{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#101B40}
+.pcard__photo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.pcard__foil{
+  position:absolute;inset:-40%;pointer-events:none;opacity:0;mix-blend-mode:color-dodge;
+  background:linear-gradient(115deg,transparent 28%,rgba(247,168,27,.55) 40%,rgba(110,160,255,.55) 50%,rgba(255,120,210,.4) 60%,transparent 72%);
+}
+.pcard__glare{
+  position:absolute;left:0;top:0;width:90%;aspect-ratio:1;border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(closest-side,rgba(255,255,255,.45),rgba(255,255,255,0));mix-blend-mode:overlay;
+}
+.pcard__txt{padding:4px 4px 6px 0}
+.people.is-tilt .pcard__txt{transform:translateZ(24px)}
+.pcard__role{font-size:13.5px;font-weight:650;color:var(--gold);line-height:1.3}
+.pcard h3{margin-top:6px;font-stretch:112%;font-weight:720;font-size:clamp(18px,1.6vw,22px);line-height:1.15;overflow-wrap:anywhere}
+.pcard p{margin-top:10px;font-size:14.5px;line-height:1.5;color:var(--mist);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+@media (min-width:600px){
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pcard__in{display:block;padding:12px 12px 22px}
+  .pcard__txt{padding:18px 8px 0}
+}
+@media (min-width:1100px){ .people{grid-template-columns:repeat(4,minmax(0,1fr))} }
+
+/* ---------- newsletters ---------- */
+.news{list-style:none;margin:0;padding:0;display:grid;gap:20px;grid-template-columns:1fr}
+.ncard{
+  position:relative;overflow:hidden;border-radius:24px;min-height:260px;
+  padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;gap:32px;
+  background:radial-gradient(110% 90% at 100% 0%,rgba(23,69,143,.95),rgba(23,69,143,0) 62%),var(--night-2);
+  border:1px solid var(--line);
+}
+.ncard__title{font-stretch:118%;font-weight:750;font-size:clamp(24px,2.7vw,38px);line-height:1.08;letter-spacing:-.01em;overflow-wrap:anywhere}
+.ncard__date{margin-top:10px;color:var(--mist);font-size:15px}
+.ncard__foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
+.ncard__type{font-size:13.5px;color:var(--mist)}
+@media (min-width:760px){ .news{grid-template-columns:repeat(2,minmax(0,1fr))} }
+
+/* ---------- where we meet ---------- */
+.meet{padding:clamp(16px,2vw,28px) 0 0}
+.meet__panel{
+  position:relative;overflow:hidden;min-height:min(100svh,920px);
+  padding:clamp(80px,11vw,150px) var(--side);
+  display:flex;flex-direction:column;justify-content:center;
+  background:
+    radial-gradient(60% 55% at 50% 118%,rgba(247,168,27,.55),rgba(247,168,27,0) 70%),
+    linear-gradient(180deg,#17458F 0%,#123673 52%,#0B1D45 100%);
+}
+.meet .h2{margin-bottom:.3em}
+.meet__day{
+  font-stretch:125%;font-weight:820;text-transform:uppercase;color:var(--gold);
+  font-size:min(11.5vw,210px);line-height:.9;letter-spacing:-.01em;overflow-wrap:anywhere;
+}
+.meet__time{margin-top:.2em;font-stretch:62%;font-weight:800;font-size:clamp(46px,8vw,120px);line-height:1;font-variant-numeric:tabular-nums}
+.meet__venue{font-style:normal;margin:28px 0 34px;font-size:clamp(17px,1.6vw,21px);line-height:1.5;max-width:34ch}
+
+/* ---------- footer ---------- */
+.foot{position:relative;z-index:60;padding:56px var(--side) 44px;background:#050816;border-top:1px solid var(--line)}
+.foot__row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px 40px}
+.foot__club{display:flex;align-items:center;gap:18px;min-width:0}
+.foot__logo{flex:none;width:88px;height:88px;border-radius:18px;background:#fff;padding:5px;object-fit:contain}
+.foot__name{font-stretch:115%;font-weight:720;font-size:clamp(18px,2vw,24px);line-height:1.15;overflow-wrap:anywhere}
+.foot__dist{color:var(--mist);font-size:15px;margin-top:4px}
+.socials{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
+.socials a{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);transition:border-color .25s,color .25s}
+.socials a:hover{border-color:var(--gold);color:var(--gold)}
+.socials svg{width:19px;height:19px}
+.foot__admin{display:inline-flex;align-items:center;min-height:44px;color:var(--mist);font-size:15px}
+.foot__admin:hover{color:var(--gold)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<p class="note" role="note">Design sample - Theme 8 option A: Cinematic. Built from Thane Hills' own data. Page links are inactive.</p>
+
+<header class="hdr">
+  <a class="brand" href="#"><img data-src="rotaryLogo" alt="Rotary Club of Thane Hills" width="900" height="240"></a>
+  <nav class="nav" aria-label="Main"><ul data-menu></ul><span class="nav__ind" aria-hidden="true"></span></nav>
+  <div class="hdr__end">
+    <label class="year"><span class="sr-only">Rotary year</span><select data-years></select></label>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu"><span class="sr-only">Open menu</span><span class="burger__bars" aria-hidden="true"><i></i><i></i></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden data-lenis-prevent>
+  <nav aria-label="Menu"><ul data-menu></ul></nav>
+  <label class="year">Rotary year<select data-years></select></label>
+</div>
+
+<main id="main" tabindex="-1">
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="hero__fill" aria-hidden="true" data-fill></div>
+    <div class="hero__stage">
+      <div class="hero__screen">
+        <div class="hero__glow" aria-hidden="true"></div>
+        <div class="hero__frame"><div class="hero__reveal" data-slides></div></div>
+      </div>
+    </div>
+    <div class="hero__copy">
+      <h1 id="hero-h"><span class="sr-only" data-text="club"></span><span class="hero__pre" aria-hidden="true">Rotary Club of</span><span class="hero__big" aria-hidden="true" data-text="short"></span></h1>
+      <div class="hero__meta">
+        <p class="hero__facts"><span>District <b data-text="district"></b></span><span>Rotary year <b data-text="year"></b></span></p>
+        <a class="btn btn--gold magnet" href="#projects">See our projects</a>
+        <div class="hero__ctrl" role="group" aria-label="Banner slideshow">
+          <span data-dots></span>
+          <button class="pause" type="button" hidden><span class="sr-only">Pause slideshow</span><svg viewBox="0 0 14 14" aria-hidden="true"><rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec about" id="about" aria-labelledby="about-h">
+    <h2 class="h2" id="about-h">About the club</h2>
+    <p class="statement"><span class="sr-only" data-statement></span><span class="statement__vis" aria-hidden="true" data-statement></span></p>
+    <div class="about__more">
+      <p data-excerpt></p>
+      <a class="btn btn--line magnet" href="#">More about the club</a>
+    </div>
+  </section>
+
+  <section class="sec figures" id="numbers" aria-labelledby="numbers-h">
+    <div class="figures__stage">
+      <div class="figures__head">
+        <h2 class="h2" id="numbers-h">By the numbers</h2>
+        <p class="figures__note">Rotary year <span data-text="year"></span></p>
+      </div>
+      <div class="dial" aria-hidden="true"><div class="dial__num">0</div><div class="dial__label"></div></div>
+      <ul class="figs" data-figs></ul>
+    </div>
+  </section>
+
+  <section class="sec projects" id="projects" aria-labelledby="projects-h">
+    <div class="projects__stage">
+      <div class="projects__head">
+        <h2 class="h2" id="projects-h">Our projects</h2>
+        <a class="btn btn--line magnet" href="#">View all projects</a>
+      </div>
+      <ul class="track" data-projects></ul>
+      <div class="reel-bar" aria-hidden="true"><span class="reel-bar__fill"></span></div>
+    </div>
+  </section>
+
+  <section class="sec leaders" id="leadership" aria-labelledby="leaders-h">
+    <h2 class="h2" id="leaders-h">Leadership</h2>
+    <ul class="people" data-people></ul>
+  </section>
+
+  <section class="sec" id="newsletters" aria-labelledby="news-h">
+    <h2 class="h2" id="news-h">Newsletters</h2>
+    <ul class="news" data-news></ul>
+  </section>
+
+  <section class="meet" id="meet" aria-labelledby="meet-h">
+    <div class="meet__panel">
+      <h2 class="h2" id="meet-h">Where we meet</h2>
+      <p class="meet__day"><span class="sr-only" data-text="meetDay"></span><span class="meet__day-vis" aria-hidden="true" data-text="meetDay"></span></p>
+      <p class="meet__time" data-text="meetTime"></p>
+      <address class="meet__venue" data-text="meetVenue"></address>
+      <div><a class="btn btn--gold magnet" data-maps href="#" target="_blank" rel="noopener">Open in Maps<span class="sr-only"> (opens in a new tab)</span></a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__row">
+    <div class="foot__club">
+      <img class="foot__logo" data-src="clubLogo" alt="Rotary Club of Thane Hills logo" width="191" height="191" loading="lazy">
+      <div><p class="foot__name" data-text="club"></p><p class="foot__dist">District <span data-text="district"></span></p></div>
+    </div>
+    <ul class="socials" data-socials aria-label="Social media"></ul>
+    <a class="foot__admin" href="#">Admin login</a>
+  </div>
+</footer>
+
+<script src="../vendor/gsap.min.js"></script>
+<script src="../vendor/ScrollTrigger.min.js"></script>
+<script src="../vendor/SplitText.min.js"></script>
+<script src="../vendor/lenis.min.js"></script>
+
+<!-- 1. Data + render. No library needed: the page is complete even if the motion script never runs. -->
+<script>
+(function () {
+  var D = {
+    club: "Rotary Club of Thane Hills",
+    short: "Thane Hills",
+    district: "3142",
+    year: "2026–27",
+    rotaryLogo: "https://rizones45678.org/API/Documents/WebsiteData/Group1/LOGO/UpperLogo_a8029d9327634b199550d6b2050e100d.png",
+    clubLogo: "https://rizones45678.org/API/Documents/group/club_logo_3686e0c78f04411893de23ec6bf36c6d.png",
+    about: "Rotary Club of Thane Hills – An overview Rotary Club of Thane Hills (RCTH) was chartered on May 20, 1991. The idea of this club was sown sometime around October 1990 when a group of like-minded professionals and businessmen came together to form a new Rotary club. The idea of this new club was mooted by Rotary Club of Thane North, with strong support from the then President Nana Khambete and PP Suresh Dhawan. The initial meetings of this group were held at Mr. Bhoomreddi’s residence and after the initial work of 7 months; the club got its charter. RCTH started its journey under the able leadership of PP Late Vasant Zalani as the Club President and PP (Dr.) Suhas Kulkarni as the Club Secretary. There were about thirty charter members and it is a matter of pride for us that a good number of those charter members continue to be the members of this prestigious club. In the last 30 years of its existence, RCTH has grown by leaps and bounds and has turned into a strong tree from a sapling sown 30 years back. Today, the club’s strength has risen to 105 members and growing steadily with every passing year. In all these years, RCTH has been led by very able leaders and teams, who have made this club as one of the leading clubs in the District and the Rotary world. Every year, RCTH has undertaken numerous projects for the community welfare. In 2000, RCTH founded a charitable Trust called Triumph Foundation and executes various social initiatives and community-based projects through this foundation. Besides the annual projects like the Triumph Run (sports events for special children), Blood Donation Camps, Senior Citizen Health check-ups, Vocational Guidance Seminars, RCTH has undertaken some huge projects in the past. Listed below are a few of our Landmark projects: Earthen Dam Project at Shirol Tribal Employment Scheme Self-employment Centre for Destitute women at Premdhaan at Airoli, New Mumbai Triumph Garden at Jidd School Infrastructure for Vocational Training in Special School Upgradation for Crematorium at Thane Career Training Centre at Holy Cross Convent Special school at Thane Infrastructual Assistance to Tribal school, Utavali Village, Wada. Triumph Blood Bank and Thalassemia Day-care centre ‘Right to Go’ – building Toilet blocks for villagers in Sogav. Check dams at Shahpur and Murbad ‘Virtual eye’ – a learning tool for visually-impaired Pediatric Heart surgeries ‘Mission for Vision’ – Eye sight corrective surgeries Hamari Pari – Installation of sanitary pad machines in schools Rotarian Rakesh Wadhawan Memorial Education Complex at Shenve village, Taluka shahpur Check dams at ambadi and umroli in shahpur Joint venture between Triump Foundation and Seetabai Gadgil Trust Eye care center at Thane",
+    banners: [
+      "https://rizones45678.org/API/uploads/banner/e2e31bc4-b8d5-4f1a-be78-4cc109962da0.jpg",
+      "https://rizones45678.org/API/uploads/banner/449dddc4-53c4-4ce3-935f-f3496647eb5b.jpg",
+      "https://rizones45678.org/API/uploads/banner/d22b9e0f-665a-42bc-9d75-bf91181067f1.jpg"
+    ],
+    figures: { beneficiaries: 6752, projects: 32, manHours: 686, totalCost: 1021500, members: 121 },
+    featured: [
+      { id: 31327, w: 1387, h: 780, title: "Project 23- Drug Deaddiction Awareness @ RS Deokar", desc: "Today, under the Rotary Club of Thane Hills’ Drug Deaddiction Awareness Initiative, I had the privilege of conducting an interactive session on Drug Awareness for 120 students of standard 9th & 10th of R.S. Deokar School. The session focused on understanding a", avenue: "Community Service", date: "2026-08-25", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album31327/2d84e808-bb52-4c0a-a214-2c9b007b19f5.png" },
+      { id: 28602, w: 720, h: 960, title: "Project 22: Blood Donation Camp at Fortress", desc: "We are pleased to share the success of our Blood Donation Drive today at Fortress Office An impressive 35 units of blood were collected during the camp. Kudos to Hillers Kumar and Anuradha for donating blood. Attended by President Dr Anagha Karkhanis, CS Vasan", avenue: "Community Service", date: "2026-08-21", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28602/b450feb3-9d35-4e2a-a5a4-5e7ed88d938b.png" },
+      { id: 28658, w: 746, h: 995, title: "Press Coverage: Ganapati Idol making workshop", desc: "Ganapati Idol making workshop was covered in Indian Express", avenue: "Public Image", date: "2026-08-12", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28658/16c61874-f0ca-4087-b001-7d83a84ba24b.png" },
+      { id: 28603, w: 1600, h: 900, title: "Project 21: Annapoorna Drive at Yogi Hills", desc: "August 12, 2026, our Rotary Club of Thane Hills team successfully completed another Annapurna distribution at Yogi Hills, reaching out to 1,000 visually challenged beneficiaries! We distributed essential household kits containing food grains, pulses, tea, toot", avenue: "Community Service", date: "2026-08-12", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28603/f17131c6-236f-4102-b304-e86593b06298.png" },
+      { id: 34259, w: 734, h: 979, title: "Press Coverage: Orchestra for specially abled", desc: "News of RCTH organized orchestra for specially abled covered in Indian Express", avenue: "Public Image", date: "2026-08-11", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album34259/f517b14b-76bf-4b6a-8774-ba66ccb5de67.png" },
+      { id: 28634, w: 1200, h: 1600, title: "Rotaract Club of Thane Hills Installation", desc: "The Installation Ceremony of the Rotaract Club of Thane Hills marked the beginning of a new year filled with leadership, service, and fellowship. The new President, Rtr. Prajakta Bhadadare, along with her team, was formally inducted and entrusted with the resp", avenue: "New Generation Service", date: "2026-08-09", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28634/29e9cb35-2a10-4ff5-8dbb-0c56ac307e02.png" },
+      { id: 28605, w: 1280, h: 720, title: "Project 20: Musical event for Specially abled", desc: "🌟 Project 20 Musical event for Specially abled children by visually challenged students 🌟 Rotary Club of Thane Hills hosted a beautiful musical morning where visually challenged students from Pragati Andh Vidyalay, Badlapur presented a soulful orchestra for sp", avenue: "Community Service", date: "2026-08-09", img: "https://rizones45678.org/API/Documents/gallery/Group1/2026_27/Album28605/b343681b-3aaa-463f-87e6-541530889d14.png" }
+    ],
+    people: [
+      { role: "Club President", name: "Anagha Amit Karkhanis", img: "https://rizones45678.org/API/Documents/directory/anagha28022023120212PM.jpg", bio: "Dr Anagha Karkhanis is a Consultant Gynaecologist with expertise in IVF, Cosmetic Gynaecology, Urogynaecology and Facial Aesthetics. Her academic achievements include MRCPI(Ireland), FRM(Germany), MRM(UK), DOWH(Ireland)," },
+      { role: "Club Secretary", name: "Vasant Bhat", img: "https://rizones45678.org/API/Documents/directory/20082023092950PM.png", bio: "" },
+      { role: "District Governor, 3142", name: "Nilesh Vinayak Jaywant", img: "https://rizones45678.org/API/Documents/directory/DA2C741D-0B64-4185-B35C-10A258BA409219122024113304AM.jpeg", bio: "Dr Nilesh Vinayak Jaywant was born on 27th March 1970, at Chembur Mumbai. He did his schooling from the St John Baptist High School, Thane, Maharashtra. Being a very bright student, he won many awards" },
+      { role: "President, Rotary International 2026-27", name: "Olayinka Hakeem Babalola", img: "https://rizones45678.org/API/Documents/WebsiteData/International_President/PRESIDENT020720261207057300549PM.jpg", bio: "Olayinka Hakeem Babalola, a member of the Rotary Club of Trans Amadi, Nigeria, has been selected by the Board of Directors to become Rotary International’s president for 2026-27. His term will begin o" }
+    ],
+    newsletters: [
+      { title: "August 2026- Hill Echoes", date: "2026-08-04", url: "https://rizones45678.org/API/Documents/ebulletin/Group1/AUGUST_-_2026_8663f9e604082026091523PM.pdf" },
+      { title: "July 2026- Hill Echoes", date: "2026-07-10", url: "https://rizones45678.org/API/Documents/ebulletin/Group1/July_2026-_Hill_Echoes_bb63aea210072026103527PM.pdf" }
+    ],
+    meeting: { day: "Thursday", time: "19:30–21:30", venue: "Smt. Savitridevi Thirani Highschools, Road No. 1, Vartak Nagar, Thane West, Maharashtra 400606" },
+    socials: [
+      { platform: "facebook", linkUrl: "https://www.facebook.com/rcthanehills/" },
+      { platform: "instagram", linkUrl: "https://www.instagram.com/rotaryclubofthanehills/?hl=en" },
+      { platform: "linkedin", linkUrl: "https://www.linkedin.com/company/rotary-club-of-thane-hills/" },
+      { platform: "twitter", linkUrl: "https://twitter.com/RCThaneHills" }
+    ]
+  };
+
+  var MENU = ["Home", "About", "Directory", "Directors", "Calendar", "Projects", "Past Presidents", "Events"];
+  var YEARS = [D.year]; // only the year the data carries; no invented options
+
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  // U+FFFD stands where the source lost an apostrophe
+  function fix(s) { return String(s == null ? "" : s).replace(/�/g, "’").replace(/\s+/g, " ").trim(); }
+  function esc(s) { return fix(s).replace(/[&<>"']/g, function (c) { return "&#" + c.charCodeAt(0) + ";"; }); }
+  // The API cuts long text at a fixed length, mid-word. Drop the broken word and close with an ellipsis.
+  function cut(s, limit) {
+    s = fix(s);
+    if (s.length < limit || /[.!?…]$/.test(s)) return s;
+    if (/[,;:\-–]$/.test(s)) return s.replace(/[\s,;:\-–]+$/, "") + "…";
+    return s.replace(/\s+\S+$/, "").replace(/[\s,;:\-–]+$/, "") + "…";
+  }
+  var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  function fmtDate(iso) { var p = String(iso).split("-"); return +p[2] + " " + MONTHS[+p[1] - 1] + " " + p[0]; }
+  var nf = new Intl.NumberFormat("en-IN");
+
+  var FIGS = [
+    { key: "beneficiaries", label: "Beneficiaries" },
+    { key: "projects", label: "Projects" },
+    { key: "manHours", label: "Man-hours" },
+    { key: "totalCost", label: "Total project cost", money: true },
+    { key: "members", label: "Members" }
+  ].map(function (f) { f.value = Number(D.figures[f.key]) || 0; return f; });
+  function fmtFig(f, v) { return (f.money ? "₹" : "") + nf.format(v); }
+
+  // ---- simple bindings
+  var bind = {
+    club: D.club, short: D.short, district: D.district, year: D.year,
+    meetDay: D.meeting.day, meetTime: D.meeting.time, meetVenue: D.meeting.venue
+  };
+  $$("[data-text]").forEach(function (el) { el.textContent = fix(bind[el.getAttribute("data-text")]); });
+  $$("[data-src]").forEach(function (el) { el.src = D[el.getAttribute("data-src")]; });
+  $("[data-maps]").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(fix(D.meeting.venue));
+
+  // ---- menus + year selects
+  var menuHtml = MENU.map(function (m, i) {
+    return '<li><a href="#"' + (i === 0 ? ' aria-current="page"' : "") + ">" + esc(m) + "</a></li>";
+  }).join("");
+  $$("[data-menu]").forEach(function (ul) { ul.innerHTML = menuHtml; });
+  var yearHtml = YEARS.map(function (y) { return "<option" + (y === D.year ? " selected" : "") + ">" + esc(y) + "</option>"; }).join("");
+  $$("[data-years]").forEach(function (s) { s.innerHTML = yearHtml; });
+
+  // ---- hero slides
+  var N = D.banners.length;
+  $("[data-slides]").innerHTML = D.banners.map(function (u, i) {
+    return '<img class="slide' + (i === 0 ? " is-on" : "") + '" src="' + esc(u) + '" alt="' + esc(D.club) + " banner " + (i + 1) + " of " + N + '" width="1700" height="531"' + (i === 0 ? ' fetchpriority="high"' : ' loading="lazy"') + ">";
+  }).join("");
+  $("[data-fill]").innerHTML = D.banners.map(function (u, i) {
+    return '<img src="' + esc(u) + '" alt=""' + (i === 0 ? ' class="is-on"' : ' loading="lazy"') + ">";
+  }).join("");
+  $("[data-dots]").innerHTML = N > 1 ? D.banners.map(function (u, i) {
+    return '<button class="dot" type="button" aria-current="' + (i === 0) + '"><span class="sr-only">Show banner ' + (i + 1) + "</span><span aria-hidden=\"true\"></span></button>";
+  }).join("") : "";
+
+  // ---- about: the history starts at the charter sentence
+  var about = fix(D.about);
+  var at = about.indexOf(D.club + " (RCTH)");
+  if (at > 0) about = about.slice(at);
+  // No lookbehind: a lookbehind regex literal is a parse error on Safari < 16.4 and would blank the whole page.
+  var sentences = about.replace(/([.!?])\s+(?=[A-Z‘'"])/g, function (m, p, i, s) {
+    return /\b(?:Mr|Mrs|Ms|Dr|St|No|Smt)\.$/.test(s.slice(0, i + 1)) ? m : p + "\n";
+  }).split("\n");
+  var statement = sentences.slice(0, 2).join(" ");
+  $$("[data-statement]").forEach(function (el) { el.textContent = statement; });
+  $("[data-excerpt]").textContent = sentences.slice(2, 5).join(" ");
+
+  // ---- figures
+  $("[data-figs]").innerHTML = FIGS.map(function (f, i) {
+    return '<li class="fig' + (f.money ? " fig--money" : "") + '"><span class="fig__bar" aria-hidden="true"></span><span class="fig__value" data-i="' + i + '">' + fmtFig(f, f.value) + '</span><span class="fig__label">' + esc(f.label) + "</span></li>";
+  }).join("");
+
+  // ---- projects
+  $("[data-projects]").innerHTML = D.featured.map(function (p) {
+    var ar = p.w && p.h ? (p.w / p.h).toFixed(3) : "1.333";
+    return '<li class="card" style="--ar:' + ar + '">' +
+      '<div class="card__media"><img src="' + esc(p.img) + '" alt="' + esc(p.title) + '" width="' + (p.w || 800) + '" height="' + (p.h || 600) + '" loading="lazy" decoding="async"></div>' +
+      '<div class="card__body"><p class="card__meta"><span class="pill">' + esc(p.avenue) + "</span><time datetime=\"" + esc(p.date) + '">' + fmtDate(p.date) + "</time></p>" +
+      '<h3><a href="#">' + esc(p.title) + "</a></h3>" +
+      "<p>" + esc(cut(p.desc, 250)) + "</p></div></li>";
+  }).join("");
+
+  // ---- leadership
+  $("[data-people]").innerHTML = D.people.map(function (m) {
+    var bio = cut(m.bio, 195);
+    return '<li class="pcard"><div class="pcard__in">' +
+      '<div class="pcard__photo"><img src="' + esc(m.img) + '" alt="' + esc(m.name) + '" loading="lazy" decoding="async"><span class="pcard__foil" aria-hidden="true"></span><span class="pcard__glare" aria-hidden="true"></span></div>' +
+      '<div class="pcard__txt"><p class="pcard__role">' + esc(m.role) + "</p><h3>" + esc(m.name) + "</h3>" + (bio ? "<p>" + esc(bio) + "</p>" : "") + "</div>" +
+      "</div></li>";
+  }).join("");
+
+  // ---- newsletters
+  $("[data-news]").innerHTML = D.newsletters.map(function (n) {
+    return '<li class="ncard"><div><h3 class="ncard__title">' + esc(n.title) + '</h3><p class="ncard__date"><time datetime="' + esc(n.date) + '">' + fmtDate(n.date) + "</time></p></div>" +
+      '<div class="ncard__foot"><a class="btn btn--gold magnet" href="' + esc(n.url) + '" target="_blank" rel="noopener">Read newsletter<span class="sr-only">: ' + esc(n.title) + " (PDF, opens in a new tab)</span></a><span class=\"ncard__type\" aria-hidden=\"true\">PDF</span></div></li>";
+  }).join("");
+
+  // ---- socials
+  var ICON = {
+    facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.5 1.6-1.5h1.7V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.3H7.6V14h2.7v8h3.2z"/></svg>',
+    instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>',
+    linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="9" width="4" height="12" rx=".5"/><circle cx="5" cy="4.9" r="2.2"/><path d="M10 9h3.8v1.8c.6-1.1 2-2.1 4-2.1 3.5 0 4.2 2.2 4.2 5.2V21h-4v-6.2c0-1.5-.1-3.3-2.1-3.3s-2.3 1.5-2.3 3.2V21H10V9z"/></svg>',
+    twitter: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg>'
+  };
+  var NAME = { facebook: "Facebook", instagram: "Instagram", linkedin: "LinkedIn", twitter: "Twitter" };
+  $("[data-socials]").innerHTML = D.socials.filter(function (s) { return s.linkUrl; }).map(function (s) {
+    var k = String(s.platform).toLowerCase();
+    return '<li><a href="' + esc(s.linkUrl) + '" target="_blank" rel="noopener"><span class="sr-only">' + esc(NAME[k] || k) + ' (opens in a new tab)</span><span aria-hidden="true">' + (ICON[k] || esc(k.charAt(0).toUpperCase())) + "</span></a></li>";
+  }).join("");
+
+  // ---- inert page links
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a");
+    if (a && a.getAttribute("href") === "#") {
+      e.preventDefault();
+      if (menu.contains(a)) setMenu(false);
+    }
+  });
+
+  // ---- banner slider (animated only when the motion script switches it on)
+  var slider = (function () {
+    var slides = $$(".slide"), fills = $$("[data-fill] img"), dots = $$(".dot"), pauseBtn = $(".pause");
+    var cur = 0, timer = null, auto = false, paused = false, visible = true;
+    function go(n) {
+      n = (n + slides.length) % slides.length;
+      if (n === cur || !slides.length) return;
+      var prev = cur; cur = n;
+      dots.forEach(function (d, k) { d.setAttribute("aria-current", String(k === cur)); });
+      var g = window.__T8.motionOn && window.gsap;
+      if (!g) {
+        slides[prev].classList.remove("is-on"); slides[cur].classList.add("is-on");
+        fills[prev].classList.remove("is-on"); fills[cur].classList.add("is-on");
+        return;
+      }
+      var inc = slides[cur], incFill = fills[cur];
+      gsap.killTweensOf(slides.concat(fills));
+      slides.forEach(function (s) { s.classList.toggle("is-top", s === inc); });
+      inc.classList.add("is-on"); incFill.classList.add("is-on");
+      gsap.fromTo(inc, { clipPath: "circle(0% at 50% 50%)", scale: 1.1 }, {
+        clipPath: "circle(72% at 50% 50%)", scale: 1, duration: 1.4, ease: "expo.inOut", clearProps: "clipPath,transform",
+        onComplete: function () { slides.forEach(function (s) { if (s !== inc) s.classList.remove("is-on"); }); }
+      });
+      gsap.fromTo(incFill, { opacity: 0 }, { opacity: 0.6, duration: 1.4, ease: "power2.inOut", clearProps: "opacity" });
+      fills.forEach(function (f) {
+        if (f !== incFill && f.classList.contains("is-on")) {
+          gsap.to(f, { opacity: 0, duration: 1.4, ease: "power2.inOut", onComplete: function () { f.classList.remove("is-on"); gsap.set(f, { clearProps: "opacity" }); } });
+        }
+      });
+    }
+    function restart() { clearInterval(timer); timer = auto ? setInterval(function () { if (!paused && visible && !document.hidden) go(cur + 1); }, 6000) : null; }
+    dots.forEach(function (d, k) { d.addEventListener("click", function () { go(k); restart(); }); });
+    pauseBtn.addEventListener("click", function () {
+      paused = !paused;
+      $(".sr-only", pauseBtn).textContent = paused ? "Play slideshow" : "Pause slideshow";
+      pauseBtn.querySelector("svg").innerHTML = paused ? '<path d="M3 1.5v11l9-5.5z"/>' : '<rect x="2" y="1" width="3.5" height="12" rx="1"/><rect x="8.5" y="1" width="3.5" height="12" rx="1"/>';
+    });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe($(".hero"));
+    }
+    return {
+      setAuto: function (v) { auto = v && slides.length > 1; pauseBtn.hidden = !auto; restart(); }
+    };
+  })();
+
+  // ---- mobile menu
+  var burger = $(".burger"), menu = $("#menu"), outside = [$("main"), $("footer"), $(".note")];
+  var open = false;
+  function setMenu(v) {
+    if (v === open) return;
+    open = v;
+    burger.setAttribute("aria-expanded", String(v));
+    $(".sr-only", burger).textContent = v ? "Close menu" : "Open menu";
+    var g = window.__T8.motionOn && window.gsap;
+    var r = burger.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    var R = Math.hypot(Math.max(cx, innerWidth - cx), Math.max(cy, innerHeight - cy));
+    if (v) {
+      menu.hidden = false;
+      outside.forEach(function (el) { el.inert = true; });
+      document.body.style.overflow = "hidden";
+      if (window.__T8.lenis) window.__T8.lenis.stop();
+      if (g) {
+        gsap.fromTo(menu, { clipPath: "circle(0px at " + cx + "px " + cy + "px)" }, { clipPath: "circle(" + R + "px at " + cx + "px " + cy + "px)", duration: 0.8, ease: "expo.inOut", clearProps: "clipPath" });
+        gsap.fromTo($$("li, .year", menu), { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out", stagger: 0.04, delay: 0.25, clearProps: "transform,opacity" });
+      }
+      $("a", menu).focus();
+    } else {
+      outside.forEach(function (el) { el.inert = false; });
+      document.body.style.overflow = "";
+      if (window.__T8.lenis) window.__T8.lenis.start();
+      if (g) {
+        gsap.killTweensOf(menu);
+        gsap.to(menu, { clipPath: "circle(0px at " + cx + "px " + cy + "px)", duration: 0.55, ease: "expo.inOut", onComplete: function () { menu.hidden = true; gsap.set(menu, { clearProps: "clipPath" }); } });
+      } else {
+        menu.hidden = true;
+      }
+      burger.focus();
+    }
+  }
+  burger.addEventListener("click", function () { setMenu(!open); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && open) setMenu(false); });
+  matchMedia("(min-width: 1180px)").addEventListener("change", function (e) { if (e.matches) setMenu(false); });
+
+  window.__T8 = { FIGS: FIGS, fmtFig: fmtFig, slider: slider, motionOn: false, lenis: null };
+})();
+</script>
+
+<!-- 2. Motion. Every hidden start state is set here, inside gsap.matchMedia, so reduced motion or a
+        failed script leaves the page complete and static. -->
+<script>
+(function () {
+  if (!window.gsap || !window.ScrollTrigger || !window.__T8) return;
+  var hasSplit = !!window.SplitText;
+  gsap.registerPlugin.apply(gsap, hasSplit ? [ScrollTrigger, SplitText] : [ScrollTrigger]);
+  var T8 = window.__T8;
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function hh() { return $(".hdr").offsetHeight; }
+  var introDone = false;
+
+  function split(el, type, aria) {
+    if (!hasSplit || !el) return null;
+    return SplitText.create(el, { type: type, mask: type.indexOf("chars") > -1 ? "chars" : undefined, charsClass: "ch", wordsClass: "wd", aria: aria || "auto" });
+  }
+  // section titles: letters rise out of their own line, like a title card
+  function titleIn(h) {
+    var s = split(h, "words,chars");
+    if (!s) return;
+    gsap.from(s.chars, {
+      yPercent: 115, duration: 0.95, ease: "expo.out", stagger: 0.018,
+      scrollTrigger: { trigger: h, start: "top 88%", once: true },
+      onComplete: function () { s.revert(); }
+    });
+  }
+
+  function setup() {
+    var mm = gsap.matchMedia();
+    mm.add({
+      motion: "(prefers-reduced-motion: no-preference)",
+      wide: "(min-width: 900px)",
+      fine: "(hover: hover) and (pointer: fine)",
+      navOn: "(min-width: 1180px)"
+    }, function (ctx) {
+      var c = ctx.conditions;
+      if (!c.motion) return;
+      var off = [];
+      T8.motionOn = true;
+      off.push(function () { T8.motionOn = false; });
+
+      // ---------- smooth scroll (desktop mouse/trackpad only)
+      if (c.fine && window.Lenis) {
+        var lenis = new Lenis({ autoRaf: false, lerp: 0.09 });
+        var raf = function (t) { lenis.raf(t * 1000); };
+        lenis.on("scroll", ScrollTrigger.update);
+        gsap.ticker.add(raf);
+        gsap.ticker.lagSmoothing(0);
+        T8.lenis = lenis;
+        // in-page anchors glide instead of jumping (the skip link keeps its native focus move)
+        var onAnchor = function (e) {
+          var a = e.target.closest && e.target.closest('a[href^="#"]');
+          if (!a || a.classList.contains("skip") || a.getAttribute("href").length < 2) return;
+          var t = document.querySelector(a.getAttribute("href"));
+          if (!t) return;
+          e.preventDefault();
+          lenis.scrollTo(t, { offset: -hh(), duration: 1.4 });
+        };
+        document.addEventListener("click", onAnchor);
+        off.push(function () { document.removeEventListener("click", onAnchor); gsap.ticker.remove(raf); gsap.ticker.lagSmoothing(500, 33); lenis.destroy(); T8.lenis = null; });
+      }
+
+      // ---------- HERO: projector opens, title rises; on scroll the screen pulls back into a lit frame
+      var hero = $(".hero");
+      var big = split($(".hero__big"), "words,chars", "none");
+      if (!introDone) {
+        introDone = true;
+        var intro = gsap.timeline({ delay: 0.1 });
+        intro.fromTo(".hero__reveal", { clipPath: "inset(49.5% 0% 49.5% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.4, ease: "expo.inOut", clearProps: "clipPath" })
+          .fromTo(".hero__fill", { opacity: 0 }, { opacity: 1, duration: 1.8, ease: "power2.out", clearProps: "opacity" }, 0.35)
+          .from(big ? big.chars : ".hero__big", { yPercent: 118, duration: 1.2, ease: "expo.out", stagger: 0.05, clearProps: "transform" }, 0.55)
+          .from([".hero__pre", ".hero__facts", ".hero__meta .btn", ".hero__ctrl"], { y: 22, opacity: 0, duration: 0.9, ease: "power3.out", stagger: 0.07, clearProps: "transform,opacity" }, 0.95);
+      }
+      var htl = gsap.timeline({
+        scrollTrigger: {
+          trigger: hero,
+          start: c.wide ? function () { return "top " + hh() + "px"; } : "top top",
+          end: c.wide ? "+=90%" : "bottom top",
+          pin: c.wide, scrub: 0.6, anticipatePin: 1, invalidateOnRefresh: true
+        }
+      });
+      htl.to(".hero__screen", { scale: c.wide ? 0.7 : 0.9, yPercent: c.wide ? -5 : 8, ease: "none" }, 0)
+        .fromTo(".hero__frame", { clipPath: "inset(0% 0% 0% 0% round 0px)" }, { clipPath: "inset(0% 0% 0% 0% round 26px)", ease: "none" }, 0)
+        .fromTo(".hero__glow", { opacity: 0.45, scale: 0.9 }, { opacity: 1, scale: 1.05, ease: "none" }, 0)
+        .to(".hero__fill", { scale: 1.15, ease: "none" }, 0);
+      if (big && big.masks && big.masks.length) {
+        htl.to(big.masks, { x: function (i) { return i * (c.wide ? 9 : 3); }, yPercent: function (i) { return -8 - (i % 2) * 6; }, ease: "none" }, 0);
+      }
+      T8.slider.setAuto(true);
+      off.push(function () { T8.slider.setAuto(false); });
+
+      // ---------- ABOUT: the charter sentences light up word by word
+      titleIn($("#about-h"));
+      var vis = $(".statement__vis");
+      var words = split(vis, "words", "none");
+      if (words) {
+        gsap.fromTo(words.words, { opacity: 0.16 }, {
+          opacity: 1, ease: "none", stagger: 0.12,
+          scrollTrigger: { trigger: vis, start: "top 80%", end: "bottom 45%", scrub: true }
+        });
+      }
+      gsap.from(".about__more > *", { y: 40, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.1, scrollTrigger: { trigger: ".about__more", start: "top 88%", once: true }, clearProps: "transform,opacity" });
+
+      // ---------- FIGURES
+      titleIn($("#numbers-h"));
+      var figSec = $(".figures");
+      var values = $$(".fig__value", figSec);
+      off.push(function () { values.forEach(function (el) { var f = T8.FIGS[+el.dataset.i]; el.textContent = T8.fmtFig(f, f.value); }); });
+      if (c.wide) {
+        // one pinned stage; each figure takes the centre in turn and counts up while its bar fills
+        figSec.classList.add("is-staged");
+        off.push(function () { figSec.classList.remove("is-staged"); });
+        var items = $$(".fig", figSec), bars = $$(".fig__bar", figSec);
+        var dNum = $(".dial__num"), dLab = $(".dial__label"), F = T8.FIGS, active = -1;
+        gsap.set(bars, { scaleX: 0 });
+        var show = function (k, dir) {
+          if (k === active) return;
+          active = k;
+          items.forEach(function (li, j) { li.classList.toggle("is-active", j === k); });
+          dLab.textContent = F[k].label;
+          gsap.fromTo([dNum, dLab], { yPercent: 35 * (dir || 1), opacity: 0, filter: "blur(12px)" }, { yPercent: 0, opacity: 1, filter: "blur(0px)", duration: 0.6, ease: "power3.out", overwrite: true, clearProps: "transform,opacity,filter" });
+        };
+        var render = function (p, dir) {
+          var x = p * F.length, k = Math.min(F.length - 1, Math.floor(x)), local = Math.min(1, x - k);
+          var e = Math.min(1, local / 0.7);
+          show(k, dir);
+          dNum.textContent = T8.fmtFig(F[k], Math.round(F[k].value * (1 - Math.pow(1 - e, 3))));
+          bars.forEach(function (b, j) { gsap.set(b, { scaleX: j < k ? 1 : j === k ? local : 0 }); });
+        };
+        render(0, 1);
+        ScrollTrigger.create({
+          trigger: figSec,
+          start: function () { return "top " + hh() + "px"; },
+          end: function () { return "+=" + Math.round(innerHeight * 2.6); },
+          pin: true, anticipatePin: 1, invalidateOnRefresh: true,
+          onUpdate: function (self) { render(self.progress, self.direction); }
+        });
+      } else {
+        values.forEach(function (el) {
+          var f = T8.FIGS[+el.dataset.i], o = { v: 0 };
+          el.textContent = T8.fmtFig(f, 0);
+          gsap.to(o, {
+            v: f.value, duration: 1.8, ease: "power3.out",
+            scrollTrigger: { trigger: el, start: "top 90%", once: true },
+            onUpdate: function () { el.textContent = T8.fmtFig(f, Math.round(o.v)); },
+            onComplete: function () { el.textContent = T8.fmtFig(f, f.value); }
+          });
+        });
+      }
+
+      // ---------- PROJECTS
+      titleIn($("#projects-h"));
+      var pSec = $(".projects"), stage = $(".projects__stage"), track = $(".track");
+      if (c.wide) {
+        // pinned horizontal reel with parallax inside every frame
+        pSec.classList.add("is-reel");
+        off.push(function () { pSec.classList.remove("is-reel"); });
+        var dist = function () {
+          var cs = getComputedStyle(stage);
+          var inner = stage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+          return Math.max(0, track.scrollWidth - inner);
+        };
+        var reel = gsap.to(track, {
+          x: function () { return -dist(); }, ease: "none",
+          scrollTrigger: {
+            trigger: pSec,
+            start: function () { return "top " + hh() + "px"; },
+            end: function () { return "+=" + dist(); },
+            pin: true, scrub: 0.8, anticipatePin: 1, invalidateOnRefresh: true
+          }
+        });
+        gsap.fromTo(".reel-bar__fill", { scaleX: 0 }, {
+          scaleX: 1, ease: "none",
+          scrollTrigger: { trigger: pSec, start: function () { return "top " + hh() + "px"; }, end: function () { return "+=" + dist(); }, scrub: 0.8, invalidateOnRefresh: true }
+        });
+        // keyboard: a focused card may sit off-screen in the translated track (overflow clipped, so the
+        // browser cannot scroll it into view). Scroll the page to the point in the pin where it is in frame.
+        var onFocus = function (e) {
+          var card = e.target.closest && e.target.closest(".card"), st = reel.scrollTrigger, d = dist();
+          if (!card || !st) return;
+          var p = d ? Math.min(1, Math.max(0, (card.offsetLeft - track.offsetLeft) / d)) : 0;
+          var y = st.start + (st.end - st.start) * p;
+          if (T8.lenis) T8.lenis.scrollTo(y, { immediate: true }); else window.scrollTo(0, y);
+        };
+        track.addEventListener("focusin", onFocus);
+        off.push(function () { track.removeEventListener("focusin", onFocus); });
+        $$(".card", track).forEach(function (card) {
+          gsap.fromTo($(".card__media img", card), { xPercent: -6 }, {
+            xPercent: 6, ease: "none",
+            scrollTrigger: { trigger: card, containerAnimation: reel, start: "left right", end: "right left", scrub: true }
+          });
+          gsap.fromTo(card, { opacity: 0.35, scale: 0.9 }, {
+            opacity: 1, scale: 1, ease: "none",
+            scrollTrigger: { trigger: card, containerAnimation: reel, start: "left 98%", end: "left 62%", scrub: true }
+          });
+        });
+      } else {
+        gsap.from($$(".card", track), { x: 80, opacity: 0, duration: 1.1, ease: "expo.out", stagger: 0.08, scrollTrigger: { trigger: track, start: "top 85%", once: true }, clearProps: "transform,opacity" });
+      }
+
+      // ---------- LEADERSHIP: cards deal in, then tilt with a holographic glare under the pointer
+      titleIn($("#leaders-h"));
+      gsap.from(".pcard", {
+        y: 90, rotationY: -26, rotationX: 10, opacity: 0, transformPerspective: 1000, transformOrigin: "50% 100%",
+        duration: 1.2, ease: "expo.out", stagger: 0.1,
+        scrollTrigger: { trigger: ".people", start: "top 82%", once: true }, clearProps: "transform,opacity"
+      });
+      if (c.fine) {
+        var people = $(".people");
+        people.classList.add("is-tilt");
+        off.push(function () { people.classList.remove("is-tilt"); });
+        $$(".pcard").forEach(function (card) {
+          var inner = $(".pcard__in", card), photo = $(".pcard__photo", card), glare = $(".pcard__glare", card), foil = $(".pcard__foil", card);
+          gsap.set(glare, { xPercent: -50, yPercent: -50 });
+          var rx = gsap.quickTo(inner, "rotationX", { duration: 0.5, ease: "power3" });
+          var ry = gsap.quickTo(inner, "rotationY", { duration: 0.5, ease: "power3" });
+          var gx = gsap.quickTo(glare, "x", { duration: 0.3, ease: "power3" });
+          var gy = gsap.quickTo(glare, "y", { duration: 0.3, ease: "power3" });
+          var fx = gsap.quickTo(foil, "xPercent", { duration: 0.6, ease: "power3" });
+          var fy = gsap.quickTo(foil, "yPercent", { duration: 0.6, ease: "power3" });
+          var move = function (e) {
+            var r = card.getBoundingClientRect(), pr = photo.getBoundingClientRect();
+            var px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+            ry((px - 0.5) * 16); rx((0.5 - py) * 14);
+            gx(e.clientX - pr.left); gy(e.clientY - pr.top);
+            fx((px - 0.5) * 30); fy((py - 0.5) * 30);
+          };
+          var enter = function () { gsap.to(glare, { opacity: 1, duration: 0.4 }); gsap.to(foil, { opacity: 0.4, duration: 0.4 }); };
+          var leave = function () { rx(0); ry(0); gsap.to([glare, foil], { opacity: 0, duration: 0.5 }); };
+          card.addEventListener("pointermove", move);
+          card.addEventListener("pointerenter", enter);
+          card.addEventListener("pointerleave", leave);
+          off.push(function () {
+            card.removeEventListener("pointermove", move);
+            card.removeEventListener("pointerenter", enter);
+            card.removeEventListener("pointerleave", leave);
+          });
+        });
+      }
+
+      // ---------- NEWSLETTERS: tiles wipe open from the bottom edge
+      titleIn($("#news-h"));
+      gsap.fromTo(".ncard", { clipPath: "inset(100% 0% 0% 0% round 24px)" }, {
+        clipPath: "inset(0% 0% 0% 0% round 24px)", duration: 1.2, ease: "expo.out", stagger: 0.12,
+        scrollTrigger: { trigger: ".news", start: "top 85%", once: true }, clearProps: "clipPath"
+      });
+      gsap.from(".ncard > *", { y: 40, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.06, delay: 0.15, scrollTrigger: { trigger: ".news", start: "top 85%", once: true }, clearProps: "transform,opacity" });
+
+      // ---------- WHERE WE MEET: the panel opens to full bleed, the day floats up letter by letter
+      titleIn($("#meet-h"));
+      gsap.fromTo(".meet__panel", { clipPath: c.wide ? "inset(8% 6% 8% 6% round 40px)" : "inset(3% 4% 3% 4% round 24px)" }, {
+        clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "none",
+        scrollTrigger: { trigger: ".meet", start: "top bottom", end: "top 10%", scrub: true }
+      });
+      var day = split($(".meet__day-vis"), "words,chars", "none");
+      if (day) {
+        gsap.fromTo(day.chars, { yPercent: 110 }, {
+          yPercent: 0, ease: "none", stagger: 0.08,
+          scrollTrigger: { trigger: ".meet__day", start: "top 95%", end: "top 50%", scrub: true }
+        });
+      }
+      gsap.from([".meet__time", ".meet__venue", ".meet__panel .btn"], { y: 44, opacity: 0, duration: 1, ease: "expo.out", stagger: 0.1, scrollTrigger: { trigger: ".meet__time", start: "top 90%", once: true }, clearProps: "transform,opacity" });
+
+      // ---------- magnet buttons + nav indicator (mouse only)
+      if (c.fine) {
+        $$(".magnet").forEach(function (b) {
+          var xTo = gsap.quickTo(b, "x", { duration: 0.7, ease: "elastic.out(1, 0.4)" });
+          var yTo = gsap.quickTo(b, "y", { duration: 0.7, ease: "elastic.out(1, 0.4)" });
+          var mv = function (e) { var r = b.getBoundingClientRect(); xTo((e.clientX - r.left - r.width / 2) * 0.3); yTo((e.clientY - r.top - r.height / 2) * 0.4); };
+          var lv = function () { xTo(0); yTo(0); };
+          b.addEventListener("pointermove", mv);
+          b.addEventListener("pointerleave", lv);
+          off.push(function () { b.removeEventListener("pointermove", mv); b.removeEventListener("pointerleave", lv); });
+        });
+      }
+      if (c.fine && c.navOn) {
+        var nav = $(".nav"), ind = $(".nav__ind"), links = $$(".nav a"), home = $(".nav a[aria-current]");
+        nav.classList.add("has-ind");
+        off.push(function () { nav.classList.remove("has-ind"); });
+        var place = function (a, now) {
+          var nr = nav.getBoundingClientRect(), r = a.getBoundingClientRect();
+          var to = { x: r.left - nr.left + 11, scaleX: Math.max(1, r.width - 22), opacity: 1 };
+          if (now) gsap.set(ind, to); else gsap.to(ind, Object.assign({ duration: 0.6, ease: "expo.out", overwrite: true }, to));
+        };
+        place(home, true);
+        var onEnter = function (e) { place(e.currentTarget); };
+        var onLeave = function () { place(home); };
+        var onResize = function () { place(home, true); };
+        links.forEach(function (a) { a.addEventListener("pointerenter", onEnter); a.addEventListener("focus", onEnter); a.addEventListener("blur", onLeave); });
+        nav.addEventListener("pointerleave", onLeave);
+        // refresh fires on resize, window load and font load, so the bar re-measures once the real face arrives
+        ScrollTrigger.addEventListener("refresh", onResize);
+        off.push(function () {
+          links.forEach(function (a) { a.removeEventListener("pointerenter", onEnter); a.removeEventListener("focus", onEnter); a.removeEventListener("blur", onLeave); });
+          nav.removeEventListener("pointerleave", onLeave);
+          ScrollTrigger.removeEventListener("refresh", onResize);
+        });
+      }
+
+      ScrollTrigger.refresh();
+      return function () { off.forEach(function (f) { f(); }); };
+    });
+  }
+
+  // wait (briefly) for the web font so split letters measure against the real face
+  var fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  Promise.race([fontsReady, new Promise(function (r) { setTimeout(r, 1200); })]).then(setup);
+  addEventListener("load", function () { ScrollTrigger.refresh(); });
+  // if the 1.2s font wait timed out, re-measure once the face lands (text heights move every trigger)
+  fontsReady.then(function () { ScrollTrigger.refresh(); });
+})();
+</script>
+</body>
+</html>
