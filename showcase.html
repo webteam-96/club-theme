@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Club Website Themes</title>
+<meta name="description" content="Six new Rotary club website themes, each shown with every page and the Rotary Club of Thane Hills' real content.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#10183a;--muted:#55607e;--paper:#f6f7fb;--card:#fff;--line:#dfe3ee;--royal:#17458f;--gold:#f7a81b}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Figtree,system-ui,sans-serif}
+  a{color:inherit}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+  header{background:var(--royal);color:#fff;padding:56px 0 48px}
+  header h1{margin:0 0 12px;font:800 clamp(34px,5.4vw,64px)/1.02 "Bricolage Grotesque",sans-serif;letter-spacing:-.02em}
+  header p{margin:0;max-width:62ch;font-size:18px;color:#dfe8ff}
+  header strong{color:#fff}
+  .how{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px;color:#c9d6f5}
+  .how span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gold);margin-right:8px;vertical-align:1px}
+  main{padding:44px 0 64px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:28px}
+  .th{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+  .th__shot{display:block;aspect-ratio:16/10;overflow:hidden;background:#e8ebf3;border-bottom:1px solid var(--line)}
+  .th__shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s ease}
+  .th__shot:hover img{transform:scale(1.03)}
+  .th__body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .th h2{margin:0;font:800 26px/1.1 "Bricolage Grotesque",sans-serif;letter-spacing:-.01em}
+  .th__d{margin:0;color:var(--muted)}
+  .th__open{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;background:var(--ink);color:#fff;text-decoration:none;font-weight:600}
+  .th__open:hover{background:var(--royal)}
+  .pages{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .pages a{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:14.5px;font-weight:500;background:#fbfcff}
+  .pages a:hover{border-color:var(--royal);color:var(--royal)}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  footer{border-top:1px solid var(--line);padding:22px 0 36px;color:var(--muted);font-size:14.5px}
+  @media (max-width:420px){ .wrap{padding:0 16px} .grid{grid-template-columns:minmax(0,1fr)} header{padding:40px 0 36px} header p{font-size:16.5px} }
+  @media (prefers-reduced-motion:reduce){ .th__shot img{transition:none} }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>New club website themes</h1>
+    <p>Six new designs for Rotary club websites, each shown with <strong>every page</strong> and the real content of the <strong>Rotary Club of Thane Hills</strong>: banners, leaders, projects, events, newsletters and members.</p>
+    <div class="how"><span>Open a theme, then use its own menu to move between pages</span><span>Or jump straight to any page below</span><span>Come back here to try another theme</span></div>
+  </div>
+</header>
+<main>
+  <div class="wrap"><div class="grid" id="grid"></div></div>
+</main>
+<footer><div class="wrap">Content is live from the club's website data, so it updates when the club edits it in the dashboard. Powered by Roster On Wheels. <a href="/samples.html">Earlier static samples</a></div></footer>
+<script>
+  // The theme a visitor opened is remembered in a session cookie; landing here starts fresh.
+  var clearTheme = function () { document.cookie = 'rotary_theme_preview=; path=/; max-age=0' }
+  clearTheme(); window.addEventListener('pageshow', clearTheme)   // also when Back restores this page
+
+  var KEY = 'tour'
+  var PAGES = [['Home', '/'], ['About', '/about'], ['Directors', '/directors'], ['Directory', '/directory'], ['Projects', '/projects'],
+    ['Events', '/events'], ['Calendar', '/calendar'], ['Newsletters', '/newsletters'], ['Past Presidents', '/past-presidents'], ['Gallery', '/gallery']]
+  var THEMES = [
+    ['cinematic', 'Cinematic', 'Full-screen photographs and bold headlines on a dark stage, with a light mode switch.'],
+    ['split-story', 'Split Story', 'Text on one side, photographs on the other, telling the club\'s story as you scroll.'],
+    ['liquid-motion', 'Liquid Motion', 'Soft, flowing motion over the club\'s photographs, with a calm, modern layout.'],
+    ['horizontal-journey', 'Horizontal Journey', 'The home page travels sideways through sunrise colours, one chapter at a time.', ['/gallery']],
+    ['photo-collage', 'Photo Collage', 'Taped photo prints, handwritten notes and bright colours, like a club scrapbook.'],
+    ['sunrise', 'Sunrise', 'Warm sunrise gradients and large type, with light and dark modes.']
+  ]
+  var url = function (key, path) { return path + '?theme=' + key + '&pk=' + KEY }
+  var esc = function (s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;') }
+  document.getElementById('grid').innerHTML = THEMES.map(function (t) {
+    var skip = t[3] || []
+    var links = PAGES.filter(function (p) { return skip.indexOf(p[1]) < 0 })
+      .map(function (p) { return '<li><a href="' + url(t[0], p[1]) + '">' + p[0] + '</a></li>' }).join('')
+    return '<article class="th">' +
+      '<a class="th__shot" href="' + url(t[0], '/') + '" tabindex="-1" aria-hidden="true"><img src="/showcase-shots/' + t[0] + '.jpg" alt="" loading="lazy" width="1440" height="900"></a>' +
+      '<div class="th__body"><h2>' + esc(t[1]) + '</h2><p class="th__d">' + esc(t[2]) + '</p>' +
+      '<a class="th__open" href="' + url(t[0], '/') + '">Open ' + esc(t[1]) + '</a>' +
+      '<ul class="pages" aria-label="' + esc(t[1]) + ' pages">' + links + '</ul></div></article>'
+  }).join('')
+</script>
+</body>
+</html>

@@ -1,160 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>New Theme Samples</title>
-<meta name="description" content="Design samples for the new scroll-animated club website theme.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Unbounded:wght@500..800&display=swap">
-<style>
-/* ink #13183A on page #F3F5FB 15.4:1 . muted #4A5270 on white 7.9:1 . white on royal #17458F 9.2:1 */
-:root{
-  color-scheme:light only;
-  --page:#F3F5FB; --card:#FFFFFF; --ink:#13183A; --muted:#4A5270; --line:rgba(19,24,58,.12);
-  --royal:#17458F; --royal-hi:#0F3470; --gold:#F7A81B;
-  --display:"Unbounded","Arial Black",system-ui,sans-serif;
-  --sans:"Geist","Segoe UI",system-ui,-apple-system,sans-serif;
-  --pad:clamp(16px,4vw,48px);
-}
-*,*::before,*::after{box-sizing:border-box}
-html{background:var(--page)}
-body{margin:0;background:var(--page);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%}
-h1,h2,p{margin:0}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-:focus-visible{outline:3px solid var(--royal);outline-offset:3px;border-radius:8px}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Chrome for Android repaints any site that declares no colour scheme when the
+         reader has ⋮ > Settings > Theme > "Apply Dark themes to sites, when possible"
+         switched on. It is a PER-PHONE setting, which is why a site looks wrong on one
+         member's handset and right on everyone else's.
 
-.top{position:relative;padding:clamp(48px,8vw,104px) var(--pad) clamp(36px,5vw,64px);max-width:1328px;margin:0 auto}
-/* the sunrise rule from sample H, as the page's one flourish */
-.top::before{content:"";display:block;width:120px;height:6px;margin-bottom:clamp(24px,3vw,36px);border-radius:3px;
-  background:linear-gradient(90deg,#17458F,#4B2F86,#A34C82,#E0746F,#FFD58C)}
-.top h1{max-width:14em;font:700 clamp(34px,5.6vw,76px)/1.02 var(--display);letter-spacing:-.04em;text-wrap:balance}
-.top__lead{max-width:60ch;margin-top:clamp(18px,2vw,26px);font-size:clamp(17px,1.5vw,20px);color:var(--muted)}
-.top__tip{max-width:60ch;margin-top:12px;font-size:15px;color:var(--muted)}
+         What it broke here: the classic-blue navbar is a white glass pill
+         (bg-white/80, SiteRotary.jsx:246) and the Home counters are a WHITE GRADIENT
+         CLIPPED TO THE DIGITS (bg-gradient-to-b from-white + bg-clip-text +
+         text-transparent, Home.jsx:314/343). Auto Dark Theme inverts light surfaces
+         but leaves gradients and already-dark areas alone, so the pill went near-black
+         and the figures went near-black while the hero, the plain white headings and
+         the gold tiles stayed correct — the page arrived half-repainted.
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,370px),1fr));gap:clamp(18px,2.4vw,32px);
-  max-width:1328px;margin:0 auto;padding:0 var(--pad) clamp(56px,8vw,112px);list-style:none}
-.card{display:flex;flex-direction:column;height:100%;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:22px;
-  box-shadow:0 24px 50px -34px rgba(19,24,58,.45)}
-.card__shot{display:block;aspect-ratio:16/10;overflow:hidden;background:#DDE2F0;border-bottom:1px solid var(--line)}
-.card__shot img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
-.card__body{display:flex;flex-direction:column;gap:10px;flex:1;padding:clamp(18px,2vw,26px)}
-.card__head{display:flex;align-items:center;gap:12px}
-.card__key{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--ink);color:#fff;font:700 16px/1 var(--display)}
-.card h2{font:600 clamp(19px,1.6vw,22px)/1.2 var(--display);letter-spacing:-.025em}
-.card__tag{align-self:flex-start;padding:4px 10px;border-radius:999px;background:#FFF1D6;color:#6B4300;font-size:13px;font-weight:600;white-space:nowrap}
-.card__desc{color:var(--muted);font-size:15.5px;line-height:1.55}
-.wide{grid-column:1/-1}
-@media (min-width:900px){
-  .wide .card{flex-direction:row}
-  .wide .card__shot{flex:0 0 58%;border-bottom:0;border-right:1px solid var(--line)}
-  .wide .card__body{justify-content:center;gap:14px;padding:clamp(28px,3.4vw,52px)}
-  .wide .card h2{font-size:clamp(24px,2.3vw,34px)}
-  .wide .card__desc{font-size:17px;max-width:40ch}
-  .wide .card__actions{margin-top:8px}
-}
-.card__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:10px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;
-  font:600 15px/1 var(--sans);text-decoration:none;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
-.btn svg{width:15px;height:15px;flex:none}
-.btn--main{background:var(--royal);color:#fff;border:1.5px solid var(--royal)}
-.btn--main:hover{background:var(--royal-hi);border-color:var(--royal-hi)}
-.btn--line{background:transparent;color:var(--ink);border:1.5px solid rgba(19,24,58,.28)}
-.btn--line:hover{border-color:var(--royal);color:var(--royal)}
-
-.foot{max-width:1328px;margin:0 auto;padding:0 var(--pad) 48px;color:var(--muted);font-size:14px}
-
-/* the video player */
-.player{width:min(1100px,calc(100% - 32px));max-height:calc(100% - 32px);padding:0;border:0;border-radius:18px;overflow:hidden;background:#0B1026;color:#fff}
-.player::backdrop{background:rgba(9,12,30,.78)}
-.player__bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 10px 10px 20px}
-.player__bar h2{font:600 16px/1.3 var(--display);letter-spacing:-.02em}
-.player__close{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;cursor:pointer}
-.player__close:hover{border-color:var(--gold);color:var(--gold)}
-.player__close svg{width:16px;height:16px}
-.player :focus-visible{outline-color:var(--gold)}
-.player video{display:block;width:100%;height:auto;max-height:calc(100vh - 120px);background:#000}
-
-@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
-</style>
+         "only light" is Chrome's documented opt-out; plain "light" is NOT sufficient.
+         As a <meta> it lands before first paint, so there is no flash of dark content.
+         Safe for all themes: nothing in this app uses prefers-color-scheme, and
+         civic-bold's dark mode runs off its own [data-civic-mode] attribute (set by
+         ThemeProvider), so it is re-declared below rather than inherited. -->
+    <meta name="color-scheme" content="only light" />
+    <style>html[data-civic-mode="dark"]{color-scheme:only dark}</style>
+    <link rel="icon" href="/images/logo/wheel.png" />
+    <title>Rotary Club</title>
+  <script type="module" crossorigin src="/assets/index-BYsr0QCo.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DYBecoqd.css">
 </head>
 <body>
-<header class="top">
-  <h1>New club website theme: design samples</h1>
-  <p class="top__lead">Seven directions for the new scroll-animated theme. Every sample is built with Rotary Club of Thane Hills' real content: banners, projects, leaders, newsletters and meeting details.</p>
-  <p class="top__tip">Open a sample and scroll slowly: the animation follows your scroll. They look best on a laptop in Chrome, and each one also works on a phone. Links inside the samples are switched off.</p>
-</header>
-
-<main>
-  <ul class="grid" data-samples></ul>
-</main>
-
-<p class="foot">Each sample opens in a new tab. The videos show a full scroll through each page.</p>
-
-<dialog class="player" aria-labelledby="player-t">
-  <div class="player__bar">
-    <h2 id="player-t"></h2>
-    <button class="player__close" type="button"><span class="sr-only">Close video</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13"/></svg></button>
-  </div>
-  <video controls playsinline preload="none"></video>
-</dialog>
-
-<script>
-(function () {
-  "use strict";
-  // the newest sample leads, full width; the other six fill two even rows below it
-  var SAMPLES = [
-    { key: "H", dir: "H-sunrise-modes", name: "Sunrise, day and night", tag: "Light and dark mode",
-      desc: "One sky from night to sunrise. You zoom through the banner into the figures and fly through a tunnel of project photos. A switch in the header changes between light and dark.", wide: true },
-    { key: "A", dir: "A-cinematic", name: "Cinematic",
-      desc: "Dark and film-like. The banner opens like a cinema screen, each figure takes centre stage in turn, and projects roll sideways like a film reel." },
-    { key: "B", dir: "B-vibrant-bento", name: "Vibrant bento",
-      desc: "Bright Rotary colour tiles on white. Tiles spring into place, the ticker speeds up with your scroll, and project cards stack on top of each other." },
-    { key: "C", dir: "C-split-story", name: "Split story",
-      desc: "Rotary blue. A panel on the left changes chapter as you read the right side; the banner opens from a circle and projects stack like a deck of cards." },
-    { key: "E", dir: "E-liquid-webgl", name: "Liquid motion",
-      desc: "Black and white with electric blue and gold. Banner photos change with a liquid ripple, bold headings sweep in, and the numbers roll up." },
-    { key: "F", dir: "F-horizontal-journey", name: "Horizontal journey",
-      desc: "A day's walk over the hills. The page turns sideways through six chapters while the sun crosses the sky and sets. On phones it scrolls down as usual." },
-    { key: "G", dir: "G-collage-parallax", name: "Photo collage",
-      desc: "The club's year as a scrapbook: taped photos, sticker numbers, paper notes, and a hanging tag for the weekly meeting." }
-  ];
-  var esc = function (s) { return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
-  var ext = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12"/></svg>';
-  var play = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.5v11l9.5-5.5z"/></svg>';
-
-  document.querySelector("[data-samples]").innerHTML = SAMPLES.map(function (s) {
-    var href = s.dir + "/index.html", title = s.key + ": " + s.name;
-    return '<li' + (s.wide ? ' class="wide"' : "") + '><article class="card">' +
-      '<a class="card__shot" href="' + href + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">' +
-      '<img src="showcase/' + s.dir + '.jpg" alt="" width="960" height="600"></a>' +
-      '<div class="card__body"><div class="card__head"><span class="card__key" aria-hidden="true">' + s.key + "</span>" +
-      '<h2><span class="sr-only">Sample ' + s.key + ": </span>" + esc(s.name) + "</h2>" +
-      "</div>" + (s.tag ? '<p class="card__tag">' + esc(s.tag) + "</p>" : "") +
-      '<p class="card__desc">' + esc(s.desc) + "</p>" +
-      '<div class="card__actions"><a class="btn btn--main" href="' + href + '" target="_blank" rel="noopener">Open sample' + ext +
-      '<span class="sr-only"> ' + esc(title) + ' (opens in a new tab)</span></a>' +
-      '<button class="btn btn--line" type="button" data-video="' + s.dir + "/" + s.dir + '-scroll-demo.mp4" data-title="' + esc(title) + '">' + play + "Watch video" +
-      '<span class="sr-only"> of ' + esc(title) + "</span></button></div>" +
-      "</div></article></li>";
-  }).join("");
-
-  // one player for every video; closing it stops the video and frees the file
-  var dlg = document.querySelector(".player"), vid = dlg.querySelector("video"), head = dlg.querySelector("#player-t");
-  document.addEventListener("click", function (e) {
-    var b = e.target.closest("[data-video]");
-    if (!b) return;
-    head.textContent = "Sample " + b.getAttribute("data-title");
-    vid.src = b.getAttribute("data-video");
-    dlg.showModal();
-    var p = vid.play(); if (p && p.catch) p.catch(function () {});
-  });
-  dlg.querySelector(".player__close").addEventListener("click", function () { dlg.close(); });
-  dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); }); // click outside the video
-  dlg.addEventListener("close", function () { vid.pause(); vid.removeAttribute("src"); vid.load(); });
-})();
-</script>
+    <div id="root"></div>
 </body>
 </html>
