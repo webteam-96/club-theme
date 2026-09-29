@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>New Club Website Themes</title>
-<meta name="description" content="Six new Rotary club website themes, each shown with every page and the Rotary Club of Thane Hills' real content.">
+<meta name="description" content="New Rotary club website themes, each shown with every page and the Rotary Club of Thane Hills' real content.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -44,7 +44,7 @@
 <header>
   <div class="wrap">
     <h1>New club website themes</h1>
-    <p>Six new designs for Rotary club websites, each shown with <strong>every page</strong> and the real content of the <strong>Rotary Club of Thane Hills</strong>: banners, leaders, projects, events, newsletters and members.</p>
+    <p>New designs for Rotary club websites, each shown with <strong>every page</strong> and the real content of the <strong>Rotary Club of Thane Hills</strong>: banners, leaders, projects, events, newsletters and members.</p>
     <div class="how"><span>Open a theme, then use its own menu to move between pages</span><span>Or jump straight to any page below</span><span>Come back here to try another theme</span></div>
   </div>
 </header>
@@ -68,6 +68,9 @@
     ['photo-collage', 'Photo Collage', 'Taped photo prints, handwritten notes and bright colours, like a club scrapbook.'],
     ['sunrise', 'Sunrise', 'Warm sunrise gradients and large type, with light and dark modes.']
   ]
+  // Still being worked on - not listed for now. Remove a key to show that theme again.
+  var HIDDEN = ['split-story', 'sunrise']
+  THEMES = THEMES.filter(function (t) { return HIDDEN.indexOf(t[0]) < 0 })
   var url = function (key, path) { return path + '?theme=' + key + '&pk=' + KEY }
   var esc = function (s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;') }
   document.getElementById('grid').innerHTML = THEMES.map(function (t) {
